@@ -1,0 +1,89 @@
+Reference:
+	- http://www.softwaretestingmaterial.com/explain-test-automation-framework/
+	- http://www.softwaretestingmaterial.com/selenium-interview-questions/
+	- http://www.softwaretestingmaterial.com/test-automation-framework-interview-questions/
+
+Java Fundemental:
+	- 
+	
+Selenium:
+	1. Framework structure:
+	- See ReadMe.txt
+	
+	2. What is the most issue for you?
+	- Reliable of the test: The usual problem is that the test team is behind the development team and they do not know what dev team is building.
+	They are playing catch-up and constantly updating your scripts to make them work with a new software release. While constantly updating your 
+	scripts is not necessarily a bad thing, having your tests break every time there is a new release of code is a bad thing. If your tests continually
+	stop working for no good reason, people are going to stop trusting them. When they see a failing build they will assume that it's another problem 
+	with the tests, and not an issue with the website you are testing.
+	- Lack of programming experience: Not sure how to implement.
+	- Browser update frequently => Problem anywhere: selenium, chromedriver, geckodriver,... => we cannot do anything script fail and we have to find solution
+	
+SQL:
+	1. 
+	
+	
+---------------------------------------------------------------------------------------------------
+Question:
+	Section 1: Selenium (15-20’)
+		•	What is selenium webdriver? The difference between it and Selenium RC
+			- Selenium webdriver is new version of Selenium RC
+			
+		•	Do you know about Locator techniques in selenium? And Can you list them out?
+			- Types of locator in Selenium: ID, Name/Class Name, Name Tag, Link Text, By PartialLinkText, CSS Selector, XPath.
+		
+		•	What is Absolute Xpath and Reletive Xpath?
+			- Absolute XPath start with the single forward slash(/), which means the path start from root node.
+			- Relative path starts with Double forward slash(//), which means the path start from the node of your choise - it doesn't need to start from the root node.
+			
+		•	Tell me the difference between xpath and css-selector in selenium webdriver
+			- XPath is a short name for the XML path. It is a syntax or language for finding any element on the web page using XML path expression.
+			- CSS selector use a CSS selector to locate the element.
+			   
+		•	How do you drag and drop a frame in selenium webdriver?
+			- 
+			
+		•	Excersice: 1 bài tập cho việc sự dụng các locators technique khác nhau trong selenium webdriver.
+			=> 
+	Section 2: Java (25 – 35’)
+		•	What is class and object in Java?
+			=> 
+		•	Can you list some primitive types in Java?
+			=> 
+		•	How many bits does an int type have?
+			=> 
+		•	Difference between double and float?
+			=> 
+		•	What is break and continue in java?
+			=> 
+		•	Lập trình hướng đối tượng là gì? Các đặc tính của nó?
+			=> 
+		•	Khai báo 1 lớp kế thừa từ lớp khác thế nào trong Java?
+			=> 
+		•	1 bài tập nhỏ cho lập trình hướng đối tượng (ví dụ: class Annimal, class Dog extends Animal, class Cat extends Animal …)
+			=> 
+		•	Constructor là gì và cách khai báo như thế nào?
+			=> 
+		•	Abstracts va interface là gì? Chúng khác nhau ra sao?
+			=> 
+		•	Có bao nhiêu Access Modifiers? Tên và chúng khác nhau như thế nào?
+			=> 
+		•	Static là gì? Khi nào thì nên dùng static?
+			=> 
+		•	Cách khởi tạo 1 instance trong java.
+			=> 
+		•	Exercise: Tuỳ nhà tuyển dụng. Hôm này có bài tập viết 1 chương trình biến các chữ cái của 1 string từ hoa sang thường và từ thường sang hoa các chữ cái thuộc bảng ASCII. Các ký tự không thuộc chữ cái thì để nguyên. Cuối cùng trả về kết quả và thống kê có bao nhiêu sự thay đổi. 
+		Bài tập phần này có vẻ chỉ kiểm tra về if else, loops (hình như thế)  
+	Section 3: Testing (10’)
+		•	Lợi ích của automation test?
+		•	Khi nào nên dùng automation test và khi nào dùng manual testing?
+		•	Keyword-driven và data-driven framework là gì?
+		•	Hybrid framework là gì?
+		•	Report bug cần những thông tin gì?
+		•	Sự khác nhau giữa severity và priority trong quá trình mở bug?
+		•	Khó khăn của 1 autmation tester là gì?
+	Section 4: Asking about working experience and a way to solve them(15’)
+		•	Do you work overtime? How do you feel about this situation?
+		•	Why do you work overtime?
+		•	Do you have any confliction with your boss and colleagues? If yes, how do you solve it?
+		•	If your tasks not completed and the deadline is coming soon. How do you do now?

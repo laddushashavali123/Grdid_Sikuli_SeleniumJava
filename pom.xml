@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>myAuto</groupId>
+    <artifactId>myAuto</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Default Configurable Variable. -->
+        <suiteName>firefox_1_thread</suiteName>
+
+        <!-- Dependency versions for quickly update -->
+        <selinium.version>3.7.1</selinium.version>
+        <testNG.version>6.11</testNG.version>
+
+        <!-- Plug-in version for quickly update -->
+        <maven.failsafe.plugin.version>2.20.1</maven.failsafe.plugin.version>
+        <log4j.version>1.2.17</log4j.version>
+    </properties>
+
+    <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
+         turn them in a separate UI block of tests on our continuous integration server. A profile called selenium is
+         created. If we want to run this in isolation we can now use the following command:
+            mvn clean install –Pselenium -->
+    <profiles>
+        <profile>
+            <id>selenium</id>
+            <activation>
+                <!-- this will ensure that this profle is active if no profles are specifed on the command line -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.20.1</version>
+                        <configuration>
+                            <!-- TestNG suite XML allows flexible configuration of the tests to be run on Jenkin -->
+                            <suiteXmlFiles>
+                                <suiteXmlFile>suites/${suiteName}.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                            <systemPropertyVariables>
+                                <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
+                            </systemPropertyVariables>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                    <version>${testNG.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-server</artifactId>
+                    <version>${selinium.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                    <version>${log4j.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+</project>
