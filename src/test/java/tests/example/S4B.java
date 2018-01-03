@@ -1,11 +1,11 @@
-package example;
+package tests.example;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
-import static base.utils.*;
+import static base.DriverUtils.*;
 
 public class S4B {
 	@Test

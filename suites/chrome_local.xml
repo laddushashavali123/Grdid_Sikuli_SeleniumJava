@@ -20,7 +20,7 @@
     <test name="Test">
         <classes>
            <!-- <class name="example.Test1" /> -->
-            <class name="demoqa.tests.RegistrationTest" />
+            <class name="tests.example.Test1" />
         </classes>
     </test>
 </suite>

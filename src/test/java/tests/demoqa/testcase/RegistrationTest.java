@@ -1,7 +1,7 @@
-package demoqa.tests;
+package tests.demoqa.testcase;
 
 import base.DriverBase;
-import demoqa.pages.RegistrationPage;
+import tests.demoqa.pages.RegistrationPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import org.testng.Assert;

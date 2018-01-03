@@ -22,7 +22,7 @@ Selenium built-in waiting mechanisms:
 	=> Not recommend this since this has many problematic
 	
 	
-	+ Explicit wait timeout: WebDriverWait
+	+ Explicit wait timeout: https://seleniumjava.com/2016/04/05/the-beginners-guide-to-explicit-waits/
 		- The explicit wait is used to tell the Web Driver to wait for certain conditions.
 		- There is already a class full of pre-canned examples called ExpectedConditions:
 			alertIsPresent()

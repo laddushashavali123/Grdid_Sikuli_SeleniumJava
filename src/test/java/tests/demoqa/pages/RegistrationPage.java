@@ -1,4 +1,4 @@
-package demoqa.pages;
+package tests.demoqa.pages;
 
 import base.DriverBase;
 import org.openqa.selenium.WebElement;
