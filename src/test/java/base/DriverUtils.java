@@ -17,7 +17,8 @@ public class DriverUtils {
 	 * Click on an element after it is visible and click-able even it is not load in DOM yet.
      * Used when DOM is changed
 	 */
-	public static void clickWhenReady(WebDriver driver, By locator, int timeOutInSeconds) {
+	public static void clickWhenReady(By locator, int timeOutInSeconds) throws Exception {
+		WebDriver driver = DriverBase.getDriver();
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         element.click();
@@ -27,29 +28,39 @@ public class DriverUtils {
      * Click on an element after it is visible and click-able but this element must load in DOM first.
      * Used when element is disabled
      */
-	public static void clickWhenReady(WebDriver driver, WebElement element, int timeOutInSeconds) {
+	public static void clickWhenReady(WebElement element, int timeOutInSeconds) throws Exception {
+		WebDriver driver = DriverBase.getDriver();
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
 	}
 
     /******************************************************************************************************************
-     * Javascript click
+     * Javascript click on an element after it is visible and click-able even it is not load in DOM yet.
+	 * Use when normal click does not work and required Javascript action
      */
-    public static void clickWhenReadyJavascript (WebDriver driver, By locator, int timeOutInSeconds) {
+    public static void clickWhenReadyJavascript (By locator, int timeOutInSeconds) throws Exception {
+		WebDriver driver = DriverBase.getDriver();
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("arguments[0].click()", element);
     }
 
-
+	public static void clickWhenReadyJavascript (WebElement element, int timeOutInSeconds) throws Exception {
+		WebDriver driver = DriverBase.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click()", element);
+	}
 
 	/******************************************************************************************************************
 	 * Send text to element after it is visible and click-able even it is not load in DOM yet.
      * Used when DOM is changed.
 	 */
-	public static void sendWhenReady(WebDriver driver, By locator, String text, int timeOutInSeconds) {
+	public static void sendWhenReady(By locator, String text, int timeOutInSeconds) throws Exception {
+		WebDriver driver = DriverBase.getDriver();
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		element.sendKeys(text);
@@ -58,7 +69,8 @@ public class DriverUtils {
      * Send text to element after it is visible and click-able even it is not load in DOM yet.
      * Most use when element is disabled.
      */
-	public static void sendWhenReady(WebDriver driver, WebElement element, String text, int timeOutInSeconds) {
+	public static void sendWhenReady(WebElement element, String text, int timeOutInSeconds) throws Exception {
+		WebDriver driver = DriverBase.getDriver();
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.sendKeys(text);

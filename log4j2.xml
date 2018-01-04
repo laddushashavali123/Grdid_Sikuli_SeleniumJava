@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<!-- Configuration: the root element of log4j2 configuration file; the status attribute represents the level at which internal log4j events should be logged -->
+<Configuration package="log4j.test" status="WARN">
+    <!-- Appenders: this element contains a list of appenders; as below, an appender corresponding to the System console is defined -->
+    <Appenders>
+        <!-- Use ConsoleAppender so logs messages is written to the System console -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- %d{HH:mm:ss.SSS}   – outputs the date of the log event in the specified format
+                 %t                 – outputs the thread name
+                 %level             – displays the log level of the message
+                 %highlight{%level} – is used to define the colors for the pattern between curly brackets
+                 %msg%n             – outputs the log message -->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %highlight{%level} %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="MyFile" fileName="logs/testlog.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+        <File name="MyFile" fileName="logs/testlog2.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <!-- Loggers: this element contains a list of Logger instances -->
+    <Loggers>
+        <!-- The Root element is a standard logger that outputs all messages -->
+        <Root level="trace">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="MyFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

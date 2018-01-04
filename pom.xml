@@ -13,7 +13,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Default Configurable Variable. -->
-        <suiteName>firefox_1_thread</suiteName>
+        <suiteName>chrome_local</suiteName>
 
         <!-- Dependency versions for quickly update -->
         <selinium.version>3.7.1</selinium.version>
@@ -21,7 +21,7 @@
 
         <!-- Plug-in version for quickly update -->
         <maven.failsafe.plugin.version>2.20.1</maven.failsafe.plugin.version>
-        <log4j.version>1.2.17</log4j.version>
+        <log4j2.version>2.10.0</log4j2.version>
     </properties>
 
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
@@ -32,7 +32,7 @@
         <profile>
             <id>selenium</id>
             <activation>
-                <!-- this will ensure that this profle is active if no profles are specifed on the command line -->
+                <!-- this will ensure that this profile is active if no profiles are specified on the command line -->
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
@@ -48,6 +48,7 @@
                             </suiteXmlFiles>
                             <systemPropertyVariables>
                                 <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
+                                <log4j.configurationFile>${project.basedir}\log4j2.xml</log4j.configurationFile>
                             </systemPropertyVariables>
                         </configuration>
                         <executions>
@@ -57,6 +58,16 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <!-- Config for Java 9 -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                            <version>3.7.0</version>
+                        <configuration>
+                            <source>1.9</source>
+                            <target>1.9</target>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -74,9 +85,14 @@
                     <version>${selinium.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                    <version>${log4j.version}</version>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-api</artifactId>
+                    <version>2.10.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-core</artifactId>
+                    <version>2.10.0</version>
                 </dependency>
             </dependencies>
         </profile>

@@ -18,14 +18,14 @@ public class S4B {
       WebDriver driver = new ChromeDriver(options);
       
       
-      sendWhenReady(driver, By.xpath("//*[@id=\"emailSkype\"]"), "ucc.user61@gbsolutions.work", 100);
+      /*sendWhenReady(driver, By.xpath("//*[@id=\"emailSkype\"]"), "ucc.user61@gbsolutions.work", 100);
       sendWhenReady(driver, By.xpath("//*[@id=\"passwordSkype\"]"), "Lkjh1234", 10);
 	  clickWhenReady(driver, By.xpath("//*[@id=\"login-page\"]/div/div[3]/button"), 10);
 	  
 	
 	  sendWhenReady(driver, By.xpath("//*[@id=\"usernameUC\"]"), "user_61@slr.com", 10);
       sendWhenReady(driver, By.xpath("//*[@id=\"passwordUC\"]"), "temp1234", 10);
-      clickWhenReady(driver, By.xpath("//*[@id=\"login-page\"]/div/div[3]/button"), 10);
+      clickWhenReady(driver, By.xpath("//*[@id=\"login-page\"]/div/div[3]/button"), 10);*/
 	  
             
       Thread.sleep(50000);

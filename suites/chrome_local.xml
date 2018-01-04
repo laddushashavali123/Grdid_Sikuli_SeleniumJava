@@ -20,7 +20,7 @@
     <test name="Test">
         <classes>
            <!-- <class name="example.Test1" /> -->
-            <class name="tests.example.Test1" />
+            <class name="tests.example.ConsoleLog_ReportLog" />
         </classes>
     </test>
 </suite>
