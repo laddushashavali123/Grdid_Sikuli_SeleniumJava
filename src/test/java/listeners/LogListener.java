@@ -7,32 +7,33 @@ import org.testng.IClass;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+
 /**
  * @author MyPC
- *
+ * Ref: http://www.nullin.com/2010/07/28/logging-tests-to-separate-files
  */
 public class LogListener extends TestListenerAdapter {
+    private static final Logger log = LoggerFactory.getLogger(LogListener.class);
+    public static final String TEST_NAME = "testname";
+
+
     @Override
-    public void onTestStart(ITestResult tr) {
-        log("Test Started....");
+    public void onTestStart(ITestResult result)  {
+        log.info("I am in log listener");
+        MDC.put(TEST_NAME, result.getName());
+
     }
+
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-
-        log("Test '" + tr.getName() + "' PASSED");
-
-        // This will print the class name in which the method is present
-        log(tr.getTestClass());
-
-        // This will print the priority of the method.
-        // If the priority is not defined it will print the default priority as
-        // 'o'
-        log("Priority of this method is " + tr.getMethod().getPriority());
-
+        MDC.remove(TEST_NAME);
         System.out.println(".....");
     }
-
+/*
     @Override
     public void onTestFailure(ITestResult tr) {
 
@@ -53,5 +54,5 @@ public class LogListener extends TestListenerAdapter {
 
     private void log(IClass testClass) {
         System.out.println(testClass);
-    }
+    }*/
 }

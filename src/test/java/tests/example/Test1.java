@@ -24,7 +24,7 @@ public class Test1 extends DriverBase{
         driver.findElement(By.xpath("//*[@id=\"login-form-password\"]")).sendKeys("123456789z@Z");
         driver.findElement(By.xpath("//*[@id=\"login-form-submit\"]")).submit();*/
 
-        clickWhenReady(By.partialLinkText("Timelion"), 5);
+        //clickWhenReady(By.partialLinkText("Timelion"), 5);
 
         Thread.sleep(5000);
     }

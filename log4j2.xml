@@ -5,7 +5,7 @@
     <!-- Appenders: this element contains a list of appenders; as below, an appender corresponding to the System console is defined -->
     <Appenders>
         <!-- Use ConsoleAppender so logs messages is written to the System console -->
-        <Console name="Console" target="SYSTEM_OUT">
+        <Console name="PrintToConsole" target="SYSTEM_OUT">
             <!-- %d{HH:mm:ss.SSS}   – outputs the date of the log event in the specified format
                  %t                 – outputs the thread name
                  %level             – displays the log level of the message
@@ -14,12 +14,7 @@
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %highlight{%level} %logger{36} - %msg%n"/>
         </Console>
 
-        <File name="MyFile" fileName="logs/testlog.log">
-            <PatternLayout>
-                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Pattern>
-            </PatternLayout>
-        </File>
-        <File name="MyFile" fileName="logs/testlog2.log">
+        <File name="MyFile" fileName="target/log/testlog.log">
             <PatternLayout>
                 <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Pattern>
             </PatternLayout>
@@ -29,7 +24,7 @@
     <Loggers>
         <!-- The Root element is a standard logger that outputs all messages -->
         <Root level="trace">
-            <AppenderRef ref="Console"/>
+            <AppenderRef ref="PrintToConsole"/>
             <AppenderRef ref="MyFile"/>
         </Root>
     </Loggers>

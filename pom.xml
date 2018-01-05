@@ -48,7 +48,6 @@
                             </suiteXmlFiles>
                             <systemPropertyVariables>
                                 <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
-                                <log4j.configurationFile>${project.basedir}\log4j2.xml</log4j.configurationFile>
                             </systemPropertyVariables>
                         </configuration>
                         <executions>
@@ -85,14 +84,9 @@
                     <version>${selinium.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-api</artifactId>
-                    <version>2.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-core</artifactId>
-                    <version>2.10.0</version>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                    <version>1.0.13</version>
                 </dependency>
             </dependencies>
         </profile>

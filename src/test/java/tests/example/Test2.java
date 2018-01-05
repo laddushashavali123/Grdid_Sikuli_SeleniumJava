@@ -14,7 +14,9 @@ public class Test2 extends DriverBase {
     @Test
     public void LS() throws Exception {
         WebDriver driver = getDriver();
-        driver.get("https://kvs1-ls-agent.kandy.io/ny01mR0a/login");
+
+        driver.get("https://www.google.com.vn");
+        System.out.println("Action on " + Thread.currentThread().getId());
 
 
         /*driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div/div/form/div[1]/input")).sendKeys("test321");
@@ -22,6 +24,26 @@ public class Test2 extends DriverBase {
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div/div/form/input")).submit();
         clickWhenReadyJavascript(By.xpath("//div[contains(text(),'Voice Chat Request')]"), 15 );*/
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        System.out.println("Test1");
+        //driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div[3]/center/input[2]"));
     }
+
+   /* @Test
+    public void test2() throws Exception{
+        WebDriver driver = getDriver();
+        driver.get("https://www.google.com.vn");
+        System.out.println("Test2");
+        driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div[3]/center/input[2]"));
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void test3() throws Exception{
+        WebDriver driver = getDriver();
+        driver.get("https://www.google.com.vn");
+        Thread.sleep(1000);
+        System.out.println("Test3");
+        driver.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div[3]/center/input[2]"));
+    }*/
 }

@@ -15,11 +15,11 @@ import org.testng.annotations.Listeners;
 import listeners.ScreenshotListener;
 
 
-@Listeners({ScreenshotListener.class, LogListener.class})
+@Listeners({ScreenshotListener.class})
 public class DriverBase {
 	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<WebDriver>();
 	private static List<WebDriver> driverThreadPool = Collections.synchronizedList(new ArrayList<WebDriver>());
-	
+
 	@BeforeSuite
 	@Parameters({"browserName", "remote", "gridURL", "desiredPlatform", "browserVersion"})
 	public void DriverSetup(String browserName, String remote, String gridURL, String desiredPlatform, String browserVersion) {
@@ -36,7 +36,6 @@ public class DriverBase {
 				return driver;
 			}
 		};
-		
 	}
 	
 	/**
@@ -44,10 +43,10 @@ public class DriverBase {
 	  * @return browser Desired Capabilities which defined in WebDriverThread.java
 	  * @throws Exception
 	  */
-	 public static WebDriver getDriver() throws Exception {
-		 return driverThread.get();
+	 public static WebDriver getDriver()  {
+		return driverThread.get();
 	 }
-	 
+
 	 /**
 	  * Automatic clear browser cookies after complete each test so no need to close browser for next test. 
 	  * @throws Exception
