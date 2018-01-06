@@ -15,7 +15,7 @@ import org.testng.annotations.Listeners;
 import listeners.ScreenshotListener;
 
 
-@Listeners({ScreenshotListener.class})
+@Listeners({ScreenshotListener.class, LogListener.class})
 public class DriverBase {
 	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<WebDriver>();
 	private static List<WebDriver> driverThreadPool = Collections.synchronizedList(new ArrayList<WebDriver>());
@@ -37,6 +37,7 @@ public class DriverBase {
 			}
 		};
 	}
+
 	
 	/**
 	  * Uses the getDriver() method  on the WebDriverThread object to pass each test a WebDriver instance it can use
@@ -57,7 +58,7 @@ public class DriverBase {
 		 // deleteAllCookies is not working with Safari Driver
 		 // workaround solution: https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/5212
 	 }
-	 
+
 	 
 	 /**
 	  * Automatically destroy the driver instance in each thread (close all browsers) after running all test 

@@ -2,26 +2,34 @@ package tests.example;
 
 import base.DriverBase;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.Test;
 
 public class ConsoleLog_ReportLog extends DriverBase {
     final Logger logger = LoggerFactory.getLogger(ConsoleLog_ReportLog.class);
 
-    /*@Test
+
+    @Test
     public void test1() throws Exception {
-
-
         logger.info("This is test 1");
-        Thread.sleep(5000);
     }
 
     @Test
-    public void test2() throws Exception {
+    public void test3() throws Exception {
+        logger.info("This is test 3");
+    }
 
 
+    @Test
+    public void test2() {
+        WebDriver driver = DriverBase.getDriver();
         logger.info("This is test 2");
-        Thread.sleep(5000);
-    }*/
+        try {
+            driver.get("google.com");
+        }
+        catch (Exception e){
+            logger.debug("Exception error is ", e);
+        }
+    }
 }

@@ -2,12 +2,83 @@ Reference:
     1. https://stackify.com/log4j2-java/
     2. https://logging.apache.org/log4j/2.x/manual/configuration.html
     3. http://testng.org/doc/documentation-main.html#logging
+    4. https://examples.javacodegeeks.com/enterprise-java/maven/logback-maven-example/
+
+------------------------------------------------------------------------------------------------------------------------
+The log file keeps track of the record, event or info when any event happens or any software run so we can track or debug
+our script easily if anything goes wrong in the script. A log file can be as simple text or HTML format file.
 
 
-The log file keeps track of the record, event or info when any event happens or any software run. A log file can be as simple text or HTML format file.
-We can create a log file for our simple script also so we can track or debug our script easily if anything goes wrong in the script.
+In this framework, we use LogBack:
+    - By default, any files placed in src/test[or main]/resources are automatically included in the classpath during
+    execution of any tests.
+
+    - Configuration: https://logback.qos.ch/manual/configuration.html
+    <configuration>
+        <!-- Write log to console -->
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <!-- Define a format for log display -->
+            <layout>
+                <Pattern>%d %-5level %mdc %logger{35} - %msg%n</Pattern>
+            </layout>
+        </appender>
+
+        <!-- Write log to a single file -->
+        <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+        <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+            <!-- Define location for saving log file -->
+            <file>target/logs/log-${bySecond}.log</file>
+            <append>true</append>
+            <!-- set immediateFlush to false for much higher logging throughput -->
+            <immediateFlush>true</immediateFlush>
+            <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+            <!-- Define a format for log display -->
+            <encoder>
+                <pattern>%d %-5level %mdc %logger{35} - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <!-- Write log to a multiple files -->
+        <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+            <!-- in the absence of the class attribute, it is assumed that the desired discriminator type is ch.qos.logback.classic.sift.MDCBasedDiscriminator -->
+            <discriminator>
+                <key>testname</key>
+                <defaultValue>Test</defaultValue>
+            </discriminator>
+            <sift>
+                <appender name="log-${testname}" class="ch.qos.logback.core.FileAppender">
+                    <file>target/logs/${testname}.log</file>
+                    <append>false</append>
+                    <layout class="ch.qos.logback.classic.PatternLayout">
+                        <pattern>%d [%thread] %-5level %mdc %logger{35} - %msg%n</pattern>
+                    </layout>
+                </appender>
+            </sift>
+        </appender>
+
+        <!-- Select which appender is used -->
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="SIFT" />
+        </root>
+    </configuration>
 
 
+------------------------------------------------------------------------------------------------------------------------
+Extent Report TestNG:
+    - If you need to log messages that should appear in the generated HTML reports, you can use the class org.testng.Reporter
+    - Syntax: Reporter.log("String", boolean);
+        + If boolean value set to true then values will come on console and HTML report as well.
+        + If boolean value set to false then values will come on HTML report only.
+
+
+------------------------------------------------------------------------------------------------------------------------
++ Note:
+    - If log4j2 does not automatic download from maven repo, Go to Maven Projects then right click on Dependency and
+    download the source manually.
+    - After that, run the command: "mvn compile" to download and compile the related part of the dependency.
+
+------------------------------------------------------------------------------------------------------------------------
 Logging with log4j2:
     - Log4j is free open source tool given by Apache foundation for creating log files It helps us to generate a log file in various output target.
     - LoggerContext
@@ -53,17 +124,3 @@ Logging with log4j2:
         . PatternLayout – configures messages according to a String pattern
         . JsonLayout – defines a JSON format for log messages
         . CsvLayout – can be used to create messages in a CSV format
-
-
-
-Extent Report TestNG:
-    - If you need to log messages that should appear in the generated HTML reports, you can use the class org.testng.Reporter
-    - Syntax: Reporter.log("String", boolean);
-        + If boolean value set to true then values will come on console and HTML report as well.
-        + If boolean value set to false then values will come on HTML report only.
-
-
-
-+ Note:
-    - If log4j2 does not automatic download from maven repo, Go to Maven Projects then right click on Dependency and download the source manually.
-    - After that, run the command: "mvn compile" to download and compile the related part of the dependency.

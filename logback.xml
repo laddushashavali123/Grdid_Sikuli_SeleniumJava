@@ -1,13 +1,22 @@
 <configuration>
+    <!-- Write log to console -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- Define a format for log display -->
+        <layout>
+            <Pattern>%d %-5level %mdc %logger{35} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <!-- Write log to a multiple files -->
     <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
         <!-- in the absence of the class attribute, it is assumed that the desired discriminator type is ch.qos.logback.classic.sift.MDCBasedDiscriminator -->
         <discriminator>
             <key>testname</key>
-            <defaultValue>Test</defaultValue>
+            <defaultValue>Unknown</defaultValue>
         </discriminator>
         <sift>
             <appender name="FILE-${testname}" class="ch.qos.logback.core.FileAppender">
-                <file>${testname}.log</file>
+                <file>target/logs/log-${testname}.log</file>
                 <append>false</append>
                 <layout class="ch.qos.logback.classic.PatternLayout">
                     <pattern>%d [%thread] %-5level %mdc %logger{35} - %msg%n</pattern>
@@ -16,7 +25,9 @@
         </sift>
     </appender>
 
+    <!-- Select which appender is used -->
     <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
         <appender-ref ref="SIFT" />
     </root>
 </configuration>
