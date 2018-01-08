@@ -12,7 +12,7 @@ import org.slf4j.MDC;
  * Ref: http://www.nullin.com/2010/07/28/logging-tests-to-separate-files
  */
 public class LogListener extends TestListenerAdapter {
-    private static final Logger log = LoggerFactory.getLogger(LogListener.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(LogListener.class);
     private static final String TEST_NAME = "testname";
 
     @Override
@@ -23,19 +23,19 @@ public class LogListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-        log.info(tr.getName() + " is PASSED.");
+        log.info(tr.getMethod() + " is PASSED.");
         MDC.remove(TEST_NAME);
     }
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        log.error(tr.getName() + " is FAILED.");
+        log.error(tr.getMethod() + " is FAILED.");
         MDC.remove(TEST_NAME);
     }
 
     @Override
     public void onTestSkipped(ITestResult tr) {
-        log.info(tr.getName() + " is SKIPPED.");
+        log.info(tr.getMethod() + " is SKIPPED.");
         MDC.remove(TEST_NAME);
     }
 

@@ -3,6 +3,9 @@
 <!-- parallel: which type runs parallel (methods/classes/test/instance)
 	 thread-count: is number of concurrent thread running -->
 <suite name="Suite" parallel="methods" thread-count="1">
+    <listeners>
+        <listener class-name="listeners.RetryListener"/>
+    </listeners>
 	
 	<!-- Supported browser: chrome, firefox, ie, safari -->
 	<parameter name="browserName" value="chrome"/>
@@ -20,7 +23,7 @@
     <test name="Test">
         <classes>
            <!-- <class name="tests.example.Test2" />-->
-           <class name="tests.example.ConsoleLog_ReportLog" />
+           <class name="tests.example.Test2" />
         </classes>
     </test>
 </suite>
