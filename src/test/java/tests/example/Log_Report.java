@@ -2,12 +2,13 @@ package tests.example;
 
 import base.DriverBase;
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ConsoleLog_ReportLog extends DriverBase {
-    final Logger logger = LoggerFactory.getLogger(ConsoleLog_ReportLog.class);
+public class Log_Report extends DriverBase {
+    final Logger logger = LoggerFactory.getLogger(Log_Report.class);
 
 
     @Test
@@ -20,6 +21,7 @@ public class ConsoleLog_ReportLog extends DriverBase {
     public void test3() throws Exception {
         Thread.sleep(2000);
         logger.info("This is test 3");
+        Reporter.log("This is fucking log in report!!");
     }
 
 
@@ -28,6 +30,7 @@ public class ConsoleLog_ReportLog extends DriverBase {
         WebDriver driver = DriverBase.getDriver();
         Thread.sleep(1000);
         logger.info("This is test 2");
+        Reporter.log("This is error:");
         try {
             driver.get("google.com");
         }

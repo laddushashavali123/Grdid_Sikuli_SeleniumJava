@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 import static base.DriverUtils.*;
 
-public class S4B {
+public class S4B_Electron {
 	@Test
 	public void login() throws Exception {
 	  //System.setProperty("webdriver.chrome.driver", "E:\\zDung\\eclipse\\workspace\\test\\src\\test\\resources\\chromedriver.exe");

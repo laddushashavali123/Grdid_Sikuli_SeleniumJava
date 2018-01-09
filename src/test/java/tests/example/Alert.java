@@ -1,8 +1,11 @@
 package tests.example;
 
 import base.DriverBase;
+import base.DriverUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.security.UserAndPassword;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,11 +13,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.util.Set;
 
 public class Alert extends DriverBase {
     Logger loger = LoggerFactory.getLogger(Alert.class);
-    @Test
+    /*@Test
     public void ConfirmationAlert() throws  Exception {
         WebDriver driver = getDriver();
         driver.get("http://demo.guru99.com/test/delete_customer.php");
@@ -31,15 +35,49 @@ public class Alert extends DriverBase {
         driver.switchTo().alert().accept();
     }
 
-    /**
+    *//**
      * Authentication via Alert
      * @throws Exception
      */
-    @Test
-    public void PromptAlert() throws  Exception   {
+    /*@Test
+    public void AuthenticationAlert() throws  Exception   {
         WebDriver driver = getDriver();
         driver.get("https://kadung:123456789z@Z@portal.genband.com/");
         Thread.sleep(5000);
-        Thread.sleep(5000);
+    }*/
+
+    /**
+     * Still not working ????
+
+    @Test
+    public void PromptAlert() throws  Exception{
+        WebDriver driver = getDriver();
+        driver.get("http://toolsqa.com/handling-alerts-using-selenium-webdriver/");
+
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(500);
+        driver.findElement(By.xpath("//*[@id=\"content\"]/p[11]/button")).click();
+
+        org.openqa.selenium.Alert promptAlert  = driver.switchTo().alert();
+        String alertText = promptAlert .getText();
+        System.out.println("Alert text is " + alertText);
+        //Send some text to the alert
+        promptAlert .sendKeys("Accepting the alert");
+        Thread.sleep(4000); //This sleep is not necessary, just for demonstration
+        promptAlert .accept();
+        Thread.sleep(3000);
+    }*/
+
+    /**
+     * Alert with delay
+     */
+    @Test
+    public void AlertDelay() throws InterruptedException {
+        WebDriver driver = getDriver();
+        driver.get("http://toolsqa.com/automation-practice-switch-windows/");
+        driver.findElement(By.xpath("//*[@id=\"timingAlert\"]")).click();
+        DriverUtils.acceptAlert(8);
+        Thread.sleep(2000);
     }
 }

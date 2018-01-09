@@ -14,6 +14,7 @@
 
         <!-- Default Configurable Variable. -->
         <suiteName>chrome_local</suiteName>
+        <retryFailed>0</retryFailed>
 
         <!-- Dependency versions for quickly update -->
         <selinium.version>3.7.1</selinium.version>
@@ -21,7 +22,7 @@
 
         <!-- Plug-in version for quickly update -->
         <maven.failsafe.plugin.version>2.20.1</maven.failsafe.plugin.version>
-        <log4j2.version>2.10.0</log4j2.version>
+        <logback.classic.version>1.0.13</logback.classic.version>
     </properties>
 
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
@@ -49,6 +50,7 @@
                             <systemPropertyVariables>
                                 <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
                                 <logback.configurationFile>${project.basedir}\logback.xml</logback.configurationFile>
+                                <retryFailed>${retryFailed}</retryFailed>
                             </systemPropertyVariables>
                         </configuration>
                         <executions>
@@ -87,7 +89,7 @@
                 <dependency>
                     <groupId>ch.qos.logback</groupId>
                     <artifactId>logback-classic</artifactId>
-                    <version>1.0.13</version>
+                    <version>${logback.classic.version}</version>
                 </dependency>
             </dependencies>
         </profile>

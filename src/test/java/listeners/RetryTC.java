@@ -5,7 +5,7 @@ import org.testng.ITestResult;
 
 public class RetryTC implements IRetryAnalyzer {
     private int count = 0;
-    private static int maxTry = 1;
+    private static int maxTry = Integer.parseInt(System.getProperty("retryFailed"));
 
     @Override
     public boolean retry(ITestResult iTestResult) {

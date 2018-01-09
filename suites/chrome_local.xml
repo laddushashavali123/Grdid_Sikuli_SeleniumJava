@@ -9,7 +9,7 @@
 	
 	<!-- Supported browser: chrome, firefox, ie, safari -->
 	<parameter name="browserName" value="chrome"/>
-	
+
 	<!-- Use grid: y or n -->
 	<parameter name="remote" value="n"/>
 	<!-- URL of grid hub -->
@@ -22,8 +22,8 @@
 
     <test name="Test">
         <classes>
-           <!-- <class name="tests.example.Test2" />-->
-           <class name="tests.example.Test2" />
+            <class name="tests.chrome_extension.test.InstallExtension" />
+          <!-- <class name="tests.example.Alert" />-->
         </classes>
     </test>
 </suite>
