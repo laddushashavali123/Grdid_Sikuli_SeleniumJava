@@ -374,6 +374,10 @@ ENUM type:
 				System.out.println(level.getLevelCode());
 			}
 		}
+
+--------------------------------------------------------------------------------------------
+Interface
+
 --------------------------------------------------------------------------------------------
 Final keyword: indicates that the value of format can’t be changed (You cannot assign new value to this variable). EX:
 	int i = 1; i = 2; System.out.println(i);		// 2

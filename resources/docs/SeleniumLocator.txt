@@ -1,4 +1,4 @@
-Reference:
+Reference :
 	- http://www.techbeamers.com/use-locators-selenium/
 	- http://www.techbeamers.com/findelement-and-findelements-commands-examples/#by.4
 	- https://devhints.io/xpath
@@ -17,13 +17,13 @@ Difference Between FindElement And FindElements Methods:
 		- It returns the object of the first matching element of the specified locator.
 		- It throws a NoSuchElementException exception when it fails to find If the element.
 		- Syntax:
-			WebElement user = driver.findElement(By.id(“User”));
+			WebElement user = driver.findElement(By.id(ï¿½Userï¿½));
 	
 	2. FindElements() Method:
 		- It gives back the whole list of all the elements matching the specified locator.
-		- If the element doesn’t exist or not available on the page then, the return value will be an empty list.
+		- If the element doesnï¿½t exist or not available on the page then, the return value will be an empty list.
 		- Syntax:
-			List<WebElement> linklist = driver.findElements(By.xpath(“//table/tr”));
+			List<WebElement> linklist = driver.findElements(By.xpath(ï¿½//table/trï¿½));
 	
 	
 Types of locator in Selenium:	
@@ -38,7 +38,7 @@ Types of locator in Selenium:
 	2. By Name:
 		- This method will return the first element matching the name attribute value.
 		- Ideally, every form has input fields with unique names.
-		- Names are unique most of the times, but it’s not a restriction.
+		- Names are unique most of the times, but itï¿½s not a restriction.
 		- Cons: 
 			Works well only on elements with fixed ids and not generated ones.
 			Using it with a dynamically generated list is tough.
@@ -47,7 +47,7 @@ Types of locator in Selenium:
 			WebElement locator = driver.findElement(By.name("admin"));
 			
 	3. By Class name:
-		- This method gives you the element which matches the values specified in the “class” attribute.
+		- This method gives you the element which matches the values specified in the ï¿½classï¿½ attribute.
 		- If the element has more than one class, then this method will match against each one of them.
 		- Syntax:
 			<input id="user" name="admin" class="required" type="text"/>
@@ -70,7 +70,7 @@ Types of locator in Selenium:
 		- To select the link element which contains the matching text.
 		- It is a perfect way to find the links on a page or checking navigation flows.
 		- Cons:
-			It’ll only work for anchor tags.
+			Itï¿½ll only work for anchor tags.
 			You need to provide the link text for it to work.
 		- Syntax:
 			<a href="http://www.techbeamers.com">How to use locators?</a>

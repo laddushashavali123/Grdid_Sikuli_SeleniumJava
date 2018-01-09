@@ -22,8 +22,8 @@
 
     <test name="Test">
         <classes>
-            <class name="tests.chrome_extension.test.InstallExtension" />
-          <!-- <class name="tests.example.Alert" />-->
+            <!--<class name="tests.chrome_extension.test.InstallExtension" />-->
+           <class name="tests.example.IFrame" />
         </classes>
     </test>
 </suite>

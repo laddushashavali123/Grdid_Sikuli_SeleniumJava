@@ -18,12 +18,18 @@ public class IFrame extends DriverBase {
     public void iframe() throws InterruptedException {
         WebDriver driver = getDriver();
         //driver.manage().window().fullscreen();
-        driver.get("http://toolsqa.com/iframe-practice-page/");
+        driver.get("http://demo.guru99.com/selenium/guru99home/");
         Thread.sleep(1000);
 
         // Total number of IFrame
-        List<WebElement> iframeElements = driver.findElements(By.xpath("//iframe"));
-        System.out.println("The total number of iframes are " + iframeElements.size());
-        System.out.println(iframeElements);
+        List<WebElement> elements = driver.findElements(By.tagName("iframe"));
+        System.out.println(elements.size());
+
+        // Switch to new frame
+        driver.switchTo().frame("a077aa5e");
+        // Click on the link on this frame
+        driver.findElement(By.xpath("html/body/a/img")).click();
+        Thread.sleep(10000);
+
     }
 }
