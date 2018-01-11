@@ -25,24 +25,24 @@ Selenium built-in waiting mechanisms:
 	+ Explicit wait timeout: https://seleniumjava.com/2016/04/05/the-beginners-guide-to-explicit-waits/
 		- The explicit wait is used to tell the Web Driver to wait for certain conditions.
 		- There is already a class full of pre-canned examples called ExpectedConditions:
-			alertIsPresent()
-			elementSelectionStateToBe()
-			elementToBeClickable()
-			elementToBeSelected()
-			frameToBeAvaliableAndSwitchToIt()
-			invisibilityOfTheElementLocated()
-			invisibilityOfElementWithText()
-			presenceOfAllElementsLocatedBy()
-			presenceOfElementLocated()
-			textToBePresentInElement()
-			textToBePresentInElementLocated()
-			textToBePresentInElementValue()
-			titleIs()
-			titleContains()
-			visibilityOf()
-			visibilityOfAllElements()
-			visibilityOfAllElementsLocatedBy()
-			visibilityOfElementLocated()
+			alertIsPresent()                    : wait for alert appear
+			elementSelectionStateToBe()         :
+			elementToBeClickable()              : wait for element that visible and click-able
+			elementToBeSelected()               :
+			frameToBeAvaliableAndSwitchToIt()   : wait for an iframe appear
+			invisibilityOfTheElementLocated()   :
+			invisibilityOfElementWithText()     :
+			presenceOfAllElementsLocatedBy()    : wait for all elements appear
+			presenceOfElementLocated()          : wait for element appear
+			textToBePresentInElement()          : wait for a text appear in element
+			textToBePresentInElementLocated()   : wait for a text appear in element
+			textToBePresentInElementValue()     : wait for a text appear in element
+			titleIs()                           : wait for a title of a website is
+			titleContains()                     : wait for a title of a website contains
+			visibilityOf()                      : wait for element that visible (enabled and size > 0)
+			visibilityOfAllElements()           : wait for element that visible (enabled and size > 0)
+			visibilityOfAllElementsLocatedBy()  : wait for element that visible (enabled and size > 0)
+			visibilityOfElementLocated()        : wait for element that visible (enabled and size > 0)
 		- EX:
 			public WebElement getWhenVisible(By locator, int timeout, int polling) {
 				WebElement element = null;

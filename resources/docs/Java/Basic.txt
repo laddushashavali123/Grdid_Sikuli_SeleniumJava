@@ -1,0 +1,246 @@
+Ref:
+	- http://tutorials.jenkov.com/java/index.html
+	- https://www.javatpoint.com/java-if-else
+
+========================================================================================================================
+Java is object-oriented language, Object-oriented languages focus on data. In an object-oriented language, you use objects
+and classes to organize your data. Because Java is an object-oriented programming language, your primary goal is to
+describe classes and objects. A class is the idea behind a certain kind of thing. An object is a concrete instance of a
+class. The programmer defines a class, and from the class definition, Java makes individual objects.
+Example:
+	Account number	|	Type	|	Balance
+		123				Check		100
+		456				Credit		200
+		789				Debit		300
+Think of the table’s column headings as a class, and think of each row of the table as an object. The table’s column
+headings describe the Account class. Each object in the Account class has an account number, a type, and a balance
+property. If you opened a new account, you would have another object, and the table would grow an additional row. The
+new object would be an instance of the same Account class.
+
+========================================================================================================================
+	Glossary:
+========================================================================================================================
++ Object: Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behavior such as
+wagging their tail, barking, eating. An object is an instance of a class.
+	
++ Class: A class can be defined as a template/blueprint that describes the behavior/state that the object of its type
+supports. Class can have many sub-class (child class).
+	
++ Methods: A method is basically a list of things to do. Every method has a name,and you tell the computer to do the
+things in the list by using the method’s name in your program.	A class can contain many methods.
+	
++ EX:
+	// The main class usually has same name with the java source name: Authenticator.java
+	public class Authenticator {
+		// The instructions in a method aren’t executed until the method is called into action.
+		// But, if you give a method the name main, that method is called into action automatically.
+		public static void main(String args[]) {
+			// Declare a variable with value is 10
+			int number = 10;
+			System.out.println(number);
+		}
+	}
+
++ Java is case-sensitive language, which means identifier Hello and hello would have different meaning in Java.
+
+
+========================================================================================================================
+	Variable
+========================================================================================================================
+- Local Variable: a variable which is declared inside the method is called local variable.
+
+- Instance Variable: a variable which is declared inside the class but outside the method, is called instance variable.
+It is not declared as static.
+
+- Static variable: a variable that is declared as static is called static variable. It cannot be local.
+
+- Primitive/Value type variable: A data type is a value type if it holds a data value within its own memory space.
+It means variables of these data types directly contain their values.
+			Type Name 		Example 		Range of Values									Java							
+			---------		-------			---------------									---------------
+			byte 			42 				–128 to 127										byte i    = 42;
+			short 			42 				–32768 to 32767									short i   = 42;
+			int 			42 				–2147483648 to 2147483647						int i     = 42;
+			long 			42L 			–9223372036854775808 to 9223372036854775807		long i    = 42;
+			float 			42.0F			–3.4 × 1038 to 3.4 × 1038						float i   = 42.0;
+			double 			42.0			–1.8 × 10308 to 1.8 × 10308						double i  = 42.0;
+			char 			'A' 			Thousands of characters, glyphs, and symbols	char i    = 'i';
+			boolean 		true 			true, false										boolean i = true;
+
+- Reference type variable: a reference type doesn't store its value directly. Instead, it stores the address where the
+value is being stored. In other words, a reference type contains a pointer to another memory location that holds the data.
+		Type Name 		Example			Java
+		---------		-------			-------
+		Class			class.java		class Class;
+		String			'ABCD'			String i = 'ABCD';
+		Array			[1,2,3]			double myList[] = {1, 2, 3} ;
+		ArrayList		[1,2,3]			ArrayList<String> myList = new ArrayList<>(); myList.add(1)
+
+- Access array value : for (variable-type variable-name : range-of-values) {}
+  	int guests[] = {1, 4, 2, 0, 2, 1, 4, 3, 0, 2};
+  	for (int numGuests : guests) {out.print(numGuests);}
+
+- Widening variable:
+    int i = 10;
+    float f = i;
+
+- Narrowing variable:
+    float f = 10.1;
+    int i = (int)f;
+
+========================================================================================================================
+    Collection
+========================================================================================================================
+- Note:
+    1. Array is not in the collection variable.
+    2. Collection does not store the primitive type value, it converts the primitive value into an object of that type.
+    EX: When we do arraylist.add(1) -> it converts the primitive int data type into an Integer object.
+
+- Array: Simple fixed sized arrays . Array can contain both primitive data types as well as objects of a class depending
+on the definition of the array. Array member is accessed via the index which start from 0
+	int arr[] = new int[10];
+	arr[0] = 1;
+	System.out.println(arr[0]);
+
+- ArrayList : Dynamic sized arrays in Java that implement List interface. ArrayList only supports object entries, not
+the primitive data types. EX:
+	ArrayList<Type> arrlist = new ArrayList<Type>();
+	arrL.add(1);
+	System.out.println(arrL.get(0));
+
+- List<E> : An ordered collection that can contain duplicate elements. The user can access elements by their integer
+index (position in the list - start from 0). List implementation Type uses LinkedList or ArrayList.
+	List<Type> myList = new ArrayList<Type>();
+	myList.add(1);							// Add value 1 to first position
+	myList.remove(0);						// Remove the first position of this list
+	listA.add(0, "element 0");				// Add a String to first position of the list
+	int size = myList.size();				// Get the List Size
+	int value = myList.get(0);				// Get the value at the first position
+	myList.clear();							// Remove all value in the list
+	for(Type aString : myList) {			// Loop through and show all item of myList
+		System.out.println(aString);
+	}
+
+- Set<E> : A collection that contains no duplicate elements (sets contain no pair of elements e1 and e2 such that
+e1.equals(e2), and at most one null element). Set order depends on the implementation. Set implementation Type uses
+HashSet (unordered), LinkedHashSet (ordered) or TreeSet (sorted by natural order or by provided comparator).
+	Set setA = new HashSet();
+	mySet.add(1);						// Add new integer object 1.
+	mySet.add("WTF");					// Add new String object WTF
+	mySet.remove(1);					// Remove object 1
+	mySet.remove("WTF");				// Remove object WTF
+	for(Object aString : setA){			// Loop through and show all item of mySet
+           System.out.println(aString);
+       }
+
+
+========================================================================================================================
+    Operators
+========================================================================================================================
+    Relational 	Means 							Example
+    -------- 	------							---------------
+	== 			is equal to 					numberOfCows == 5
+	!= 			is not equal to 				buttonClicked != panicButton
+	< 			is less than 					numberOfCows < 5
+	> 			is greater than 				myInitial > 'B'
+	<= 			is less than or equal to 		numberOfCows <= 5
+	>= 			is greater than or equal to 	myInitial >= 'B
+
+	Logical 	Means 							Example
+    -------- 	------							---------------
+	&& 			and						 		5 < x && x < 10
+	|| 			or 								x < 5 || 10 < x
+	! 			not 							!password.equals("swordfish")
+
+- Compare character: the letters A through Z are stored with numeric codes 65 through 90. The letters a through z are
+stored with codes 97 through 122. That’s why each uppercase letter is smaller than each lowercase letter.
+
+- Compare String: we cannot compare 2 String with equal operator, we have to use the method named equals.
+EX: password.equals("swordfish") or "swordfish".equals(password)
+
+- Compare float number: due to fixed-point math issue 0.1 + 0.2 = 0.30000000000000004 so 0.1 + 0.2 == 0.3 will return
+false so we have to use Float.compare(floatNum1,floatNum2)
+
+- Conditional/Ternary operator is mini if statement with 1 line: conditionToBeTested? expression1 : expression2
+	(a > b) ? "a bigger" : "a smaller"
+
+- Compound assignments operator is combine the arithmetic operators with the simple assignment operator.
+    x+=1;       // equal: x = x +1;
+
+========================================================================================================================
+    Unary Operators
+========================================================================================================================
+int a = 1;
+// Postincrement - The computer adds 1 to the variable’s value before the variable is used in any other part of the statement.
+System.out.print(a++);		// 1
+//Preincrement - The computer adds 1 to the variable’s value after the variable is used in any other part of the statement.
+System.out.print(++a);		// 2		
+
+========================================================================================================================
+    Statements
+========================================================================================================================
+- If statement tests the condition. It executes the if block if condition is true:
+    if(condition1){
+        //code to be executed if condition1 is true
+    }else if(condition2){
+        //code to be executed if condition2 is true
+    }
+    ...
+    else{
+    //code to be executed if all the conditions are false
+    }
+
+- Switch statement executes one statement from multiple conditions. It is like if-else-if ladder statement:
+    switch(expression){
+        case value1:
+             //code to be executed;
+             break;  //optional
+        case value2:
+             //code to be executed;
+             break;  //optional
+        ......
+        default:
+            //code to be executed if all cases are not matched;
+    }
+
+- For loop is used to iterate a part of the program several times. If the number of iteration is fixed, it is recommended
+to use for loop. There are 3 types of for loop:
+    1. Simple For Loop: initialize variable, check condition and increment/decrement value
+        for(initialization; condition; incr/decr){
+            //code to be executed
+        }
+    2. for-each loop is used to traverse array or collection. It returns element one by one in the defined variable.
+        for(Type var:array){
+            //code to be executed
+        }
+    3. Labeled For Loop/Nest loop
+        for(initialization; condition; incr/decr){
+            //code to be executed
+            for(initialization; condition; incr/decr){
+                //code to be executed
+            }
+        }
+
+- While loop is used to iterate a part of the program several times. If the number of iteration is not fixed, it is
+recommended to use while loop. There is 2 types of while loop:
+    1. Simple while loop
+        while(condition){
+            //code to be executed
+        }
+    2. do-while loop
+        do{
+            //code to be executed
+        }while(condition);
+
+- Break: s used to break loop or switch statement. It breaks the current flow of the program at specified condition. In
+case of inner loop, it breaks only inner loop.
+    for(int i=1;i<=10;i++){
+        if(i==5){
+        break;
+    }
+
+- Continue: is used to continue loop. It continues the current flow of the program and skips the remaining code
+at specified condition. In case of inner loop, it continues only inner loop.
+    if(i==5){
+        continue;
+    }

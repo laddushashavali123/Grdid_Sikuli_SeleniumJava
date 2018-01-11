@@ -21,7 +21,7 @@ Difference Between FindElement And FindElements Methods:
 	
 	2. FindElements() Method:
 		- It gives back the whole list of all the elements matching the specified locator.
-		- If the element doesn�t exist or not available on the page then, the return value will be an empty list.
+		- If the element doesn't exist or not available on the page then, the return value will be an empty list.
 		- Syntax:
 			List<WebElement> linklist = driver.findElements(By.xpath(�//table/tr�));
 	

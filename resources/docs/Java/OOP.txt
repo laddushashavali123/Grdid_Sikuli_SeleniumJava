@@ -1,150 +1,53 @@
-Ref:
-	- http://tutorials.jenkov.com/java/index.html
+Reference:
+    1. https://www.javatpoint.com/java-oops-concepts
+    2.
 
-=========================================================================================================
-	About Java
-=========================================================================================================
-Java is object-oriented language, Object-oriented languages focus on data. In an object-oriented language, you use objects and classes to organize your data.
-Because Java is an object-oriented programming language, your primary goal is to describe classes and objects. A class is the idea behind a certain kind of 
-thing. An object is a concrete instance of a class. The programmer defines a class, and from the class definition, Java makes individual objects.
-Example:
-	Account number	|	Type	|	Balance
-		123				Check		100
-		456				Credit		200
-		789				Debit		300
-Think of the table’s column headings as a class, and think of each row of the table as an object. The table’s column headings describe the Account class. Each object in the Account class has an account number, a type, and a balance property. If you opened a new account, you would have another object, and the table would grow an additional row. The new object would be an instance of the same Account class.
+========================================================================================================================
+	OOPs Concepts
+========================================================================================================================
+- Object: Any entity that has state and behavior is known as an object. For example: chair, pen, table, keyboard, bike
+etc. It can be physical and logical.
+
+- Class: Collection of objects is called class. It is a logical entity.
+
+- Inheritance: When one object acquires all the properties and behaviours of parent object i.e. known as inheritance. It
+provides code reusability. It is used to achieve runtime polymorphism.
+
+-Polymorphism: When one task is performed by different ways i.e. known as polymorphism. For example: to convince the
+customer differently, to draw something e.g. shape or rectangle etc. In java, we use method overloading and method
+overriding to achieve polymorphism.
+
+- Abstraction: Hiding internal details and showing functionality is known as abstraction. For example: phone call, we
+don't know the internal processing. In java, we use abstract class and interface to achieve abstraction.
+
+- Encapsulation: Binding (or wrapping) code and data together into a single unit is known as encapsulation. For example:
+capsule, it is wrapped with different medicines. A java class is the example of encapsulation. Java bean is the fully
+encapsulated class because all the data members are private here.
+
+- Different
 
 
-Definition:
-	+ Object: Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behavior such as wagging their tail, barking, eating. 
-	An object is an instance of a class.
-	
-	+ Class: A class can be defined as a template/blueprint that describes the behavior/state that the object of its type supports. 
-	Class can have many sub-class (child class).
-	
-	+ Methods: A method is basically a list of things to do. Every method has a name,and you tell the computer to do the things in the list by using the method’s name in your program. 
-	A class can contain many methods.
-	
-	+ Instance Variables: Each object has its unique set of instance variables. An object's state is created by the values assigned to these instance variables.
-	A variable declared inside a class but not inside any particular method is an instance variable.
-	
-	+ EX:
-		// The main class usually has same name with the java source name: Authenticator.java
-		public class Authenticator {
-			// The instructions in a method aren’t executed until the method is called into action. 
-			// But, if you give a method the name main, that method is called into action automatically.
-			public static void main(String args[]) {
-				// Declare a variable with value is 10
-				int number = 10;
-				System.out.println(number);
-			}
-		}
-	
-	
-Note:
-	- Java is case-sensitive language, which means identifier Hello and hello would have different meaning in Java.
+========================================================================================================================
+	Java Naming conventions
+========================================================================================================================
+class name	    : should start with uppercase letter and be a noun e.g. String, Color, Button, System, Thread etc.
+interface name	: should start with uppercase letter and be an adjective e.g. Runnable, Remote, ActionListener etc.
+method name	    : should start with lowercase letter and be a verb e.g. actionPerformed(), main(), print(), etc.
+variable name	: should start with lowercase letter e.g. firstName, orderNumber etc.
+package name	: should be in lowercase letter e.g. java, lang, sql, util etc.
+constants name	: should be in uppercase letter. e.g. RED, YELLOW, MAX_PRIORITY etc.
 
-	
-=========================================================================================================
-	Fundamental
-=========================================================================================================
-Variable:
-	- Primitive/Value type variable: A data type is a value type if it holds a data value within its own memory space. It means variables of these data types directly contain their values.
-			Type Name 		Example 		Range of Values									Java							
-			---------		-------			---------------									---------------
-			byte 			42 				–128 to 127										byte i    = 42;
-			short 			42 				–32768 to 32767									short i   = 42;
-			int 			42 				–2147483648 to 2147483647						int i     = 42;
-			long 			42L 			–9223372036854775808 to 9223372036854775807		long i    = 42;
-			float 			42.0F			–3.4 × 1038 to 3.4 × 1038						float i   = 42.0;
-			double 			42.0			–1.8 × 10308 to 1.8 × 10308						double i  = 42.0;
-			char 			'A' 			Thousands of characters, glyphs, and symbols	char i    = 'i';
-			boolean 		true 			true, false										boolean i = true;
 
-	- Reference type variable: a reference type doesn't store its value directly. Instead, it stores the address where the value is being stored. In other words, a reference type contains a pointer to another memory location that holds the data.
-			Type Name 		Example			Java 		
-			---------		-------			-------
-			Class			class.java		class Class;
-			String			'ABCD'			String i = 'ABCD';
-			Array			[1,2,3]			double myList[] = {1, 2, 3} ; // or double myList[] = new double[3]; myList[0] = 1 ; ...
-			ArrayList		[1,2,3]			ArrayList<String> myList = new ArrayList<>(); myList.add(1)
-	
-Operators:
-	Operator 	Symbol 							Meaning Example
-	-------- 	------							---------------
-	== 			is equal to 					numberOfCows == 5
-	!= 			is not equal to 				buttonClicked != panicButton
-	< 			is less than 					numberOfCows < 5
-	> 			is greater than 				myInitial > 'B'
-	<= 			is less than or equal to 		numberOfCows <= 5
-	>= 			is greater than or equal to 	myInitial >= 'B
-	&& 			and						 		5 < x && x < 10
-	|| 			or 								x < 5 || 10 < x
-	! 			not 							!password.equals("swordfish")
+========================================================================================================================
+	OOPs Concepts
+========================================================================================================================
+-
 
-- Compare character: the letters A through Z are stored with numeric codes65 through 90. The letters a through z are stored with codes 97 through 122. That’s why each uppercase letter is smaller than each lowercase letter.
-
-- Be careful when you compare two numbers for equality (with == ) or inequality (with != ) with float number.  For instance, the Fahrenheit equivalent of 21 degrees Celsius is 69.8, and when you calculate 9.0 / 5 * 21 + 32 by hand, you get 69.8. But the condition 9.0 / 5 * 21 + 32 == 69.8 turns out to be false. That’s because, when the computer calculates 9.0 / 5 * 21 + 32 , it gets 69.80000000000001, not 69.8
-
-- Compare String: When you compare two strings with one another, you don’t want to use the double equal sign. Using the double equal sign would ask, “Is this string stored in exactly the same place in memory as that other string?”. Instead, you usuallywant to ask, “Does this string have the same characters in it as that other string?” To ask the second question Java’s String type has a method named equals. EX: password.equals("swordfish") or "swordfish".equals(password)
-
-- Access array value : for (variable-type variable-name : range-of-values) {}
-	int guests[] = {1, 4, 2, 0, 2, 1, 4, 3, 0, 2};
-	for (int numGuests : guests) {out.print(numGuests);}
-
-- Conditional operator is mini if statement with 1 line: conditionToBeTested? expression1 : expression2
-	(a > b) ? "a bigger" : "a smaller"
-
+========================================================================================================================
+	OOPs Concepts
+========================================================================================================================
 --------------------------------------------------------------------------------------------
-int a = 1;
-// Postincrement - The computer adds 1 to the variable’s value before the variable is used in any other part of the statement.
-System.out.print(a++);		// 1
-//Preincrement - The computer adds 1 to the variable’s value after the variable is used in any other part of the statement.
-System.out.print(++a);		// 2		
-
---------------------------------------------------------------------------------------------
-Collection:
-	1. Array: Simple fixed sized arrays . Array can contain both primitive data types as well as objects of a class depending on the definition of the array.
-		int arr[] = new int[10];
-		arr[0] = 1;
-		System.out.println(arr[0]);
-	
-	2. Note: Collection does not store the primitive type value, it converts the primitive value into an object of that type. EX: When we do arraylist.add(1) -> it converts the primitive int data type into an Integer object.
-	
-	3. ArrayList : Dynamic sized arrays in Java that implement List interface. ArrayList only supports object entries, not the primitive data types (Note: When we do arraylist.add(1); : it converts the primitive int data type into an Integer object)
-		ArrayList<Type> arrlist = new ArrayList<Type>();
-		arrL.add(1);
-		System.out.println(arrL.get(0));
-	
-	4.  List<E> : An ordered collection that can contain duplicate elements. The user can access elements by their integer index (position in the list - start from 0), and search for elements in the list. List implementation Type uses LinkedList or ArrayList.	 
-		List<Type> myList = new ArrayList<Type>();
-		myList.add(1);							// Add value 1 to first position
-		myList.remove(0);						// Remove the first position of this list
-		listA.add(0, "element 0");				// Add a String to first position of the list
-		int size = myList.size();				// Get the List Size
-		int value = myList.get(0);				// Get the value at the first position 
-		myList.clear();							// Remove all value in the list
-		for(Type aString : myList) {			// Loop through and show all item of myList
-			System.out.println(aString);
-		}
-	
-	5. Set<E> : A collection that contains no duplicate elements (sets contain no pair of elements e1 and e2 such that e1.equals(e2), and at most one null element). Set order depends on the implementation. Set implementation Type uses HashSet (unordered), LinkedHashSet (ordered) or TreeSet (sorted by natural order or by provided comparator).
-		Set setA = new HashSet();
-		mySet.add(1);						// Add new integer object 1.
-		mySet.add("WTF");					// Add new String object WTF
-		mySet.remove(1);					// Remove object 1
-		mySet.remove("WTF");					// Remove object WTF
-		for(Object aString : setA){			// Loop through and show all item of mySet
-            System.out.println(aString);
-        }
-
-=========================================================================================================
-	OOP
-=========================================================================================================
-Because Java is an object-oriented programming language, your primary goal is to describe classes and objects. A class is the idea behind a certain kind of thing. An object is a concrete instance of a class. The programmer defines a class, and from the class definition, Java makes individual objects.
-
---------------------------------------------------------------------------------------------
-Class:
+:
 	- A class can be defined as a template/blueprint that describes the behavior/state that the object of its type supports. Class can have many sub-class (child class).
 	
 	- EX:
@@ -379,9 +282,13 @@ ENUM type:
 Interface
 
 --------------------------------------------------------------------------------------------
-Final keyword: indicates that the value of format can’t be changed (You cannot assign new value to this variable). EX:
-	int i = 1; i = 2; System.out.println(i);		// 2
-	final int j =1 ; j = 2; System.out.println(j);	// cannot assign a value to final variable j
+Final keyword:
+    - A final class cannot be inherited. It is useful when there is a good reason to prohibit inheritance.
+    - A final method cannot be overrided. The design does not expect the method to be changed even in its subclasses.
+    - A final variable can only be initialized once, making it safe to ensure the value cannot be changed once assigned.
+    - EX:
+        int i = 1; i = 2; System.out.println(i);		// 2
+        final int j =1 ; j = 2; System.out.println(j);	// cannot assign a value to final variable j
 
 --------------------------------------------------------------------------------------------
 Super keyword: is a reference variable which is used to refer immediate parent class object.
