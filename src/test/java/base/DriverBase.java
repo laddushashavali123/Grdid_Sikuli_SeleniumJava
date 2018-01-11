@@ -53,12 +53,12 @@ public class DriverBase {
 	  * Automatic clear browser cookies after complete each test so no need to close browser for next test. 
 	  * @throws Exception
 	  */
-	 @AfterMethod
+	 /*@AfterMethod
 	 public static void clearCookies() throws Exception { 
 		 getDriver().manage().deleteAllCookies();
 		 // deleteAllCookies is not working with Safari Driver
 		 // workaround solution: https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/5212
-	 }
+	 }*/
 
 	 
 	 /**

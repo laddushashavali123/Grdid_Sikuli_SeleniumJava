@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.awt.Robot;
+import java.awt.AWTException;
 
 /**
  * This class contain useful method. Below are some definition:
@@ -17,6 +17,20 @@ import java.awt.event.KeyEvent;
  */
 public class DriverUtils {
 
+	/**
+	 * Wait for the presence/exist of element Located by a locator even it is not presented in DOM yet
+	 * @return WebElement
+	 */
+	public static WebElement findDynamicElement(By locator, int timeOutInSeconds){
+		WebDriver driver = DriverBase.getDriver();
+		return new WebDriverWait(driver, timeOutInSeconds).until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+
+
+	/**
+	 * Verify that an element is visible. Visible means that the element is not only displayed but also have a height and width that is greater than 0.
+	 * @return boolean
+	 */
 	public static boolean isElementVisible(By locator, int timeOutInSeconds){
 		try {
 			WebDriver driver = DriverBase.getDriver();
@@ -38,6 +52,7 @@ public class DriverUtils {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         element.click();
+		Thread.sleep(100);
 	}
 
     /**
@@ -75,17 +90,18 @@ public class DriverUtils {
 	 * Send text to element after it is visible and click-able even it is not load in DOM yet.
      * Used when DOM is changed.
 	 */
-	public static void sendWhenReady(By locator, String text, int timeOutInSeconds) throws Exception {
+	public static void sendTextWhenReady(By locator, String text, int timeOutInSeconds) throws Exception {
 		WebDriver driver = DriverBase.getDriver();
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		element.clear();
 		element.sendKeys(text);
 	}
     /**
      * Send text to element after it is visible and click-able even it is not load in DOM yet.
      * Most use when element is disabled.
      */
-	public static void sendWhenReady(WebElement element, String text, int timeOutInSeconds) throws Exception {
+	public static void sendTextWhenReady(WebElement element, String text, int timeOutInSeconds) throws Exception {
 		WebDriver driver = DriverBase.getDriver();
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -111,4 +127,11 @@ public class DriverUtils {
 		robot.keyRelease(KeyEvent);
 		Thread.sleep(100);
 	}
+
+	public static String getText(By locator, int timeOutInSeconds) throws Exception{
+        WebDriver driver = DriverBase.getDriver();
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return element.getText();
+    }
 }
