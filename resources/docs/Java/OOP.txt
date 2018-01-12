@@ -3,12 +3,17 @@ Reference:
     2.
 
 ========================================================================================================================
-	OOPs Concepts
+	OOPs Java (In class-based programming)
 ========================================================================================================================
-- Object: Any entity that has state and behavior is known as an object. For example: chair, pen, table, keyboard, bike
-etc. It can be physical and logical.
+- Class: is a “template”/“blueprint” that is used to create objects. Class will consists of field, static field, method,
+static method and constructor. Field (variable) is used to hold the state of the class. Method is used to represent the
+behavior of the class. Constructor is used to create a new Instance of the Class.
 
-- Class: Collection of objects is called class. It is a logical entity.
+- Object: is an instance of a class, and may be called a class instance or class object; instantiation is also known as
+construction (Not all classes can be instantiated - Abstract class)
+
+- Instance: is a unique copy of a Class that representing an Object. When a new instance of a class is created, the JVM
+will allocate a room of memory for that class instance.
 
 - Inheritance: When one object acquires all the properties and behaviours of parent object i.e. known as inheritance. It
 provides code reusability. It is used to achieve runtime polymorphism.
@@ -28,55 +33,38 @@ encapsulated class because all the data members are private here.
 
 
 ========================================================================================================================
-	Java Naming conventions
+	Class
 ========================================================================================================================
-class name	    : should start with uppercase letter and be a noun e.g. String, Color, Button, System, Thread etc.
-interface name	: should start with uppercase letter and be an adjective e.g. Runnable, Remote, ActionListener etc.
-method name	    : should start with lowercase letter and be a verb e.g. actionPerformed(), main(), print(), etc.
-variable name	: should start with lowercase letter e.g. firstName, orderNumber etc.
-package name	: should be in lowercase letter e.g. java, lang, sql, util etc.
-constants name	: should be in uppercase letter. e.g. RED, YELLOW, MAX_PRIORITY etc.
-
-
-========================================================================================================================
-	OOPs Concepts
-========================================================================================================================
--
-
-========================================================================================================================
-	OOPs Concepts
-========================================================================================================================
---------------------------------------------------------------------------------------------
-:
-	- A class can be defined as a template/blueprint that describes the behavior/state that the object of its type supports. Class can have many sub-class (child class).
-	
-	- EX:
-	// The Account class is public, a public class is available for use by all other classes
-	public class Account {
-		// A variable declared inside a class but not inside any particular method is a field or instance variable. These are members of this class.
-		String name;
-		String address;
-		double balance;
-		
-		// display method is public, means any code can call a public method, even if the calling code and the public method belong to two different classes.
-		// The word "void" tells Java that when the display method is called, the display method doesn’t return anything.
-		public void display() {
-			System.out.print(name);				
-			System.out.print(" (");
-			System.out.print(address);
-			System.out.print(") has $");
-			System.out.print(balance);
-		}
-		
-		// The word double tells Java that when getInterest method is called, it returns a double value back to the place that called it.
-		// The parentheses contain all the things that you pass to the method when you call it.
-		public double getInterest(double percentageRate) {
-			return balance * percentageRate / 100.00;
-		}
-	}
-- When you declare a class to be public, you must declare the class in a file whose name is exactly the same as the name of the class (but with the .java extension added). For example, if you declare public class MyImportantCode , you must put the class's code in a file named MyImportantCode.java. In other words, you can't declare two public classes in one .java file. 
+- When you declare a class to be public, you must declare the class in a file whose name is exactly the same as the name
+of the class (but with the .java extension added). For example, if you declare public class MyImportantCode , you must
+put the class's code in a file named MyImportantCode.java. In other words, you can't declare two public classes in one
+.java file.
 - The parentheses contain all the things you’re going to pass to the method when you call it.
 
+- EX:
+// The Account class is public, a public class is available for use by all other classes
+public class Account {
+	// A variable declared inside a class but not inside any particular method is a field or instance variable. These are members of this class.
+	String name;
+	String address;
+	double balance;
+
+	// display method is public, means any code can call a public method, even if the calling code and the public method belong to two different classes.
+	// The word "void" tells Java that when the display method is called, the display method doesn’t return anything.
+	public void display() {
+		System.out.print(name);
+		System.out.print(" (");
+		System.out.print(address);
+		System.out.print(") has $");
+		System.out.print(balance);
+	}
+
+	// The word double tells Java that when getInterest method is called, it returns a double value back to the place that called it.
+	// The parentheses contain all the things that you pass to the method when you call it.
+	public double getInterest(double percentageRate) {
+		return balance * percentageRate / 100.00;
+	}
+}
 
 public class UseAccount {	
 	public static void main(String args[]) {
@@ -105,62 +93,100 @@ public class UseAccount {
 	}
 }
 
---------------------------------------------------------------------------------------------
-- Default access are public, protected and private.
-- A private member is only accessible within the same class as it is declared.
-- A member with no access modifier is only accessible within classes in the same package.
-- A protected member is accessible within all classes in the same package and within subclasses in other packages.
-- A public member is accessible to all classes (unless it resides in a module that does not export the package it is declared in).
-	
-————————————+—————————+—————————————————+———————————————————+———————+
-            | Same    | Different Class | Different package | World |			+     : accessible 
-            | Class   | Same Package    | But Sub Class	    |       |			blank : not accessible
-————————————+—————————+—————————————————+———————————————————+———————+
-public      |    +    |        +        |         +         |   +   |
-————————————+—————————+—————————————————+———————————————————+———————+
-protected   |    +    |        +        |         +         |       |         
-————————————+—————————+—————————————————+———————————————————+———————+
-no modifier |    +    |        +        |                   |       |    
-————————————+—————————+—————————————————+———————————————————+———————+
-private     |    +    |                 |                   |       |    
 
---------------------------------------------------------------------------------------------
-Accessor (getters) and Mutator (setters) method: 
-	- One of the ways we can enforce data encapsulation is through the use of accessors and mutators.
-	- The role of accessors and mutators are to return and set the values of an object's state.
-	- EX:
-	public class Account {
-		// The word private tells Java that no code outside of the class can make direct reference to that field
-		private String name;
-		private String address;
+========================================================================================================================
+	Constructors: initialize Object/Instance
+========================================================================================================================
+- A constructor tells the Java to perform a new object’s start-up tasks.
+- A constructor name must be same as its class name and have no explicit return type.
+- A class can have multiple constructors. Each constructor has different parameter list, each parameter is separated from
+another with a comma. To call a specific constructor, you have to match the parameters in the call with the	parameters
+in the declaration.
+- When there is no constructor declarations in the code, Java automatically creates a default constructor (no parameter)
+for that class.
+- EX:
+    public class Temperature() {
+    	private double temp = 0;
+    	private string location;
 
+    	// Default constructor
+    	public Temperature(){ };
+    	// Parameterized constructor 1 with 1 parameter
+    	public Temperature(double t){
+    		// this keyword refers the new object’s field
+    		this.temp = t;
+    	};
+    	// Parameterized Constructor 2 with 2 parameter
+    	public Temperature(double t, string l){
+    		this.temp = t;
+    		this.location = l;
+    	};
+    }
+    public class UseTemperature(){
+    	// Initiate temp object via default constructor
+    	Temperature temp = new Temperature();
+    	// Initiate temp1 object via parameterized constructor 2
+    	Temperature temp1 = new Temperature(31.1);
+    	// Initiate temp2 object via parameterized constructor 3
+    	Temperature temp2 = new Temperature(100.0, 'Hell');
+    }
+
+- Constructor for sub class:
+    public class TemperatureGood extends Temperature {
+    	public TemperatureGood(){
+    		super(); 		// re-use parent constructor
+    	}
+    	public TemperatureGood(double t){
+    		super(t); 		// TemperatureGood has temp and location variable
+    	}
+    public TemperatureGood(double t, string l){ super(t, l); }
+    	public void display() {
+    		out.printf("%5.2f degrees %s\n", getNumber(), getScale());
+    	}
+    }
+
+
+========================================================================================================================
+	Accessor (getters) and Mutator (setters) method
+========================================================================================================================
+- One of the ways we can enforce data encapsulation is through the use of accessors and mutators.
+- The role of accessors and mutators are to return and set the values of an object's state.
+- EX:
+public class Account {
+	// The word private tells Java that no code outside of the class can make direct reference to that field
+	private String name;
+	private String address;
 		public void setName(String n) {
-		name = n;
-		} 
-		public String getName() {
-		return name;
-		}
-		
-		public void setAddress(String a) {
-		address = a;
-		} 
-		public String getAddress() {
-		return address;
-		}
+	name = n;
 	}
+	public String getName() {
+	return name;
+	}
+
+	public void setAddress(String a) {
+	address = a;
+	}
+	public String getAddress() {
+	return address;
+	}
+}
 	
-	public class UseAccount {
-		public static void main(String args[]) {
-			Account myAccount = new Account();
-			myAccount.setName("Barry Burd");
-			myAccount.setAddress("222 Cyberspace Lane");
-			
-			out.print(myAccount.getName());
-			out.print(" (");
-			out.print(myAccount.getAddress());
-		}
+public class UseAccount {
+	public static void main(String args[]) {
+		Account myAccount = new Account();
+		myAccount.setName("Barry Burd");
+		myAccount.setAddress("222 Cyberspace Lane");
+
+		out.print(myAccount.getName());
+		out.print(" (");
+		out.print(myAccount.getAddress());
 	}
---------------------------------------------------------------------------------------------
+}
+
+
+========================================================================================================================
+	Inheritance
+========================================================================================================================
 Sub Class (Inheritance):
 	- Sub class has all public/protected attributes and method from the parent class. 
 	- Subclasses don’t inherit constructors so we have to setup manually.
@@ -177,72 +203,55 @@ Sub Class (Inheritance):
 			public paySalary(int hour){ //pay double };
 		};
 	
---------------------------------------------------------------------------------------------
-Constructors:
-	- A constructor tells the Java to perform a new object’s start-up tasks.
-	- A class can have multiple constructors. Each constructor has different parameter list, each parameter is separated from another with a comma. To call a specific constructor, you have to match the parameters in the call with the parameters in the declaration.
-	- When there is no constructor declarations in the code, Java automatically creates a default constructor (no parameter) for that class.
-	- EX:
-		public class Temperature() {
-			private double temp = 0;
-			private string location;
-			
-			// Constructor method 1 with no parameter
-			public Temperature(){ };
-			// Constructor method 2 with 1 parameter
-			public Temperature(double t){ 
-				// this keyword refers the new object’s field
-				this.temp = t;
-			};
-			// Constructor method 3 with 2 parameter
-			public Temperature(double t, string l){ 
-				this.temp = t;
-				this.location = l;
-			};
-		}
-		
-		public class UseTemperature(){
-			// Initiate temp object via constructor method 1
-			Temperature temp = new Temperature();
-			// Initiate temp1 object via constructor method 1
-			Temperature temp1 = new Temperature(31.1);
-			// Initiate temp2 object via constructor method 1
-			Temperature temp2 = new Temperature(100.0, 'Hell');
-		}
-	- Constructor for sub class:
-		public class TemperatureGood extends Temperature {
-			public TemperatureGood(){ 
-				super(); 		// re-use parent constructor
-			}
-			public TemperatureGood(double t){ 
-				super(t); 		// TemperatureGood has temp and location variable 
-			}
-			public TemperatureGood(double t, string l){ super(t, l); }
-			public void display() {
-				out.printf("%5.2f degrees %s\n", getNumber(), getScale());
-			}
-		}
 
---------------------------------------------------------------------------------------------
-Package: 
+========================================================================================================================
+	Polymorphism
+========================================================================================================================
+
+
+
+========================================================================================================================
+	Abstraction
+========================================================================================================================
+
+
+
+========================================================================================================================
+	Encapsulation
+========================================================================================================================
+Package:
 	- Package is a grouping of related types (classes, interfaces, enumerations and annotations) providing access protection and namespace management.
 	- Packages are used in Java in order to prevent naming conflicts, to control access, to make searching/locating and usage of classes, interfaces, enumerations and annotations easier, etc.
 	- To create a package, you include "package" statement along with package name at the first line of every source files that you want to include in the same package. EX: package com.test.dung
 	- If a package statement is not used then the class, interfaces, enumerations, and annotation types will be placed in the current default package.
 
---------------------------------------------------------------------------------------------
-Java annotation:
-	- Java annotations are used to provide meta data for your Java code. Meta data is instructions helper for coding error.
-	- Java annotations do not directly affect the execution of your code, although some types of annotations can actually be used for that purpose.
-	- Java's annotations are optional and you can create your own annotation.
-	- Example of annotation:
-		@Override tells the Java compiler to be on the lookout for a common coding error. The annotation says, “Make sure that the method immediately following this annotation has the same stuff (the same name, the same parameters, and so on) as one of the methods in the superclass. If not, then display an error message.”	For example if we error use public paySalary(double hour){}, the compiler reminds me that my new paySalary method doesn't really override anything of it parent method.
-		
-		@Deprecated is used to mark a class, method or field as deprecated, meaning it should no longer be used. If your code uses deprecated classes, methods or fields, the compiler will give you a warning.
-		
-		@SuppressWarnings tell Java not to remind you that your program contains certain questionable code (not to display a warning in the consolde).
-		
---------------------------------------------------------------------------------------------
+
+========================================================================================================================
+	Default access
+========================================================================================================================
+- A private member is only accessible within the same class as it is declared.
+- A member with no access modifier is only accessible within classes in the same package.
+- A protected member is accessible within all classes in the same package and within subclasses in other packages.
+- A public member is accessible to all classes (unless it resides in a module that does not export the package it is
+declared in).
+
+————————————+—————————+—————————————————+———————————————————+———————+
+            | Same    | Different Class | Different package | World |			+     : accessible
+            | Class   | Same Package    | But Sub Class	    |       |			blank : not accessible
+————————————+—————————+—————————————————+———————————————————+———————+
+public      |    +    |        +        |         +         |   +   |
+————————————+—————————+—————————————————+———————————————————+———————+
+protected   |    +    |        +        |         +         |       |
+————————————+—————————+—————————————————+———————————————————+———————+
+no modifier |    +    |        +        |                   |       |
+————————————+—————————+—————————————————+———————————————————+———————+
+private     |    +    |                 |                   |       |
+
+
+
+
+
+
 ENUM type:
 	- Enum is a special Java type used to define collections of constants.
 	- An enum can contain constants, methods etc...
@@ -278,254 +287,3 @@ ENUM type:
 			}
 		}
 
---------------------------------------------------------------------------------------------
-Interface
-
---------------------------------------------------------------------------------------------
-Final keyword:
-    - A final class cannot be inherited. It is useful when there is a good reason to prohibit inheritance.
-    - A final method cannot be overrided. The design does not expect the method to be changed even in its subclasses.
-    - A final variable can only be initialized once, making it safe to ensure the value cannot be changed once assigned.
-    - EX:
-        int i = 1; i = 2; System.out.println(i);		// 2
-        final int j =1 ; j = 2; System.out.println(j);	// cannot assign a value to final variable j
-
---------------------------------------------------------------------------------------------
-Super keyword: is a reference variable which is used to refer immediate parent class object.
-	1. Super can be used to refer immediate parent class instance variable.
-		public class Animal { String color="white"; }  
-		
-		public class Dog extends Animal {  
-			String color="black";  
-			void printColor(){  
-				System.out.println(color);			//prints color of Dog class  
-				System.out.println(super.color);	//prints color of Animal class  
-			}  
-		}  
-		
-		class TestSuper1{  
-			public static void main(String args[]){  
-			Dog d=new Dog();  
-			d.printColor();  
-		}}  
-	2. Super can be used to invoke immediate parent class method.
-		class Animal{  
-			void eat() { System.out.println("eating..."); }  
-		}  
-		
-		class Dog extends Animal{  
-			void eat(){System.out.println("eating bread...");}  
-			void bark(){System.out.println("barking...");}  
-			void work(){ super.eat(); }
-			bark();  
-		}  
-		
-		class TestSuper2{  
-			public static void main(String args[]){  
-				Dog d=new Dog();  
-				d.work();  
-		}}  
-	3. Super() can be used to invoke immediate parent class constructor.
-	4. Note: super() is added in each class constructor automatically by compiler if there is no super() or this().
-
---------------------------------------------------------------------------------------------
-Static keyword: 
-	- Anything that’s declared to be static belongs to the whole class, not to any particular instance of the class.
-	- We can apply java static keyword with variables (class variable), method (class method), package, blocks and nested class.
-	- A static variable/method can be invoke without creating a instance of that class.
-	
-	1. Java static variable:
-		- The static variable can be used to refer the common property of all objects (that is not unique for each object) 
-		- The static variable gets memory only once in class area at the time of class loading.
-		- EX: If you have 100 students in a school which have same school name. It will be better to declare a common variable for school name (class variable) instead initilizes 100 intances variable school name for each student.
-			class Student8{  
-				int rollno; String name;  
-				static String college ="ITS";  
-				 
-				Student8(int r,String n){  
-					rollno = r;  name = n;  
-				}  
-				void display (){System.out.println(rollno+" "+name+" "+college);}  
-			  
-				public static void main(String args[]){  
-					Student8 s1 = new Student8(111,"Karan");  
-					s1.display();  		//  Output:111 Karan ITS
-				}  
-			}  
-	2. Java static method:
-		- A static method belongs to the class rather than object of a class.
-		- A static method can be invoked without the need for creating an instance of a class.
-		- Static method can access static data member and can change the value of it.
-		- There are two main restrictions for the static method:
-			. The static method can not use non static data member or call non-static method directly.
-			. this and super cannot be used in static context.
-		- EX:
-			class Student9{  
-				int rollno;  String name;  
-				static String college = "ITS";  
-				   
-				static void change(String newName){  
-					college = newName;
-				}  
-			  
-				Student9(int r, String n){  
-					rollno = r;  name = n;  
-				}  
-			  
-				void display (){System.out.println(rollno+" "+name+" "+college);}  
-			  
-				public static void main(String args[]){  
-					Student9 s1 = new Student9 (111,"Karan"); 
-					s1.display();  								// Output: 111 Karan ITS
-					
-					Student9.change("ABC");  					// Static method is called without creating an instance
-					Student9 s2 = new Student9 (222,"Aryan");
-					s2.display();  								// Output: 222 Aryan BBDIT
-				}  
-			}  
-	3. Java static import:
-		- static import: allows unqualified access to static members of other classes.
-		- Note: static import can make your code confusing to read.
-		- EX:
-			import java.lang.Math;
-			...
-			System.out.println("round " + Math.round(1032.897));  // OK
-			System.out.println("round1 " + round(60,102));		  // Error: The message was non-static variable or method cannot be referenced from a static context
-			-------------
-			import static java.lang.Math.round;
-			...
-			System.out.println("round " + Math.round(1032.897));  // Error: The message was non-static variable or method cannot be referenced from a static context
-			System.out.println("round1 " + round(60,102));		  // OK
-	
---------------------------------------------------------------------------------------------
-this keyword: is a reference variable in Java that refers to the current object (https://www.javatpoint.com/this-keyword)
-	1) this: to refer current class instance variable
-		- The this keyword can be used to refer current class instance variable. If there is ambiguity between the instance variables and parameters, this keyword resolves the problem of ambiguity.
-		- It is better approach to use meaningful names for variables. So we use same name for instance variables and parameters in real time, and always use this keyword.
-		- EX:
-			// Parameters (formal arguments) and instance variables are same name. 
-			class Student{  
-				int rollno;  
-				String name;  
-				Student(int rollno,String name){  
-					rollno=rollno;  
-					name=name;  
-				}  
-				void display(){System.out.println(rollno+" "+name);}  
-			}
-			// So, we are using this keyword to distinguish local variable and instance variable
-			class Student1{  
-				int rollno;  
-				String name;  
-				Student(int rollno,String name){  
-					this.rollno=rollno;  
-					this.name=name;  
-				}  
-				void display(){System.out.println(rollno+" "+name);}  
-			}
-			// If local variables(formal arguments) and instance variables are different, there is no need to use this keyword
-			class Student2{  
-				int rollno;  
-				String name;  
-				Student(int roll_number,String name_student){  
-					rollno=roll_number;  
-					name=name_student;  
-				}  
-				void display(){System.out.println(rollno+" "+name);}  
-			}
-			class TestThis1{  
-				public static void main(String args[]){  
-					Student  s1 = new Student(111,"A");
-					Student1 s2 = new Student1(222,"B");
-					Student2 s3 = new Student2(333,"C");
-					s1.display();  						// Output:	0 null
-					s2.display();  						// Output:	222 B
-					s3.display();  						// Output:	333 C
-				}
-			}  
-	2) this: to invoke current class method
-		- You may invoke the method of the current class by using the this keyword. 
-		- If you don't use the this keyword, compiler automatically adds this keyword while invoking the method. 
-		- EX: 
-			class A{  
-				void m(){System.out.println("hello m");}  
-				void n(){  
-					System.out.println("hello n");  
-					this.m();  
-			}}  
-			class TestThis4{  
-				public static void main(String args[]){  
-					A a=new A();  
-					a.n();  							// Output: hello n hello m
-			}}  
-	3) this() : to invoke current class constructor
-		- The this() constructor call can be used to invoke the current class constructor. 
-		- It is used to reuse the constructor. In other words, it is used for constructor chaining.
-		- EX:
-			class A{  
-				A(){System.out.println("hello a");}  
-				A(int x){  
-					this(); 							// Call to this() must be the first statement in constructor. Call the above constructor 
-					System.out.println(x);  
-			}}  
-			class TestThis5{  
-				public static void main(String args[]){  
-				A a=new A(10);  						// Output: hello a 10
-			}}  
-			
---------------------------------------------------------------------------------------------
-Exceptions:
-	- An exception (or exceptional event) is a problem that arises during the execution of a program. 
-	- When an Exception occurs the normal flow of the program is disrupted and the program/Application terminates abnormally, which is not recommended, therefore, these exceptions are to be handled.
-	- An exception can occur for many different reasons. Following are some scenarios where an exception occurs:
-		1. A user has entered an invalid data.
-		2. A file that needs to be opened cannot be found.
-		3. A network connection has been lost in the middle of communications or the JVM has run out of memory.
-	- Build-in Exception in Java:
-		1. Arithmetic Exception:  It is thrown when an exceptional condition has occurred in an arithmetic operation.
-		2. IOException:           It is thrown when an input-output operation failed or interrupted
-		3. InterruptedException:  It is thrown when a thread is waiting , sleeping , or doing some processing , and it is interrupted.
-		4. NoSuchFieldException:  It is thrown when a class does not contain the field (or variable) specified
-		5. NoSuchMethodException: It is thrown when accessing a method which is not found.
-		6. NullPointerException:  This exception is raised when referring to the members of a null object. Null represents nothing
-		7. NumberFormatException: This exception is raised when a method could not convert a string into a numeric format.
-		8. RuntimeException:      This represents any exception which occurs during runtime.
-		9. FileNotFoundException: This Exception is raised when a file is not accessible or does not open.
-		10. ClassNotFoundException:          This Exception is raised when we try to access a class whose definition is not found
-		11. StringIndexOutOfBoundsException: It is thrown by String class methods to indicate that an index is either negative than the size of the string
-		12. ArrayIndexOutOfBoundException:   It is thrown to indicate that an array has been accessed with an illegal index. The index is either negative or greater than or equal to the size of the array.
-	- Create custom exception:
-		public class NewException() extends Exception {}
-	- EX:
-		import java.io.File;
-		import java.io.IOException;
-		import java.util.Scanner;
-		public class Main {
-			public static void main(String args[]) {
-			Scanner scan1 = null;
-			Scanner scan2 = null;
-			try {
-				scan1 = new Scanner(new File("File1.txt"));
-				scan2 = new Scanner(new File("File2.txt"));
-				// Do useful stuff
-			} catch (IOException e) {					// Only execute when corespond exception is thrown
-				// Oops!
-			} finally {									// Finally is optional and codes insde alway execute
-				scan1.close();
-				scan2.close();
-				System.out.println("Done!");
-		} } }
-		
---------------------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------------------
