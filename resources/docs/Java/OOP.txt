@@ -1,6 +1,6 @@
 Reference:
     1. https://www.javatpoint.com/java-oops-concepts
-    2.
+    2. https://web.archive.org/web/20071214085409/http://www.itmweb.com/essay550.htm
 
 ========================================================================================================================
 	OOPs Java (In class-based programming)
@@ -25,11 +25,7 @@ overriding to achieve polymorphism.
 - Abstraction: Hiding internal details and showing functionality is known as abstraction. For example: phone call, we
 don't know the internal processing. In java, we use abstract class and interface to achieve abstraction.
 
-- Encapsulation: Binding (or wrapping) code and data together into a single unit is known as encapsulation. For example:
-capsule, it is wrapped with different medicines. A java class is the example of encapsulation. Java bean is the fully
-encapsulated class because all the data members are private here.
-
-- Different
+==> Through the use of Classes, we implement all three concepts - Abstraction, Information Hiding and Encapsulation
 
 
 ========================================================================================================================
@@ -147,106 +143,128 @@ for that class.
 
 
 ========================================================================================================================
-	Accessor (getters) and Mutator (setters) method
+	Java Inheritance
 ========================================================================================================================
-- One of the ways we can enforce data encapsulation is through the use of accessors and mutators.
-- The role of accessors and mutators are to return and set the values of an object's state.
-- EX:
-public class Account {
-	// The word private tells Java that no code outside of the class can make direct reference to that field
-	private String name;
-	private String address;
-		public void setName(String n) {
-	name = n;
-	}
-	public String getName() {
-	return name;
-	}
-
-	public void setAddress(String a) {
-	address = a;
-	}
-	public String getAddress() {
-	return address;
-	}
-}
-	
-public class UseAccount {
-	public static void main(String args[]) {
-		Account myAccount = new Account();
-		myAccount.setName("Barry Burd");
-		myAccount.setAddress("222 Cyberspace Lane");
-
-		out.print(myAccount.getName());
-		out.print(" (");
-		out.print(myAccount.getAddress());
-	}
-}
+Inheritance represents the (IS-A) relationship, also known as parent-child relationship.
+    - Inheritance is a mechanism in which one object acquires all the properties and behaviors of parent object. When you
+    inherit from an existing class, you can reuse methods and fields of parent class, and you can add new methods, fields
+    or override parent method.
+    - Types of inheritance in java (Note: multiple and hybrid inheritance is supported through interface only)
+        . Single:       Class B  --> Class A
+        . Multi-level:  Class C --> Class B --> Class A
+        . Hierarchical: Class C --> Class B <-- Class A
+        . Multiple:     Class C <-- Class B --> Class A
+        . Hybrid: combine of Hierarchical and Multiple
+    - Java only allow for single inheritance, for multiple inheritance use interface.
+    - Sub-class attribute:
+        . Sub class has all public/protected attributes and method from the parent class.
+        . Subclasses don’t inherit constructors so we have to setup manually.
+        . To access the parent class’s private fields, the child class has to call the parent class’s accessor methods.
+        . Keyword 'extend' is used for creating a sub class.
+    - EX: create a sub/child class FullTimeEmployee from parent/super class Employee
+        public class FullTimeEmployee extends Employee {
+            public paySalary(int hour){};
+        };
+    - Overriding Existing Methods from parent class:
+        public class FullTimeEmployeeWithOvertime extends Employee {
+            @Override		// this annotation is optional, code will work if method has same parent method name
+            public paySalary(int hour){ //pay double };
+        };
 
 
-========================================================================================================================
-	Inheritance
-========================================================================================================================
-Sub Class (Inheritance):
-	- Sub class has all public/protected attributes and method from the parent class. 
-	- Subclasses don’t inherit constructors so we have to setup manually.
-	- To access the parent class’s private fields, the child class has to call the parent class’s accessor methods.
-	- Keyword 'extend' is used for creating a sub class. 
-	- Java only allow for single inheritance, for multiple inheritance use interface.
-	- EX: create a sub/child class FullTimeEmployee from parent/super class Employee
-		public class FullTimeEmployee extends Employee {
-			public paySalary(int hour){};
-		};
-	- Overriding Existing Methods from partent class:
-		public class FullTimeEmployeeWithOvertime extends Employee {
-			@Override		// this annotation is optional, code will work if method has same parent method name
-			public paySalary(int hour){ //pay double };
-		};
-	
+Aggregation represents (HAS-A) relationship:
+    - If a class have an entity reference, it is known as Aggregation.
+    - Consider a situation, Employee object contains many information such as id, name, email, Id etc. It contains one
+    more object named address, which contains its own information such as city, state, country, zipcode etc. In such
+    case, Employee has an entity reference address, so relationship is Employee HAS-A address.
+        class Employee{
+            String name;
+            Address address;    //Address is a class
+            ...
+        }
+    - When use Aggregation:
+        . Code reuse is also best achieved by aggregation when there is no is-a relationship.
+        . Inheritance should be used only if the relationship is-a is maintained throughout the lifetime of the objects
+        involved; otherwise, aggregation is the best choice.
 
 ========================================================================================================================
-	Polymorphism
+	Java Polymorphism
 ========================================================================================================================
 
 
 
 ========================================================================================================================
-	Abstraction
+	Abstraction is a technique that help us identify which specific information should be visible, and which information
+	should be hidden. Abstractions allow us to think of complex things in a simpler way.
 ========================================================================================================================
+In java, abstract class and interface are used to achieve abstraction.
+
+
+At a high level, an API does provide a simpler abstraction for usage, blissfully unaware of the underlying complexity behind its internal design
+
 
 
 
 ========================================================================================================================
-	Encapsulation
+	Encapsulation is the technique for packaging all similar data and functions into a container (Class or Package) in
+	such a way as to hide what should be hidden, and make visible what is intended to be visible
 ========================================================================================================================
 Package:
-	- Package is a grouping of related types (classes, interfaces, enumerations and annotations) providing access protection and namespace management.
-	- Packages are used in Java in order to prevent naming conflicts, to control access, to make searching/locating and usage of classes, interfaces, enumerations and annotations easier, etc.
-	- To create a package, you include "package" statement along with package name at the first line of every source files that you want to include in the same package. EX: package com.test.dung
-	- If a package statement is not used then the class, interfaces, enumerations, and annotation types will be placed in the current default package.
+	- Package is a grouping of related files (classes, interfaces and enumerations) providing access protection and
+	namespace management (naming conflicts).
+	- To create a package, you include "package" statement along with package name at the first line of every source
+	files that you want to include in the same package. EX: package com.test.dung
+	- If a package statement is not used then the class, interfaces, enumerations, and annotation types will be placed
+	in the current default package.
+    - Package inside the package is called the subpackage. It should be created to categorize the package further.
+    Note: If you import a package, subpackages will not be imported.
 
 
-========================================================================================================================
-	Default access
-========================================================================================================================
-- A private member is only accessible within the same class as it is declared.
-- A member with no access modifier is only accessible within classes in the same package.
-- A protected member is accessible within all classes in the same package and within subclasses in other packages.
-- A public member is accessible to all classes (unless it resides in a module that does not export the package it is
-declared in).
-
-————————————+—————————+—————————————————+———————————————————+———————+
+Default access:
+    - A private member is only accessible within the same class as it is declared.
+    - A member with no access modifier is only accessible within classes in the same package.
+    - A protected member is accessible within all classes in the same package and within subclasses in other packages.
+    - A public member is accessible to all classes (unless it resides in a module that does not export the package it is
+    declared in).
+---------------------------------------------------------------------
             | Same    | Different Class | Different package | World |			+     : accessible
             | Class   | Same Package    | But Sub Class	    |       |			blank : not accessible
-————————————+—————————+—————————————————+———————————————————+———————+
-public      |    +    |        +        |         +         |   +   |
-————————————+—————————+—————————————————+———————————————————+———————+
-protected   |    +    |        +        |         +         |       |
-————————————+—————————+—————————————————+———————————————————+———————+
-no modifier |    +    |        +        |                   |       |
-————————————+—————————+—————————————————+———————————————————+———————+
-private     |    +    |                 |                   |       |
+---------------------------------------------------------------------
+ public     |    +    |        +        |         +         |   +   |
+---------------------------------------------------------------------
+ protected  |    +    |        +        |         +         |       |
+---------------------------------------------------------------------
+ no modifier|    +    |        +        |                   |       |
+---------------------------------------------------------------------
+ private    |    +    |                 |                   |       |
+---------------------------------------------------------------------
 
+Encapsulation also hide data (fields and methods) owned by a class instance which should be hidden and it is achieved
+through Information Hiding. Information Hiding is hiding the internal data which prevents direct, external change to the
+data by making them private and only modify via a controlled manner method.
+
+Fields can be marked as readonly / final / immutable which further restricts change, even within the class.
+
+For example, hiding the variables of the classes and enforce data access through the accessors (getters) and mutators
+(setters). The role of accessors and mutators are to return and set the values of an object's state.
+
+To achieve encapsulation in Java:
+    public class Account {
+        private String name;                // Set the variable to private
+        public void setName(String n) {     // Create Mutator method
+            name = n;
+        }
+        public String getName() {           // Create Accessors method
+            return name;
+        }
+    }
+    public class UseAccount {
+        public static void main(String args[]) {
+            Account myAccount = new Account();
+            myAccount.setName("Barry Burd");
+            out.print(myAccount.getName());
+        }
+    }
 
 
 
