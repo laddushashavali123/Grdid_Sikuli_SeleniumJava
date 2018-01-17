@@ -19,11 +19,13 @@ will allocate a room of memory for that class instance.
 provides code reusability. It is used to achieve runtime polymorphism.
 
 -Polymorphism: When one task is performed by different ways i.e. known as polymorphism. For example: to convince the
-customer differently, to draw something e.g. shape or rectangle etc. In java, we use method overloading and method
-overriding to achieve polymorphism.
+customer differently, to draw something e.g. shape or rectangle etc.
 
 - Abstraction: Hiding internal details and showing functionality is known as abstraction. For example: phone call, we
-don't know the internal processing. In java, we use abstract class and interface to achieve abstraction.
+don't know the internal processing.
+
+- Encapsulation is a process of wrapping code and data together into a single unit, for example capsule i.e. mixed of
+several elements.
 
 ==> Through the use of Classes, we implement all three concepts - Abstraction, Information Hiding and Encapsulation
 
@@ -195,12 +197,30 @@ Aggregation represents (HAS-A) relationship:
 
 ========================================================================================================================
 	Abstraction is a technique that help us identify which specific information should be visible, and which information
-	should be hidden. Abstractions allow us to think of complex things in a simpler way.
+	should be hidden (hiding the implementation details and only the functionality will be provided to the user)
 ========================================================================================================================
-In java, abstract class and interface are used to achieve abstraction.
+Abstraction lets you focus on what the object does instead of how it does it. For example at a high level, an API provide
+a simpler abstraction for usage, blissfully unaware of the underlying complexity behind its internal design.
+
+In java, abstract class and interface are used to achieve abstraction:
+    1. Abstract Class/Method:
+        - An abstract class is a class that is declared with abstract keyword:
+            abstract class A {}  I
+        - An abstract method is a method that is declared without an implementation.
+            abstract void printStatus();    //no body and abstract
+        - An abstract class may or may not have all abstract methods. Some of them can be concrete methods
+        - A method defined abstract must always be redefined in the subclass,thus making overriding compulsory OR either
+        make subclass itself abstract.
+        - Any class that contains one or more abstract methods must also be declared with abstract keyword.
+        - An abstract class can not be directly instantiated with the new operator.
+        - An abstract class can have parametrized constructors and default constructor in an abstract class.
+        - When to use abstract classes and abstract methods:
+            .
+
+    2. Interface:
 
 
-At a high level, an API does provide a simpler abstraction for usage, blissfully unaware of the underlying complexity behind its internal design
+
 
 
 
