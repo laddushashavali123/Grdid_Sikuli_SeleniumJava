@@ -6,8 +6,11 @@ Reference:
 	final
 ========================================================================================================================
 - A final class cannot be inherited. It is useful when there is a good reason to prohibit inheritance.
-- A final method cannot be overrided. The design does not expect the method to be changed even in its subclasses.
+- A final method cannot be overrided by subclasses.
 - A final variable can only be initialized once, making it safe to ensure the value cannot be changed once assigned.
+- Methods called from constructors should generally be declared final.  If a constructor calls a non-final method, a
+subclass may redefine that method with surprising or undesirable results.
+-
 - EX:
     int i = 1; i = 2; System.out.println(i);		// 2
     final int j =1 ; j = 2; System.out.println(j);	// cannot assign a value to final variable j
@@ -31,6 +34,9 @@ Reference:
 	Super
 ========================================================================================================================
 - Super is a reference variable which is used to refer immediate parent class object.
+- A field that has the same name as a field in the superclass hides the superclass's field. The field in the superclass
+cannot be referenced by its simple name. Instead, the field must be accessed through super as 1. Generally speaking, we
+don't recommend hiding fields as it makes code difficult to read.
 	1. Super can be used to refer immediate parent class instance variable.
 		public class Animal { String color="white"; }  
 		
@@ -42,7 +48,7 @@ Reference:
 			}  
 		}  
 		
-		class TestSuper1{  
+		class TestSuper1{
 			public static void main(String args[]){  
 			Dog d=new Dog();  
 			d.printColor();  

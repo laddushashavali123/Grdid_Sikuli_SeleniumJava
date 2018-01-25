@@ -2,7 +2,8 @@ Reference:
     1. https://www.javatpoint.com/java-oops-concepts
     2. https://web.archive.org/web/20071214085409/http://www.itmweb.com/essay550.htm
     3. http://www.javacoffeebreak.com/faq/faq0084.html
-    4. https://medium.com/@ndulamatt/inheritance-polymorphism-interfaces-and-abstract-in-java-f7065b9e66d
+    4. https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html
+    5. https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html
 
 ========================================================================================================================
 ========================================================================================================================
@@ -192,9 +193,18 @@ Aggregation represents (HAS-A) relationship:
         . Inheritance should be used only if the relationship is-a is maintained throughout the lifetime of the objects
         involved; otherwise, aggregation is the best choice.
 
+Summary:
+    - A class has exactly one direct superclass.
+    - A class inherits fields and methods from all its superclasses, whether direct or indirect.
+    - A subclass can override methods that it inherits, or it can hide fields or methods that it inherits. (Note that:
+    hiding fields is generally bad programming practice.)
+    - You can prevent a class from being subclassed by using the final keyword in the class's declaration.
+    - You can prevent a method from being overridden by subclasses by declaring it as a final method.
+    - An abstract class can only be subclassed; it cannot be instantiated.
+
 ========================================================================================================================
 ========================================================================================================================
-	Java Polymorphism
+	Polymorphism
 ========================================================================================================================
 
 
@@ -216,14 +226,17 @@ class give 0-100% abstraction.
             abstract class A {}  I
         - Abstract class can not be directly instantiated with the new operator.
         - Abstract class can have parametrized constructors and default constructor in an abstract class.
+        - Abstract classes may contain a mix of methods declared with or without an implementation.
+        - With abstract classes, you can declare fields that are not static and final, and define public, protected, and
+        private concrete methods.
+        - If an abstract class is subclassed, the subclass usually provides implementations for all of the abstract
+        methods in its parent class. However, if it does not, then the subclass must also be declared abstract.
         - Classes that contain at least one abstract method must be Abstract classes.
         - An abstract method is a method that is declared with abstract keyword and without an implementation.
             abstract void printStatus();    //no body and abstract
-        - A method defined abstract must always be redefined in the subclass to provide implementations for the abstract
-        methods.
         - When to use abstract classes and abstract methods:
-            . You want to share code among several closely related classes that extend your abstract class have many
-            common methods or fields or require access modifiers other than public (such as protected and private).
+            . You want to share code among several closely related classes that extend your abstract class which have
+            many common methods or fields or require access modifiers other than public (such as protected and private).
             . You want to declare non-static or non-final fields. This enables you to define methods that can access and
             modify the state of the object to which they belong.
 
@@ -259,21 +272,17 @@ class give 0-100% abstraction.
             => Abstract enforce any child of mine MUST implement this method while you can pass by with override method
 
     2. Interface:
-        - Like class, an interface can have methods and variables, but the methods declared in interface are by default
-        abstract (only method signature, no body).
-        - Interfaces specify what a class must do and not how. It is the blueprint of the class.
-        - If a class implements an interface and does not provide method bodies for all functions specified in the
-        interface, then class must be declared abstract.
-
-
-When to use abstract classes and abstract methods:
-    . You expect that unrelated classes would implement your interface. For example, the interfaces Comparable and
-    Cloneable are implemented by many unrelated classes.
-    . You want to specify the behavior of a particular data type, but not concerned about who implements its behavior.
-    . You want to take advantage of multiple inheritances.
-
-
-
+        - Interface is a description of the behaviour (method) which an implementing class will have. The implementing
+        class ensures that it must implement all the methods that the interface is defined. It is basically a contract
+        or a promise the class has to make. If a class implements an interface and does not provide method bodies for
+        all functions specified in the interface, then class must be declared abstract.
+        - With interfaces, all fields are automatically public, static, and final, and all methods that you declare or
+        define (as default methods) are public.
+        - A Java class can implement multiple interfaces but it can extend only one abstract class.
+        - When to use interface:
+            . You expect that unrelated classes would implement your interface.
+            . You want to specify behavior of a particular data type, but not concerned about who implements its behavior.
+            . You want to take advantage of multiple inheritances.
 
 ========================================================================================================================
 ========================================================================================================================
