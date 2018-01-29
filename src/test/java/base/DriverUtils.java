@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.Robot;
@@ -16,7 +17,6 @@ import java.awt.AWTException;
  * - Click-able means that the element is visible and not disabled.
  */
 public class DriverUtils {
-
 	/**
 	 * Wait for the presence/exist of element Located by a locator even it is not presented in DOM yet
 	 * @return WebElement
@@ -134,4 +134,22 @@ public class DriverUtils {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return element.getText();
     }
+
+	/******************************************************************************************************************
+	 * Select dropdown with a text
+	 */
+	public static void selectDropDownByText(By locator, String text){
+		WebDriver driver = DriverBase.getDriver();
+		Select dropDown = new Select(driver.findElement(locator));
+		dropDown.selectByVisibleText(text);
+	}
+
+	/******************************************************************************************************************
+	 * Select dropdown with a text
+	 */
+	public static void selectDropDownByValue(By locator, String value){
+		WebDriver driver = DriverBase.getDriver();
+		Select dropDown = new Select(driver.findElement(locator));
+		dropDown.selectByValue(value);
+	}
 }

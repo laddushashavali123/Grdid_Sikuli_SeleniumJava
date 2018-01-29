@@ -207,8 +207,64 @@ Summary:
 	Polymorphism refers to a principle which an organism or species can have many different forms or stages.
 ========================================================================================================================
 For OOP, Subclasses of a class can define their own unique behaviors and yet share some of the same functionality of the
-parent class.
+parent class. Polymorphism in Java has two types:
+    - Compile time polymorphism (static binding).
+    - Runtime polymorphism (dynamic binding).
 
+Note: It’s also legal to say every object in Java is polymorphic in nature, as each one passes an IS-A test for itself
+and also for Object class.
+
+In Java, static polymorphism is achieved through method overloading. Method overloading means there are several methods
+present in a class having the same name but different types/order/number of parameters. At compile time, Java know which
+method to invoke by checking the method signatures. So, this is called compile time polymorphism or static binding.
+    class DemoOverload {
+        public int add(int x, int y){  //method 1
+            return x+y;
+        }
+
+        public int add(int x, int y, int z){ //method 2
+            return x+y+z;
+        }
+
+        public int add(double x, int y){ //method 3
+            return (int)x+y;
+        }
+    }
+    class Test{
+        public static void main(String[] args){
+            DemoOverload demo=new DemoOverload();
+            System.out.println(demo.add(2,3));      //method 1 called
+            System.out.println(demo.add(2,3,4));    //method 2 called
+            System.out.println(demo.add(2.5,3));    //method 3 called
+        }
+    }
+
+In Java, dynamic polymorphism is achieved through method overridden. Method overloading means a sub class overrides a
+particular method of the super class. For example, in the program we create an object of the subclass and assign it to
+the super class reference, if we call the overridden method on the super class reference then the sub class version of
+the method will be called.
+    class Vehicle{
+        public void move(){
+            System.out.println(“Vehicles can move!!”);
+        }
+    }
+
+    class MotorBike extends Vehicle{
+        @Override
+        public void move(){
+            System.out.println(“MotorBike can move and accelerate too!!”);
+        }
+    }
+
+    class Test{
+        public static void main(String[] args){
+            Vehicle vh = new MotorBike();
+            vh.move();    // prints MotorBike can move and accelerate too!!
+            vh = new Vehicle();
+            vh.move();    // prints Vehicles can move!!
+
+        }
+    }
 
 ========================================================================================================================
 ========================================================================================================================
