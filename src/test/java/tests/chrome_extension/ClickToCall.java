@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import base.DriverUtils;
+import utils.WebUtils;
 import org.testng.asserts.SoftAssert;
 import tests.example.Alert;
 import java.awt.event.KeyEvent;
@@ -24,10 +24,10 @@ public class ClickToCall extends DriverBase {
         WebDriver driver = getDriver();
         driver.get("https://chrome.google.com/webstore/detail/click-to-call/djmahmfbjmiaepjbjkoekidjfcgbcfhc");
         By button = By.className("webstore-test-button-label");
-        DriverUtils.clickWhenReady(button,5);
+        WebUtils.clickWhenReady(button,5);
         Thread.sleep(8000);
-        DriverUtils.pressKeyboard(KeyEvent.VK_TAB);
-        DriverUtils.pressKeyboard(KeyEvent.VK_ENTER);
+        WebUtils.pressKeyboard(KeyEvent.VK_TAB);
+        WebUtils.pressKeyboard(KeyEvent.VK_ENTER);
 
         for (int i=0;i<30; i++){
             String buttonText = driver.findElement(button).getText();
@@ -49,12 +49,12 @@ public class ClickToCall extends DriverBase {
         WebDriver driver = getDriver();
         // Click first time
         driver.get(extensionGUI);
-        DriverUtils.clickWhenReady(By.id("enabled"),10);
-        String buttonText = DriverUtils.getText(By.id("enabledLabel"),10);
+        WebUtils.clickWhenReady(By.id("enabled"),10);
+        String buttonText = WebUtils.getText(By.id("enabledLabel"),10);
         logger.info("Button status for first click is " + buttonText);
         if (buttonText.equalsIgnoreCase("Enabled")){
             driver.get(testlink);
-            WebElement myDynamicElement = DriverUtils.findDynamicElement(By.partialLinkText("1-541-754-3010"), 10);
+            WebElement myDynamicElement = WebUtils.findDynamicElement(By.partialLinkText("1-541-754-3010"), 10);
             String phoneNumLink = myDynamicElement.getAttribute("href");
             logger.info("Phone Number Link is " + phoneNumLink);
             verification.assertEquals(phoneNumLink, "omnicall:15417543010");
@@ -69,12 +69,12 @@ public class ClickToCall extends DriverBase {
 
         // Click second times
         driver.get(extensionGUI);
-        DriverUtils.clickWhenReady(By.id("enabled"),3);
-        String buttonText1 = DriverUtils.getText(By.id("enabledLabel"),3);
+        WebUtils.clickWhenReady(By.id("enabled"),3);
+        String buttonText1 = WebUtils.getText(By.id("enabledLabel"),3);
         logger.info("Button status for the second click is " + buttonText1);
         if (buttonText1.equalsIgnoreCase("Enabled")){
             driver.get(testlink);
-            WebElement myDynamicElement = DriverUtils.findDynamicElement(By.partialLinkText("1-541-754-3010"), 10);
+            WebElement myDynamicElement = WebUtils.findDynamicElement(By.partialLinkText("1-541-754-3010"), 10);
             String phoneNumLink = myDynamicElement.getAttribute("href");
             logger.info("Phone Number Link is " + phoneNumLink);
             verification.assertEquals(phoneNumLink, "omnicall:15417543010");
@@ -99,11 +99,11 @@ public class ClickToCall extends DriverBase {
         boolean extensionEnabled = driver.findElement(By.id("enabled")).isSelected();
         logger.info("Button status enabled: " + extensionEnabled);
         if (!extensionEnabled){
-            DriverUtils.clickWhenReady(By.id("enabled"),3);
+            WebUtils.clickWhenReady(By.id("enabled"),3);
             logger.info("Enbale extension");
         }
 
-        DriverUtils.clickWhenReady(By.id("viewSettings"),5);
+        WebUtils.clickWhenReady(By.id("viewSettings"),5);
         Thread.sleep(1000);
 
         WebElement northAmerica = driver.findElement(By.id("northAmerica"));
@@ -143,7 +143,7 @@ public class ClickToCall extends DriverBase {
         verification.assertEquals(input.getAttribute("value"),"testbaby");
 
         driver.get(testlink);
-        WebElement myDynamicElement = DriverUtils.findDynamicElement(By.partialLinkText("1-541-754-3010"), 10);
+        WebElement myDynamicElement = WebUtils.findDynamicElement(By.partialLinkText("1-541-754-3010"), 10);
         String phoneNumLink = myDynamicElement.getAttribute("href");
         logger.info("Phone Number Link is " + phoneNumLink);
 
@@ -157,7 +157,7 @@ public class ClickToCall extends DriverBase {
         SoftAssert verification = new SoftAssert();
         WebDriver driver = getDriver();
         driver.get(extensionGUI);
-        WebElement viewbutton = DriverUtils.findDynamicElement(By.id("viewSettings"),10);
+        WebElement viewbutton = WebUtils.findDynamicElement(By.id("viewSettings"),10);
         if (viewbutton.getText().equalsIgnoreCase("View Settings")){
             viewbutton.click();
             Thread.sleep(500);

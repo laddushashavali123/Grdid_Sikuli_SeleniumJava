@@ -1,13 +1,16 @@
-package base;
+package utils;
 
+import base.DriverBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.awt.Robot;
 import java.awt.AWTException;
 
@@ -16,7 +19,7 @@ import java.awt.AWTException;
  * - Visible means that the element is not only displayed but also have a height and width that is greater than 0.
  * - Click-able means that the element is visible and not disabled.
  */
-public class DriverUtils {
+public class WebUtils {
 	/**
 	 * Wait for the presence/exist of element Located by a locator even it is not presented in DOM yet
 	 * @return WebElement
@@ -151,5 +154,43 @@ public class DriverUtils {
 		WebDriver driver = DriverBase.getDriver();
 		Select dropDown = new Select(driver.findElement(locator));
 		dropDown.selectByValue(value);
+	}
+
+	/******************************************************************************************************************
+	 * Drap and drop from an Element to an Element
+	 */
+	public static void drapAndDrop(By fromLocator, By toLocator){
+		WebDriver driver = DriverBase.getDriver();
+		WebElement fromElement = driver.findElement(fromLocator);
+		WebElement toElement = driver.findElement(toLocator);
+		Actions act = new Actions(driver);
+		act.dragAndDrop(fromElement, toElement).build().perform();
+	}
+
+	/******************************************************************************************************************
+	 * Drap and drop from an Element to specific cell
+	 * NOTE: The pixels values change with screen resolution and browser size. This method is hence not reliable and not widely used.
+	 */
+	public static void drapAndDrop(By fromLocator, int xOffset, int yOffset ){
+		WebDriver driver = DriverBase.getDriver();
+		WebElement fromElement = driver.findElement(fromLocator);
+		Actions act = new Actions(driver);
+		act.dragAndDropBy(fromElement, xOffset, yOffset).build().perform();
+	}
+
+	/******************************************************************************************************************
+	 * Select checkbox or radio button
+	 */
+	public static void selectCheckBox(String value){
+		WebDriver driver = DriverBase.getDriver();
+		WebElement box = driver.findElement(By.xpath("//input[@value='" + value + "']"));
+		if (!box.isSelected()){
+			box.click();
+		}
+	}
+
+	public static void uploadFile(By uploadButtonLocator, String fileLocation){
+		WebDriver driver = DriverBase.getDriver();
+		driver.findElement(uploadButtonLocator).sendKeys(fileLocation);
 	}
 }

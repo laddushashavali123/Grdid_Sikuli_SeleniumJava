@@ -1,9 +1,8 @@
 package tests.demoqa.pages;
 
-import base.DriverUtils;
+import utils.WebUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
 
 public class RegistrationPage {
@@ -26,7 +25,8 @@ public class RegistrationPage {
     private By pwdConfTextBox   = By.xpath("//*[@id='confirm_password_password_2']");
     private By submitButton     = By.xpath("//*[@name='pie_submit']");
 
-    private By flashMessage     = By.xpath("//*[@class='piereg_message']");
+    private By successMessage   = By.xpath("//*[@class='piereg_message']");
+    private By errorMessage     = By.xpath("//*[@class='piereg_login_error']");
 
     // Constructor
     public RegistrationPage(WebDriver driver) {
@@ -67,19 +67,19 @@ public class RegistrationPage {
     }
 
     public void selectCountry(String country){
-        DriverUtils.selectDropDownByText(countryDropdown, country);
+        WebUtils.selectDropDownByText(countryDropdown, country);
     }
 
     public void selectMonth(String month){
-        DriverUtils.selectDropDownByValue(monthDropdown, month);
+        WebUtils.selectDropDownByValue(monthDropdown, month);
     }
 
     public void selectDay(String day){
-        DriverUtils.selectDropDownByValue(dayDropdown, day);
+        WebUtils.selectDropDownByValue(dayDropdown, day);
     }
 
     public void selectYear(String year){
-        DriverUtils.selectDropDownByValue(yearDropdown, year);
+        WebUtils.selectDropDownByValue(yearDropdown, year);
     }
 
     public void enterPhone(String phone){
@@ -112,6 +112,13 @@ public class RegistrationPage {
     }
 
     public String getFlashMessage() {
-        return DriverUtils.findDynamicElement(flashMessage,10).getText();
+        String flashMessage;
+        try {
+            flashMessage = WebUtils.findDynamicElement(successMessage,10).getText();
+        }
+        catch (Exception e){
+            flashMessage = WebUtils.findDynamicElement(errorMessage,10).getText();
+        }
+        return flashMessage;
     }
 }

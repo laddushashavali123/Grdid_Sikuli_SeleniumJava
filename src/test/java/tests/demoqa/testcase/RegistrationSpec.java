@@ -30,7 +30,8 @@ public class RegistrationSpec extends DriverBase{
         registrationPage.enterAbout("Hi my name is Slim Shaddy.");
         registrationPage.enterPWD("12345678x@X");
         registrationPage.submitClick();
-        Thread.sleep(8000);
+
+
         System.out.println(registrationPage.getFlashMessage());
     }
 

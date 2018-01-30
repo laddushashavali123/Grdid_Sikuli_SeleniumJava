@@ -1,20 +1,12 @@
 package tests.example;
 
 import base.DriverBase;
-import base.DriverUtils;
+import utils.WebUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.security.UserAndPassword;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
-
-import java.awt.*;
-import java.util.Set;
 
 public class Alert extends DriverBase {
     Logger loger = LoggerFactory.getLogger(Alert.class);
@@ -77,7 +69,7 @@ public class Alert extends DriverBase {
         WebDriver driver = getDriver();
         driver.get("http://toolsqa.com/automation-practice-switch-windows/");
         driver.findElement(By.xpath("//*[@id=\"timingAlert\"]")).click();
-        DriverUtils.acceptAlert(8);
+        WebUtils.acceptAlert(8);
         Thread.sleep(2000);
     }
 }
