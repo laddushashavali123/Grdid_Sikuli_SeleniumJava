@@ -2,25 +2,25 @@ package tests.java;
 
 import org.testng.annotations.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.testng.Assert.assertEquals;
 
 public class CountingDuplicates {
-    /*public static int duplicateCount(String text) {
+    public static int duplicateCount(String text) {
         char chars[] = text.toCharArray();
-        char result[];
+        Set duplicateChar = new HashSet();
         for (int i=0; i<chars.length; i++){
             for (int j=i+1; j<chars.length; j++){
-                System.out.println("char i is " + chars[i]);
-                System.out.println("char j is " + chars[j]);
-                System.out.println("------");
-                if (chars[i] == (chars[j])){
-                    result. += 1;
+                if (chars[i] == (chars[j]) & !duplicateChar.contains(chars[i])){
+                    duplicateChar.add(chars[i]);
                     break;
                 }
             }
         }
-        System.out.println("result");
-        return result;
+        System.out.println("result: " + duplicateChar.size());
+        return duplicateChar.size();
     }
 
     @Test
@@ -35,6 +35,6 @@ public class CountingDuplicates {
 
     @Test
     public void indivisibilityReturnsOne() {
-        assertEquals(1, CountingDuplicates.duplicateCount("indivisibility"));
-    }*/
+        assertEquals(2, CountingDuplicates.duplicateCount("inndivisibility"));
+    }
 }
