@@ -148,7 +148,7 @@ public class WebUtils {
 	}
 
 	/******************************************************************************************************************
-	 * Select dropdown with a text
+	 * Select dropdown with a value
 	 */
 	public static void selectDropDownByValue(By locator, String value){
 		WebDriver driver = DriverBase.getDriver();
@@ -189,6 +189,20 @@ public class WebUtils {
 		}
 	}
 
+	/******************************************************************************************************************
+	 * De-select checkbox or radio button
+	 */
+	public static void DeselectCheckBox(String value){
+		WebDriver driver = DriverBase.getDriver();
+		WebElement box = driver.findElement(By.xpath("//input[@value='" + value + "']"));
+		if (box.isSelected()){
+			box.click();
+		}
+	}
+
+	/******************************************************************************************************************
+	 * Upload a file
+	 */
 	public static void uploadFile(By uploadButtonLocator, String fileLocation){
 		WebDriver driver = DriverBase.getDriver();
 		driver.findElement(uploadButtonLocator).sendKeys(fileLocation);

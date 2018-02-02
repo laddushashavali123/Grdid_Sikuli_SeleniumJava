@@ -167,6 +167,20 @@ false so we have to use Float.compare(floatNum1,floatNum2)
 - Compound assignments operator is combine the arithmetic operators with the simple assignment operator.
     x+=1;       // equal: x = x +1;
 
+- Boolean Operators:
+    True  and True  is True
+    True  and False is False
+    False and True  is False
+    False and False is False
+
+    True  or True  is True
+    True  or False is True
+    False or True  is True
+    False or False is False
+
+    Not True  is False
+    Not False is True
+
 ========================================================================================================================
     Unary Operators
 ========================================================================================================================

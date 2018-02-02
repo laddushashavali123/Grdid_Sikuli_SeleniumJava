@@ -23,7 +23,7 @@
     <test name="Test">
         <classes>
             <!--<class name="tests.chrome_extension.ClickToCall" />-->
-            <class name="tests.example.UploadFile" />
+            <!--<class name="tests.example.UploadFile" />-->
             <!--<class name="tests.demoqa.testcase.RegistrationSpec" />-->
         </classes>
     </test>

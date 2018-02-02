@@ -1,4 +1,5 @@
 // https://www.guru99.com/select-option-dropdown-selenium-webdriver.html
+// http://toolsqa.com/selenium-webdriver/dropdown-multiple-select-operations
 
 package tests.example;
 
@@ -26,15 +27,18 @@ public class DropDownandCheckBox extends DriverBase{
         // Checkbox and Radio button
         WebUtils.selectCheckBox("Male");
         WebUtils.selectCheckBox("Automation Tester");
+        WebUtils.selectCheckBox("Automation Tester");
 
         // Single dropdown list
         By dropDownList = By.xpath("//*[@id='continents']");
         WebUtils.selectDropDownByText(dropDownList, "Antartica");
 
         // Multiple choice list
+        WebUtils.selectDropDownByText(By.xpath("//*[@id='selenium_commands']"),"Navigation Commands");
+        WebUtils.selectDropDownByText(By.xpath("//*[@id='selenium_commands']"),"Switch Commands");
+        WebUtils.selectDropDownByText(By.xpath("//*[@id='selenium_commands']"),"Wait Commands");
 
-
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
 
     }
