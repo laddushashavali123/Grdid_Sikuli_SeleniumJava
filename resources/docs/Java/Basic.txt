@@ -135,6 +135,25 @@ HashSet (unordered), LinkedHashSet (ordered) or TreeSet (sorted by natural order
 
 
 ========================================================================================================================
+    Dictionary
+========================================================================================================================
+Map ():
+    -
+
+HashMap (https://docs.oracle.com/javase/6/docs/api/java/util/HashMap.html):
+    - The HashMap class is roughly equivalent to Hashtable, except that it is unsynchronized and permits null values and
+    the null key.
+    - This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will
+    remain constant over time.
+
+LinkedHashMap (https://docs.oracle.com/javase/6/docs/api/java/util/LinkedHashMap.html):
+    -
+
+Hashtable (https://docs.oracle.com/javase/6/docs/api/java/util/Hashtable.html):
+    -
+
+
+========================================================================================================================
     Operators
 ========================================================================================================================
     Relational 	Means 							Example
