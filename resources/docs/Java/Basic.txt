@@ -137,20 +137,98 @@ HashSet (unordered), LinkedHashSet (ordered) or TreeSet (sorted by natural order
 ========================================================================================================================
     Dictionary
 ========================================================================================================================
-Map ():
-    -
+Map interface (https://docs.oracle.com/javase/9/docs/api/java/util/Map.html):
+    - A map contains values on the basis of key i.e. key and value pair. Each key and value pair is known as an entry.
+    - Map contains only unique keys.
+    - Several methods throw a NoSuchElementException when no items exist in the invoking map.
+    - A ClassCastException is thrown when an object is incompatible with the elements in a map.
+    - A NullPointerException is thrown if an attempt is made to use a null object and null is not allowed in the map.
+    - An UnsupportedOperationException is thrown when an attempt is made to change an unmodifiable map.
+    - Example:
+        import java.util.*;
+        class MapInterfaceExample{
+            public static void main(String args[]){
+                Map<Integer,String> map=new HashMap<Integer,String>();
+                map.put(100,"Amit");
+                map.put(101,"Vijay");
+                map.put(102,"Rahul");
+                map.remove(101);
+                for(Map.Entry m:map.entrySet()){
+                    System.out.println(m.getKey()+" "+m.getValue());
+        }}}
 
 HashMap (https://docs.oracle.com/javase/6/docs/api/java/util/HashMap.html):
-    - The HashMap class is roughly equivalent to Hashtable, except that it is unsynchronized and permits null values and
-    the null key.
-    - This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will
-    remain constant over time.
+    - HashMap inherits AbstractMap class and implements Map interface.
+    - HashMap contains values based on the key.
+    - HashMap contains only unique elements.
+    - HashMap ALLOW one null key and multiple null values.
+    - HashMap is un-synchronized (no order) so it does not guarantee that the order will remain constant over time.
+    - HashMap is faster than Hashtable.
+    - We can make the HashMap as synchronized by calling this code: Map m = Collections.synchronizedMap(hashMap);
+    - Example:
+        import java.util.*;
+        class TestCollection13{
+            public static void main(String args[]){
+             HashMap<Integer,String> hm=new HashMap<Integer,String>();
+             hm.put(100,"Amit");
+             hm.put(101,"Vijay");
+             hm.put(102,"Rahul");
+             for(Map.Entry m:hm.entrySet()){
+                System.out.println(m.getKey()+" "+m.getValue());
+        }}}
 
-LinkedHashMap (https://docs.oracle.com/javase/6/docs/api/java/util/LinkedHashMap.html):
-    -
+LinkedHashMap (https://www.javatpoint.com/java-linkedhashmap):
+    - LinkedHashMap inherits HashMap class and implements the Map interface.
+    - LinkedHashMap is same as HashMap instead maintains insertion ORDER (HAS ORDER).
+    - LinkedHashMap ALLOW one null key and multiple null values.
+    - Example:
+        import java.util.*;
+        class TestCollection14{
+            public static void main(String args[]){
+                LinkedHashMap<Integer,String> hm=new LinkedHashMap<Integer,String>();
+                hm.put(100,"Amit");
+                hm.put(101,"Vijay");
+                for(Map.Entry m:hm.entrySet()){
+                    System.out.println(m.getKey()+" "+m.getValue());
+        }}}
 
 Hashtable (https://docs.oracle.com/javase/6/docs/api/java/util/Hashtable.html):
-    -
+    - Hashtable inherits Dictionary class and implements the Map interface.
+    - Hashtable contains values based on the key.
+    - Hashtable contains only unique elements.
+    - Hashtable DOES NOT ALLOW null key and null values.
+    - Hashtable is synchronized (HAS ORDER).
+    - Example:
+        import java.util.*;
+        class TestCollection16{
+            public static void main(String args[]){
+                Hashtable<Integer,String> hm=new Hashtable<Integer,String>();
+                hm.put(100,"Amit");
+                hm.put(102,"Ravi");
+                hm.put(101,"Vijay");
+                hm.put(103,"Rahul");
+                for(Map.Entry m:hm.entrySet()){
+                    System.out.println(m.getKey()+" "+m.getValue());
+        }}}
+
+TreeMap (https://www.javatpoint.com/java-treemap):
+    - TreeMap provides an efficient means of storing key/value pairs in sorted order.
+    - TreeMap implements the NavigableMap interface and extends AbstractMap class.
+    - TreeMap contains only unique elements.
+    - TreeMap DOES NOT ALLOW null key but can have multiple null values.
+    - TreeMap is same as HashMap instead maintains ascending order (HAS ORDER).
+    - Example:
+        import java.util.*;
+        class TestCollection15{
+            public static void main(String args[]){
+                TreeMap<Integer,String> hm=new TreeMap<Integer,String>();
+                 hm.put(100,"Amit");
+                 hm.put(102,"Ravi");
+                 hm.put(101,"Vijay");
+                 hm.put(103,"Rahul");
+                for(Map.Entry m:hm.entrySet()){
+                    System.out.println(m.getKey()+" "+m.getValue());
+        }}}
 
 
 ========================================================================================================================

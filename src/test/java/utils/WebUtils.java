@@ -157,12 +157,21 @@ public class WebUtils {
 	}
 
 	/******************************************************************************************************************
-	 * Drap and drop from an Element to an Element
+	 * Drap and drop from an Locator to an Locator
 	 */
 	public static void drapAndDrop(By fromLocator, By toLocator){
 		WebDriver driver = DriverBase.getDriver();
 		WebElement fromElement = driver.findElement(fromLocator);
 		WebElement toElement = driver.findElement(toLocator);
+		Actions act = new Actions(driver);
+		act.dragAndDrop(fromElement, toElement).build().perform();
+	}
+
+	/******************************************************************************************************************
+	 * Drap and drop from an Element to an Element
+	 */
+	public static void drapAndDrop(WebElement fromElement, WebElement toElement){
+		WebDriver driver = DriverBase.getDriver();
 		Actions act = new Actions(driver);
 		act.dragAndDrop(fromElement, toElement).build().perform();
 	}
