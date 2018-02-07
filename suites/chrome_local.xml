@@ -23,8 +23,8 @@
     <test name="Test">
         <classes>
             <!--<class name="tests.chrome_extension.ClickToCall" />-->
-            <!--<class name="tests.example.UploadFile" />-->
-            <class name="tests.demoqa.testcase.SortableSpec" />
+            <class name="tests.example.SikuliX" />
+            <!--<class name="tests.demoqa.testcase.SortableSpec" />-->
         </classes>
     </test>
 </suite>
