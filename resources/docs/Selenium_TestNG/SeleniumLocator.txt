@@ -113,11 +113,11 @@ Types of locator in Selenium:
 		- Axes methods are used to find the complex or dynamic elements which not possible by normal XPath method having no ID , Classname, Name, ... or dynamically change on refresh or any other operations.
 		- Few commonly axes methods is used in Selenium Webdriver:
 			+ Following: Selects everything in the document after the closing tag of the current node.
-
+                //*[text()='Multimedia Office Premium']/following::tr
 			+ Following-sibling: Selects all siblings after the current node
-
+                //*[text()='Multimedia Office Premium']/following::td
 			+ Ancestor: Selects all ancestors (parent, grandparent, etc.) of the current node.
-
+                //*[text()='Multimedia Office Premium']/ancestor::tr/td/input
 			+ Child: Selects all children of the current node.
 
 

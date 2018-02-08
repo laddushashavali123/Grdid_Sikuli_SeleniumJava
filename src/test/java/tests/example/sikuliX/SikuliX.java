@@ -1,4 +1,4 @@
-package tests.example;
+package tests.example.sikuliX;
 
 import base.DriverBase;
 import org.openqa.selenium.By;
@@ -15,7 +15,7 @@ public class SikuliX extends DriverBase{
         Thread.sleep(3000);
 
         Screen sc = new Screen();
-        String fileLoc = System.getProperty("user.dir") +"\\sikulix_img\\";
+        String fileLoc = System.getProperty("user.dir") +"\\sikulix_img\\sikulixDemo\\";
 
         try{
             sc.type(fileLoc + "Searchbox.png", "Dung HandSome");
