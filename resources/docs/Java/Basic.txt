@@ -432,7 +432,10 @@ which is not recommended, therefore, these exceptions are to be handled.
 			System.out.println("Done!");
 	} } }
 
-
+- How to Throw Exceptions:
+    if (size == 0) {
+        throw new EmptyStackException();
+    }
 ========================================================================================================================
 
 ========================================================================================================================

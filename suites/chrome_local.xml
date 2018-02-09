@@ -23,8 +23,8 @@
     <test name="Test">
         <classes>
             <!--<class name="tests.example.Alert" />-->
-            <class name="tests.example.sikuliX.CompareImage" />
-            <!--<class name="tests.demoqa.testcase.SortableSpec" />-->
+            <!--<class name="tests.example.sikuliX.SikuliX" />-->
+            <class name="tests.demoqa.testcase.SortableSpec" />
             <!--<class name="tests.chrome_extension.ClickToCall" />-->
         </classes>
     </test>

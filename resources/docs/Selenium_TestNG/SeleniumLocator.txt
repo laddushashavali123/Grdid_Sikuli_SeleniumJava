@@ -55,7 +55,8 @@ Types of locator in Selenium:
 	
 	4. By Tag name:
 		- This method finds the elements matching the specified tag name.
-		- This method is used when you want to extract the content within a tag or wish to perform any action on the tag element.
+		- This method is used when you want to extract the content within a tag or wish to perform any action on the tag
+		element.
 		- Syntax:
 			<form action="viewuser.asp" method="get" id="userform">
 				Name: <input type="text" name="name"><br>
@@ -95,7 +96,8 @@ Types of locator in Selenium:
 			WebElement emailText = driver.findElement(By.cssSelector("input.email[tabindex=1]"));
 			
 	8. XPath: 
-		- XPath is a short name for the XML path. It is a syntax or language for finding any element on the web page using XML path expression.
+		- XPath is a short name for the XML path. It is a syntax or language for finding any element on the web page
+		using XML path expression.
 		- XPath is used to find the location of any element on a webpage using HTML DOM structure (XML structure).
 		- XPath locators has 2 types: Asolute path and Relative path.
 		- Absolute XPath:
@@ -104,17 +106,19 @@ Types of locator in Selenium:
 			+ Disadvantage: if there are any changes made in the path of the element then that XPath gets failed. 
 			+ Example: /html/body/div[1]/div[1]/div/h4[1]/b
 		- Relative path:
-			+ Starts with Double forward slash(//), which means the path start from the node of your choise - it doesn't need to start from the root node.
+			+ Starts with Double forward slash(//), which means the path start from the node of your choise - it doesn't
+			need to start from the root node.
 			+ Advantage: don't need to mention the long xpath, you can start from the middle or in between.
 			+ Disadvantage: take more time in identifying the element as we specify the partial path not (exact path).
 			+ Example: //*[@class='featured-box']
 	
 		9. XPath axes:
-		- Axes methods are used to find the complex or dynamic elements which not possible by normal XPath method having no ID , Classname, Name, ... or dynamically change on refresh or any other operations.
+		- Axes methods are used to find the complex or dynamic elements which not possible by normal XPath method having
+		no ID , Classname, Name, ... or dynamically change on refresh or any other operations.
 		- Few commonly axes methods is used in Selenium Webdriver:
 			+ Following: Selects everything in the document after the closing tag of the current node.
                 //*[text()='Multimedia Office Premium']/following::tr
-			+ Following-sibling: Selects all siblings after the current node
+			+ Following-sibling: Selects all siblings after the current node within same parent with current node
                 //*[text()='Multimedia Office Premium']/following::td
 			+ Ancestor: Selects all ancestors (parent, grandparent, etc.) of the current node.
                 //*[text()='Multimedia Office Premium']/ancestor::tr/td/input

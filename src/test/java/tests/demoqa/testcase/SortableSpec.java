@@ -12,7 +12,8 @@ public class SortableSpec extends DriverBase{
         SortablePage sortablePage = new SortablePage(driver);
 
         sortablePage.accessPage();
-        sortablePage.moveElement();
-        Thread.sleep(5000);
+        sortablePage.moveElement("Item 1", "Item 5");
+        sortablePage.checkLocation();
+        Thread.sleep(2000);
     }
 }
