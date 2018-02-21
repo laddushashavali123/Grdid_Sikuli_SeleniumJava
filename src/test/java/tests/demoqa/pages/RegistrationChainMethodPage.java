@@ -1,6 +1,5 @@
 package tests.demoqa.pages;
 
-import com.tigervnc.rdr.Exception;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.WebUtils;

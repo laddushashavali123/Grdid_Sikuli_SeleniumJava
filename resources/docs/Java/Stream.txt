@@ -2,6 +2,7 @@ Reference:
     1. https://www.geeksforgeeks.org/stream-in-java/
     2. https://www.geeksforgeeks.org/streams-arrays-java-8/
     3. https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
+    4. https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
 
 ========================================================================================================================
 	Stream API is used to process collections of objects
@@ -37,3 +38,7 @@ Terminal Operations:
            List number = Arrays.asList(2,3,4,5);
            int even = number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
            Here ans variable is assigned 0 as the initial value and i is added to it .
+
+IntStream: A sequence of primitive int-valued elements supporting sequential and parallel aggregate operations. This is
+the int primitive specialization of Stream.
+
