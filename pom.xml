@@ -24,6 +24,7 @@
         <maven.failsafe.plugin.version>2.20.1</maven.failsafe.plugin.version>
         <logback.classic.version>1.0.13</logback.classic.version>
         <sikuliX.version>1.1.1</sikuliX.version>
+        <apache.POI.OOXML.version>3.17</apache.POI.OOXML.version>
     </properties>
 
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
@@ -97,6 +98,12 @@
                     <artifactId>sikulixapi</artifactId>
                     <version>${sikuliX.version}</version>
                 </dependency>
+                <dependency>
+                    <groupId>org.apache.poi</groupId>
+                    <artifactId>poi-ooxml</artifactId>
+                    <version>${apache.POI.OOXML.version}</version>
+                </dependency>
+
             </dependencies>
         </profile>
     </profiles>
