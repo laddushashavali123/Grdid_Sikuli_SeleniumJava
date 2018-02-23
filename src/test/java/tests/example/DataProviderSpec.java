@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import utils.ExcelUtils;
 import utils.WebUtils;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
@@ -71,14 +72,15 @@ public class DataProviderSpec extends DriverBase{
      * TestNG Data provider with excel example
      * @throws InterruptedException
      */
-    /*@DataProvider(name="fromExcelFile")
-    public Object[][] getDataFromDataprovider(){
-        Object[][] arrayObject = ExcelUtils.getExcelDataToDataProvider("D:/sampledoc.xls","Sheet1");
+    @DataProvider(name="fromExcelFile")
+    public Object[][] getDataFromDataprovider() throws IOException {
+        String fileLocation = System.getProperty("user.dir")+ "\\src\\test\\java\\testsdata\\data.xlsx";
+        Object[][] arrayObject = ExcelUtils.getExcelDataToDataProvider(fileLocation,"Sheet1");
         return arrayObject;
     }
 
     @Test(dataProvider="fromExcelFile")
-    public void testngDataProvider(String searchKey,String result) throws Exception {
+    public void testngDataProviderfromExcelFile(String searchKey,String result) throws Exception {
         WebDriver driver = getDriver();
         driver.get("https://google.com");
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -90,5 +92,5 @@ public class DataProviderSpec extends DriverBase{
         System.out.println("Title is " + driver.getTitle());
         Assert.assertTrue(driver.getTitle().contains(result));
         Thread.sleep(5000);
-    }*/
+    }
 }

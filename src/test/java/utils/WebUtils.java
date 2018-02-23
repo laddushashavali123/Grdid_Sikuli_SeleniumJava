@@ -188,7 +188,7 @@ public class WebUtils {
 	}
 
 	/******************************************************************************************************************
-	 * Select checkbox or radio button
+	 * Select checkbox or radio button if they contain value attribute, otherwise using advance xpath
 	 */
 	public static void selectCheckBox(String value){
 		WebDriver driver = DriverBase.getDriver();
@@ -199,7 +199,7 @@ public class WebUtils {
 	}
 
 	/******************************************************************************************************************
-	 * De-select checkbox or radio button
+	 * De-select checkbox or radio button if they contain value attribute
 	 */
 	public static void DeselectCheckBox(String value){
 		WebDriver driver = DriverBase.getDriver();

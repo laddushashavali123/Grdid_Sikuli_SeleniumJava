@@ -1,6 +1,7 @@
 package utils;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -27,6 +28,7 @@ public class ExcelUtils {
         HSSFWorkbook hssfWorkbook = null;
         String[][] result = null;
         int startRow = 1;
+        DataFormatter dataFormatter = new DataFormatter();
         String fileExtensionName =  FilenameUtils.getExtension(fileLocation);
 
         if (fileExtensionName.equalsIgnoreCase("xlsx")){
@@ -56,11 +58,12 @@ public class ExcelUtils {
                         result[i][j] = xssfCell.getStringCellValue();
                     }
                     else if (xssfCell.getCellType() == XSSFCell.CELL_TYPE_NUMERIC){
-                        result[i][j] = String.valueOf(xssfCell.getNumericCellValue());
+                        result[i][j] = dataFormatter.formatCellValue(xssfCell);
                     }
                     /*else {
-                        // Here if require, we can also add below methods to read the cell content
-                        // CELL_TYPE_BOOLEAN
+                        // If you want to fetch the string value of a numeric (XSSFCell.CELL_TYPE_NUMERIC), a boolean
+                        // (XSSFCell.CELL_TYPE_BOOLEAN) or date (XSSFCell.CELL_TYPE_DATE) cell, use DataFormatter
+                        // Here if require, we can also add below methods to handle other content:
                         // XSSFCell.CELL_TYPE_BLANK
                         // XSSFCell.CELL_TYPE_FORMULA
                         // XSSFCell.CELL_TYPE_ERROR
@@ -103,7 +106,7 @@ public class ExcelUtils {
                         result[i][j] = hssfCell.getStringCellValue();
                     }
                     else if (hssfCell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC){
-                        result[i][j] = String.valueOf(hssfCell.getNumericCellValue());
+                        result[i][j] = dataFormatter.formatCellValue(hssfCell);
                     }
                     /*else {
                         // Here if require, we can also add below methods to read the cell content
@@ -125,15 +128,6 @@ public class ExcelUtils {
             ExcelFileToRead.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        for(int i = 0; i<4; i++)
-        {
-            for(int j = 0; j<2; j++)
-            {
-                System.out.print(result[i][j]);
-            }
-            System.out.println();
         }
 
         return result;
