@@ -47,13 +47,6 @@ public class SelectablePage {
 
     }
 
-    public void selectMultipleItem(){
-        // WebElement
-        List<WebElement> selectList = driver.findElements(selectable);
-        Actions act=new Actions(driver);
-        act.clickAndHold(selectList.get(0)).clickAndHold(selectList.get(4)).release().build().perform();
-    }
-
     // Assertion
 
 }

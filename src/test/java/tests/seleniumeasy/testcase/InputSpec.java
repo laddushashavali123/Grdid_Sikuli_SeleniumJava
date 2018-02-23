@@ -67,19 +67,36 @@ public class InputSpec extends DriverBase{
     }*/
 
 
-    @Test
-    public void RadioButton(){
+    /*@Test
+    public void RadioButton() throws InterruptedException {
         WebDriver driver = getDriver();
         InputPage inputPage = new InputPage(driver);
+        inputPage.goRadioButton();
+
+        inputPage.clickRadioButtonNameGroup("Male", "gender")
+                .clickRadioButtonName("5 - 15")
+                .clickButton("Get values");
+
+        Thread.sleep(5000);
+    }*/
+
+
+    @Test
+    public void SelectDropDown() throws InterruptedException {
+        WebDriver driver = getDriver();
+        InputPage inputPage = new InputPage(driver);
+
+        inputPage.goSelectDropDown();
+        inputPage.dropDownSingleSelectByText("Select List Demo", "Saturday");
+        inputPage.dropDownSingleSelectByText("Multi Select List Demo", "Ohio")
+                .dropDownSingleSelectByText("Multi Select List Demo", "Texas");
+        Thread.sleep(5000);
+
+        inputPage.dropDownMultipleSelectContinous("Multi Select List Demo", 1,4);
+        Thread.sleep(5000);
     }
 
     /*@Test
-    public void SelectDropDown(){
-        WebDriver driver = getDriver();
-        InputPage inputPage = new InputPage(driver);
-    }
-
-    @Test
     public void JqueryDropdown(){
         WebDriver driver = getDriver();
         InputPage inputPage = new InputPage(driver);

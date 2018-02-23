@@ -1,7 +1,6 @@
 package tests.example.sikuliX;
 
 import base.DriverBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
