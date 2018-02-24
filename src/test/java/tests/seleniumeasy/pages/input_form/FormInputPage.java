@@ -1,15 +1,15 @@
-package tests.seleniumeasy.pages;
+package tests.seleniumeasy.pages.input_form;
 
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class InputFormPage {
+public class FormInputPage {
     private WebDriver driver;
-    final Logger logger = LoggerFactory.getLogger(AjaxFormPage.class);
+    final Logger logger = LoggerFactory.getLogger(FormAjaxPage.class);
 
     // Constructor
-    public InputFormPage(WebDriver driver){ this.driver = driver; }
+    public FormInputPage(WebDriver driver){ this.driver = driver; }
 
 
     // Locator

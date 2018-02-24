@@ -1,9 +1,9 @@
-package tests.seleniumeasy.testcase;
+package tests.seleniumeasy.testcase.input_form;
 
 import base.DriverBase;
 import org.testng.annotations.Test;
 
-public class AjaxFormSpec extends DriverBase {
+public class FormAjaxSpec extends DriverBase {
     @Test
     public void AjaxFormTest(){
 
