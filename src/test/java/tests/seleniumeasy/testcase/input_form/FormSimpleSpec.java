@@ -13,12 +13,12 @@ public class FormSimpleSpec extends DriverBase {
 
         simpleFormPage.goSimpleForm()
                 .enterTextToTextBox("Enter message", "Hi, I am Danny")
-                .clickButton("Show Message")
+                .clickButtonName("Show Message")
                 .verifyResultTextIs("Hi, I am Danny");
 
         simpleFormPage.enterTextToTextBox("Enter a", "1")
                 .enterTextToTextBox("Enter b", "2")
-                .clickButton("Get Total")
+                .clickButtonName("Get Total")
                 .verifyTotalTextIs("3");
     }
 }

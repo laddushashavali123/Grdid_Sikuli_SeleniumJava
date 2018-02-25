@@ -14,14 +14,15 @@ public class DropDownSelectSpec extends DriverBase {
         DropDownSelectPage selectDropDownPage = new DropDownSelectPage(driver);
 
         selectDropDownPage.goSelectDropDown()
-                .dropDownSingleSelectByText("Select List Demo", "Tuesday")
+                .selectOption( "Tuesday")
                 .verifySelectListResultIs("Tuesday");
 
-        selectDropDownPage.dropDownMultipleSelectContinous("Multi Select List Demo", 1,3);
-        Thread.sleep(5000);
+        /*selectDropDownPage.dropDownSingleSelectByText("Multi Select List Demo", "Washington")
+                .dropDownSingleSelectByText("Multi Select List Demo","California")
+                .clickButton("First Selected");
+        Thread.sleep(10000);*/
 
-        selectDropDownPage.dropDownSingleSelectByText("Multi Select List Demo", "Ohio")
-                .dropDownSingleSelectByText("Multi Select List Demo","Washington");
-        Thread.sleep(5000);
+        /*selectDropDownPage.dropDownMultipleSelectContinous("Multi Select List Demo", 1,3);
+        Thread.sleep(5000);*/
     }
 }

@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.Reporter;
-import tests.seleniumeasy.pages.InputPage;
 
 import java.util.List;
 

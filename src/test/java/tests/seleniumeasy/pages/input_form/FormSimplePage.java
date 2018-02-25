@@ -35,7 +35,7 @@ public class FormSimplePage {
         return this;
     }
 
-    public FormSimplePage clickButton(String buttonName){
+    public FormSimplePage clickButtonName(String buttonName){
         driver.findElement(By.xpath("//button[text()='" + buttonName + "']")).click();
         logger.info("Click button " + buttonName);
         return this;

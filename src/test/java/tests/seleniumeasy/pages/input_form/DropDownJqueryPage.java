@@ -1,5 +1,6 @@
 package tests.seleniumeasy.pages.input_form;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,10 @@ public class DropDownJqueryPage {
         this.driver =  driver;
     }
 
+    // Locator
+    By selectCountry = By.id("");
+
+
 
     // Action
     public DropDownJqueryPage goJqueryDropDown() {
@@ -20,4 +25,6 @@ public class DropDownJqueryPage {
         driver.manage().window().maximize();
         return this;
     }
+
+
 }

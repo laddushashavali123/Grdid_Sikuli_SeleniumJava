@@ -39,21 +39,21 @@ public class DropDownSelectPage {
     }
 
 
-    public DropDownSelectPage dropDownSingleSelectByText(String dropDownBoxName, String text){
+    public DropDownSelectPage dropDownSingleSelectByText(String dropDownBoxName, String optionName){
         Select dropDown = new Select(driver.findElement(By.xpath("//*[text()='" + dropDownBoxName + "']/following-sibling::div/select")));
         if (!dropDown.isMultiple()){
-            dropDown.selectByVisibleText(text);
-            logger.info(text + " is selected");
+            dropDown.selectByVisibleText(optionName);
+            logger.info(optionName + " is selected");
             return this;
         }
 
         try {
             Robot rb = new Robot();
             rb.keyPress(KeyEvent.VK_CONTROL);
-            dropDown.selectByVisibleText(text);
+            dropDown.selectByVisibleText(optionName);
             Thread.sleep(100);
             rb.keyRelease(KeyEvent.VK_CONTROL);
-            logger.info(text + " is selected");
+            logger.info(optionName + " is selected");
 
         } catch (AWTException e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class DropDownSelectPage {
         return this;
     }
 
-    public DropDownSelectPage clickButton(String buttonName){
+    public DropDownSelectPage clickButtonName(String buttonName){
         driver.findElement(By.xpath("//button[text()='" + buttonName + "']")).click();
         logger.info("Click button " + buttonName);
         return this;
@@ -86,6 +86,22 @@ public class DropDownSelectPage {
         logger.info("Select list is correct");
         logger.info("-----------------------");
     }
+
+    // ------------------------------------------------------------------------------
+    // If no love with Selenium Action API
+    public DropDownSelectPage selectOption(String optionName){
+        try{
+            driver.findElement(By.xpath("//option[@value='" + optionName + "']")).click();
+            logger.info(optionName + " is selected");
+        }
+        catch (Exception e){
+            driver.findElement(By.xpath("//option[text()='" + optionName + "']")).click();
+            logger.info(optionName + " is selected");
+        }
+        return  this;
+    }
+
+
 
 
 }

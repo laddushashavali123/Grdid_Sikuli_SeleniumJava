@@ -11,6 +11,7 @@ public class DropDownJquerySpec extends DriverBase{
         WebDriver driver = getDriver();
         DropDownJqueryPage jqueryDropDownPage = new DropDownJqueryPage(driver);
 
+        jqueryDropDownPage.goJqueryDropDown();
 
     }
 }
