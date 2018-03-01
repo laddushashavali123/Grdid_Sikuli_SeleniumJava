@@ -26,7 +26,7 @@ public class WebUtils {
 	 */
 	public static WebElement findDynamicElement(By locator, int timeOutInSeconds){
 		WebDriver driver = DriverBase.getDriver();
-		return new WebDriverWait(driver, timeOutInSeconds).until(ExpectedConditions.presenceOfElementLocated(locator));
+		return new WebDriverWait(driver, timeOutInSeconds).until(ExpectedConditions.elementToBeClickable(locator));
 	}
 
 

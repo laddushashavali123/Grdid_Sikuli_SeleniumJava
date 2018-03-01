@@ -1,8 +1,10 @@
 package tests.seleniumeasy.pages.input_form;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 
 public class FormAjaxPage {
     private WebDriver driver;
@@ -22,6 +24,29 @@ public class FormAjaxPage {
         return this;
     }
 
-    // Verify
+    public FormAjaxPage enterTextTo(String texboxName, String withContent){
+        By element = By.xpath("//*[contains(text(), 'Name')]/following-sibling::input");
+        driver.findElement(element).sendKeys(withContent);
+        return this;
+    }
 
+    public FormAjaxPage enterDiscription(String content){
+        driver.findElement(By.xpath("//textarea")).sendKeys(content);
+        return this;
+    }
+
+    public FormAjaxPage clickSend(){
+        driver.findElement(By.id("btn-submit")).click();
+        return this;
+    }
+
+    // Verify
+    public FormAjaxPage verifyWatingMessage() throws InterruptedException {
+        Thread.sleep(2000);
+        String waitText = driver.findElement(By.id("submit-control")).getText();
+        logger.info(waitText);
+        Assert.assertEquals(waitText, "Form submited Successfully!");
+        logger.info("Form submited Successfully! - TC passed");
+        return this;
+    }
 }
