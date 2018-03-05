@@ -1,4 +1,4 @@
-package tests.seleniumeasy.pages.input_form;
+package tests.seleniumeasy.pages.form;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

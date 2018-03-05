@@ -33,7 +33,7 @@ public class RegistrationPage {
         this.driver = driver;
     }
 
-    // Access registration page
+    // Access registration pages
     public void accessRegistration() {
         String registrationURL = "http://demoqa.com/registration/";
         driver.get(registrationURL);

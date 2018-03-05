@@ -28,7 +28,7 @@ public class RegistrationChainMethodPage {
         this.driver = driver;
     }
 
-    // Access registration page
+    // Access registration pages
     public void accessPage() {
         driver.get(registrationURL);
         driver.manage().window().maximize();

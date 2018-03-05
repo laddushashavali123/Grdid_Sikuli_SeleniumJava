@@ -1,9 +1,9 @@
-package tests.seleniumeasy.testcase.input_form;
+package tests.seleniumeasy.specs.form;
 
 import base.DriverBase;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import tests.seleniumeasy.pages.input_form.DropDownSelectPage;
+import tests.seleniumeasy.pages.form.DropDownSelectPage;
 
 import java.awt.*;
 
