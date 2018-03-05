@@ -1,4 +1,24 @@
 package tests.seleniumeasy.specs.table;
 
-public class TableFilterSpec {
+import base.DriverBase;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+import tests.seleniumeasy.pages.table.TableFilterPage;
+
+public class TableFilterSpec extends DriverBase{
+    @Test
+    public void TableFilterTest() throws InterruptedException {
+        WebDriver driver= getDriver();
+        TableFilterPage tableFilterPage = new TableFilterPage(driver);
+
+        tableFilterPage.goTableFilterPage()
+                .clickButtonName("Green")
+                .verifyNumberContentIs(2)
+                .clickButtonName("Orange")
+                .verifyNumberContentIs(2)
+                .clickButtonName("Red")
+                .verifyNumberContentIs(1)
+                .clickButtonName("All")
+                .verifyNumberContentIs(5);
+    }
 }

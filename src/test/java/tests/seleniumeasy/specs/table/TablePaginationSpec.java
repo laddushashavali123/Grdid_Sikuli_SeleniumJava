@@ -12,8 +12,20 @@ public class TablePaginationSpec extends DriverBase {
         TablePaginationPage tablePaginationPage = new TablePaginationPage(driver);
 
         tablePaginationPage.goToPaginationPage()
-                .verifyPreviousButtonHidden()
                 .clickPaginationButton("3")
-                .verifyNextButtonHidden();
+                .verifyButtonIsShown("«", "show")
+                .verifyButtonIsShown("»", "hide")
+                .verifyContentNumberDisplayIs(13)
+                .clickPaginationButton("«")
+                .verifyContentNumberDisplayIs(10)
+                .verifyButtonIsShown("«", "show")
+                .verifyButtonIsShown("»", "show")
+                .clickPaginationButton("1")
+                .verifyContentNumberDisplayIs(5)
+                .verifyButtonIsShown("«", "hide")
+                .verifyButtonIsShown("»", "show")
+                .clickPaginationButton("»")
+                .verifyContentNumberDisplayIs(10);
+        Thread.sleep(2000);
     }
 }
