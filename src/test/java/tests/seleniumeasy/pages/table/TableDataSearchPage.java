@@ -49,14 +49,23 @@ public class TableDataSearchPage {
             return this;
         }
         catch (Exception e) {
-            List<WebElement> totalElements = driver.findElements(By.xpath("//*[@id= 'task-table']/tbody/tr"));
-            List<WebElement> hiddenElements = driver.findElements(By.xpath("//*[@id= 'task-table']/tbody/tr[@style='display: none;']"));
-            logger.info("Total Row is " + totalElements.size());
-            logger.info("Total Hidden Row is " + hiddenElements.size());
-            Assert.assertEquals(x, totalElements.size() - hiddenElements.size());
+            List<WebElement> resultElements = driver.findElements(By.xpath("//*[@id= 'task-table']/tbody/tr[not(@style='display: none;')]"));
+            logger.info("Total result query row is " + resultElements.size());
+            Assert.assertEquals(x, resultElements.size());
             logger.info("Result table displays correctly with " + x + " item");
             Reporter.log("Result table displays correctly with " + x + " item");
             return this;
         }
+    }
+
+    public TableDataSearchPage verifyCorrectSearchItemName(String expectedItemName){
+        String result = "";
+        List<WebElement> resultElements = driver.findElements(By.xpath("//*[@id= 'task-table']/tbody/tr[not(@style='display: none;')]/td[2]"));
+        for (WebElement e : resultElements){
+            result += e.getText() + " ";
+        }
+        logger.info(" Names are " + result);
+        Assert.assertEquals(result.trim(), expectedItemName);
+        return this;
     }
 }

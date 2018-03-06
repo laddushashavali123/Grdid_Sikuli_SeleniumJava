@@ -25,7 +25,7 @@
             <!--<class name="tests.example.Alert" />-->
             <!--<class name="tests.example.sikuliX.SikuliX" />-->
             <!--<class name="tests.demoqa.testcase.SortableSpec" />-->
-            <class name="tests.seleniumeasy.specs.table.TableFilterSpec" />
+            <class name="tests.seleniumeasy.specs.table.TableSortSearchSpec" />
             <!--<class name="tests.chrome_extension.ClickToCall" />-->
         </classes>
     </test>

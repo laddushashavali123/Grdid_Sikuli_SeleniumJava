@@ -13,10 +13,12 @@ public class TableDataSearchSpec extends DriverBase{
 
         tableDataSearchPage.goTableDataSearchPage()
                 .entertaskInput("SEO tags")
+                .verifyCorrectSearchItemName("SEO tags")
                 .verifyTotalItemDisplayIs(1)
                 .entertaskInput(" ")
                 .verifyTotalItemDisplayIs(7)
                 .entertaskInput("se")
+                .verifyCorrectSearchItemName("SEO tags Browser Issues")
                 .verifyTotalItemDisplayIs(2)
                 .entertaskInput("asd")
                 .verifyTotalItemDisplayIs(0);
