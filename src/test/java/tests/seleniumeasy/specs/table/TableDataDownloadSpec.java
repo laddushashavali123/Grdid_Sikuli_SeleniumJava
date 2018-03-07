@@ -3,10 +3,19 @@ package tests.seleniumeasy.specs.table;
 import base.DriverBase;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
+import tests.seleniumeasy.pages.table.TableDataDownloadPage;
 
 public class TableDataDownloadSpec extends DriverBase{
     @Test
-    public void TableDataDownloadTest(){
+    public void TableDataDownloadTest() throws InterruptedException {
         WebDriver driver = getDriver();
+        TableDataDownloadPage tableDataDownloadPage = new TableDataDownloadPage(driver);
+
+        tableDataDownloadPage.goTableDataDownloadPage()
+                .clickDownloadFile("CSV")
+                .verifyFileDownloaded("C:\\Users\\MyPC\\Downloads",
+                    "Selenium Easy - Download Table Data to CSV, Excel, PDF and Print.csv",
+                    2)
+                .verifyCSVHasCorrectItemsQuatities("C:\\Users\\MyPC\\Downloads\\Selenium Easy - Download Table Data to CSV, Excel, PDF and Print.csv", 31);
     }
 }

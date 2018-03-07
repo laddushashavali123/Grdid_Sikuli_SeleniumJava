@@ -13,16 +13,13 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import org.testng.annotations.Test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Iterator;
 
 
 
 public class ExcelUtils {
-    public static String[][] getExcelDataToDataProvider(String fileLocation, String sheetName) throws IOException {
+    public static String[][] getExcelDataToDataProvider(String fileLocation, String sheetName){
         InputStream ExcelFileToRead = null;
         XSSFWorkbook xssfWorkbook = null;
         HSSFWorkbook hssfWorkbook = null;
@@ -131,6 +128,27 @@ public class ExcelUtils {
         }
 
         return result;
+    }
+
+    public static int countTotalItemsInCSVFile(String fileLocation, int startRow){
+        int totalItem = 0;
+        try{
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileLocation));
+            String input;
+            int count = 0;
+            while((input = bufferedReader.readLine()) != null)
+            {
+                count++;
+            }
+            totalItem = count - startRow;
+            System.out.println("There are \"" + totalItem + "\" in this file." );
+            return totalItem;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        System.out.println("There are no item found in this file." );
+        return totalItem;
     }
 
 
