@@ -1,6 +1,6 @@
 package tests.demoqa.pages;
 
-import utils.WebUtils;
+import utils.selenium.WebUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

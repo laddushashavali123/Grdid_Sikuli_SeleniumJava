@@ -1,7 +1,7 @@
 package tests.example;
 
 import base.DriverBase;
-import utils.WebUtils;
+import utils.selenium.WebUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;

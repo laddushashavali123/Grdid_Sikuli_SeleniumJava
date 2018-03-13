@@ -1,0 +1,12 @@
+Reference:
+    1. https://o7planning.org/vi/10167/huong-dan-su-dung-java-jdbc#a12645
+    2. https://www.javatpoint.com/java-jdbc
+
+========================================================================================================================
+	JDBC (Java Database Connectivity)
+========================================================================================================================
+- Java JDBC is a java API to connect and execute query with the database.
+- JDBC API uses jdbc drivers to connect with the database.
+- API (Application programming interface) is a document that contains description of all the features of a product or
+software. It represents classes and interfaces that software programs can follow to communicate with each other. An API
+can be created for applications, libraries, operating systems, etc

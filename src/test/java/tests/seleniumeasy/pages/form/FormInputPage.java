@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import utils.WebUtils;
+import utils.selenium.WebUtils;
 
 public class FormInputPage {
     private WebDriver driver;

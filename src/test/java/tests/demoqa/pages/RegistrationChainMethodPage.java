@@ -2,7 +2,7 @@ package tests.demoqa.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.WebUtils;
+import utils.selenium.WebUtils;
 
 import java.io.IOException;
 

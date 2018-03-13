@@ -6,10 +6,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import utils.ExcelUtils;
-import utils.WebUtils;
+import utils.excel.ExcelUtils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
-import utils.WebUtils;
+import utils.selenium.WebUtils;
 
-import static utils.WebUtils.drapAndDrop;
+import static utils.selenium.WebUtils.drapAndDrop;
 
 public class DrapandDrop extends DriverBase {
     Logger logger = LoggerFactory.getLogger(DrapandDrop.class);

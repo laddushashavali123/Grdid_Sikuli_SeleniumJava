@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import utils.WebUtils;
+import utils.selenium.WebUtils;
 import org.testng.asserts.SoftAssert;
 import tests.example.Alert;
 import java.awt.event.KeyEvent;
