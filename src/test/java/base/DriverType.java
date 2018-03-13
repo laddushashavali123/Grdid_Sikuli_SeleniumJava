@@ -82,6 +82,14 @@ public class DriverType {
 			capabilities = DesiredCapabilities.safari();
 		    capabilities.setCapability("safari.cleanSession", true);
 		}
+		// can use this for test COC COC browser
+		else if (browser.equalsIgnoreCase("electron")){
+			String S4BLocation = "C:\\Users\\test1\\AppData\\Local\\Programs\\RTC_Client_for_Skype_for_Business.S4B2015UCCSV\\RTC Client for Skype for Business - S4B2015UCCSV.exe";
+			ChromeOptions options = new ChromeOptions();
+			options.setBinary(S4BLocation);
+			capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		}
 		else {
 			capabilities = DesiredCapabilities.firefox();
 		}
@@ -106,6 +114,12 @@ public class DriverType {
 		else if (browser.equalsIgnoreCase("safari")) {
 			SafariOptions options = (SafariOptions) new SafariOptions().merge(capabilities);
 			return new SafariDriver(options);
+		}
+		else if (browser.equalsIgnoreCase("electron")){
+			String S4BLocation = "C:\\Users\\MyPC\\AppData\\Local\\Programs\\RTC_Client_for_Skype_for_Business.S4B2015UCCSV\\RTC Client for Skype for Business - S4B2015UCCSV.exe";
+			ChromeOptions options = new ChromeOptions();
+			options.setBinary(S4BLocation);
+			return new ChromeDriver(options);
 		}
 		else {
 			System.setProperty("webdriver.gecko.driver", resourcesFolder + "geckodriver.exe");
