@@ -1,0 +1,6 @@
+
+- API (Application programming interface) is a document that contains description of all the features of a product or
+software. It represents classes and interfaces that software programs can follow to communicate with each other. An API
+can be created for applications, libraries, operating systems, etc
+
+-

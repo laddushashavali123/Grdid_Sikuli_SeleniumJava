@@ -5,8 +5,6 @@ Reference:
 ========================================================================================================================
 	JDBC (Java Database Connectivity)
 ========================================================================================================================
-- Java JDBC is a java API to connect and execute query with the database.
-- JDBC API uses jdbc drivers to connect with the database.
-- API (Application programming interface) is a document that contains description of all the features of a product or
-software. It represents classes and interfaces that software programs can follow to communicate with each other. An API
-can be created for applications, libraries, operating systems, etc
+- Before JDBC, ODBC API was the database API to connect and execute query with the database. But, ODBC API uses ODBC
+driver which is written in C language (i.e. platform dependent and unsecured). That is why Java has defined its own API
+(JDBC API) that uses JDBC drivers (written in Java language).
