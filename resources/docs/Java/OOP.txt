@@ -411,7 +411,8 @@ ENUM type:
 	- Enum is a special Java type used to define collections of constants.
 	- An enum can contain constants, methods etc...
 	- EX:
-		// Like the declaration of a class, an enum type declaration belongs in a file all its own, so this should belong to Level.java file
+		// Like the declaration of a class, an enum type declaration belongs in a file all its own, so this should belong
+		// to Level.java file
 		public enum Level {
 			HIGH (1), 		//calls constructor with value 1
 			MEDIUM (2), 	//calls constructor with value 2
