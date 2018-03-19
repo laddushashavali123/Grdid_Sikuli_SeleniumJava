@@ -261,8 +261,7 @@ the method will be called.
             Vehicle vh = new MotorBike();
             vh.move();    // prints MotorBike can move and accelerate too!!
             vh = new Vehicle();
-            vh.move();    // prints Vehicles can move!!
-
+            vh.move();    // prints Vehicles can move!
         }
     }
 
@@ -404,9 +403,6 @@ To achieve encapsulation in Java:
     }
 
 ========================================================================================================================
-
-
-
 ENUM type:
 	- Enum is a special Java type used to define collections of constants.
 	- An enum can contain constants, methods etc...
