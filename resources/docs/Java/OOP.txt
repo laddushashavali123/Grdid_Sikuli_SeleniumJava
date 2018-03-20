@@ -46,13 +46,15 @@ put the class's code in a file named MyImportantCode.java. In other words, you c
 - EX:
 // The Account class is public, a public class is available for use by all other classes
 public class Account {
-	// A variable declared inside a class but not inside any particular method is a field or instance variable. These are members of this class.
+	// A variable declared inside a class but not inside any particular method is a field or instance variable. These are
+	// members of this class.
 	String name;
 	String address;
 	double balance;
 
-	// display method is public, means any code can call a public method, even if the calling code and the public method belong to two different classes.
-	// The word "void" tells Java that when the display method is called, the display method doesn’t return anything.
+	// display method is public, means any code can call a public method, even if the calling code and the public method
+	// belong to two different classes. The word "void" tells Java that when the display method is called, the display
+	// method doesn’t return anything.
 	public void display() {
 		System.out.print(name);
 		System.out.print(" (");
@@ -61,8 +63,8 @@ public class Account {
 		System.out.print(balance);
 	}
 
-	// The word double tells Java that when getInterest method is called, it returns a double value back to the place that called it.
-	// The parentheses contain all the things that you pass to the method when you call it.
+	// The word double tells Java that when getInterest method is called, it returns a double value back to the place
+	// that called it. The parentheses contain all the things that you pass to the method when you call it.
 	public double getInterest(double percentageRate) {
 		return balance * percentageRate / 100.00;
 	}
