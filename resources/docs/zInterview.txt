@@ -35,7 +35,7 @@ Question:
 			- Types of locator in Selenium: ID, Name/Class Name, Name Tag, Link Text, By PartialLinkText, CSS Selector,
 			XPath.
 		
-		•	What is Absolute Xpath and Reletive Xpath?
+		•	What is Absolute Xpath and Relative Xpath?
 			- Absolute XPath start with the single forward slash(/), which means the path start from root node.
 			- Relative path starts with Double forward slash(//), which means the path start from the node of your choice
 			it doesn't need to start from the root node.
