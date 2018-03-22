@@ -25,6 +25,8 @@
         <logback.classic.version>1.0.13</logback.classic.version>
         <sikuliX.version>1.1.1</sikuliX.version>
         <apache.POI.OOXML.version>3.17</apache.POI.OOXML.version>
+        <jmeter-maven-plugin.version>2.7.0</jmeter-maven-plugin.version>
+        <jmeter-analysis-maven-plugin.version>1.0.6</jmeter-analysis-maven-plugin.version>
     </properties>
 
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
@@ -110,6 +112,83 @@
                 </dependency>
             </dependencies>
         </profile>
+
+        <profile>
+            <id>jmeter</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.lazerycode.jmeter</groupId>
+                        <artifactId>jmeter-maven-plugin</artifactId>
+                        <version>${jmeter-maven-plugin.version}</version>
+                        <executions>
+                            <!-- Run JMeter tests -->
+                            <execution>
+                                <id>jmeter-tests</id>
+                                <goals>
+                                    <goal>jmeter</goal>
+                                </goals>
+                            </execution>
+                            <!-- Fail build on errors in test -->
+                            <execution>
+                                <id>jmeter-check-results</id>
+                                <goals>
+                                    <goal>results</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>com.lazerycode.jmeter</groupId>
+                        <artifactId>jmeter-analysis-maven-plugin</artifactId>
+                        <version>${jmeter.analysis.maven.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>analyze</goal>
+                                </goals>
+                                <phase>post-integration-test</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <!--
+                            source file that contains jmeter result data. Needs to be XML format or a GZIPed XML format
+                            -->
+                            <source>${project.build.directory}/jmeter/results/*</source>
+
+                            <!--
+                            directory where to store analysis report files. At least a file "summary.txt" will be stored here.
+                            -->
+                            <targetDirectory>${project.build.directory}/reports</targetDirectory>
+
+                            <!--
+                            Defines groups of requests by URL patterns,
+                            e.g. URIs starting with /mock/page are associated with group "pages". All analysis results are
+                            If there is no such mapping then the threadgroups from the jmeter.xml are used.
+                            -->
+                            <!--<requestGroups>-->
+                            <!--<test>/en-US/firefox/**</test>-->
+                            <!--</requestGroups>-->
+
+                            <!--
+                            Mapping from resource URL to file name. Every resource will be downloaded and stored in 'targetDirectory'
+                            with the given filename. Tokens "_FROM_" and "_TO_" can be used as placeholders. These placeholders will
+                            be replaced by timestamps of execution interval (formatted as ISO8601, e.g. '20111216T145509+0100').
+                            -->
+                            <!--<remoteResources>-->
+                            <!--<property>-->
+                            <!--<name>http://yourhost/path?from=_FROM_&amp;to=_TO_</name>-->
+                            <!--<value>my_resource.txt</value>-->
+                            <!--</property>-->
+                            <!--</remoteResources>-->
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
+
+
 
 </project>

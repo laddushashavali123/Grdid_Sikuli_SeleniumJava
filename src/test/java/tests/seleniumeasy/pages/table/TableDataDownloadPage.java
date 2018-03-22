@@ -32,10 +32,17 @@ public class TableDataDownloadPage {
 
     // Assertion
     public TableDataDownloadPage verifyFileDownloaded(String downloadPath, String fileName, int timeOutInMinute) throws InterruptedException {
-        File dir = new File(downloadPath);
+        File dir = null;
+        try{
+            dir = new File(downloadPath);
+        }
+        catch (Exception e){
+            System.out.println("Incorrect download path, please check !!!");
+            e.printStackTrace();
+        }
 
         for (int i=0; i < timeOutInMinute; i++ ){
-            Thread.sleep(1000);
+            Thread.sleep(6000);
             File[] dirItems = dir.listFiles();
 
             for (File item : dirItems) {

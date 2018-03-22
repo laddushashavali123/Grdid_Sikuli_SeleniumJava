@@ -1,0 +1,41 @@
+Ref:
+	- https://www.blazemeter.com/blog/how-use-jmeter-maven-plugin
+	- https://www.blazemeter.com/blog/how-get-started-jmeter-part-1-installation-test-plans
+
+========================================================================================================================
+	Creating a JMeter Test:
+========================================================================================================================
+- JMeter is a software that can perform load test, performance-oriented business (functional) test, regression test, etc.,
+on different protocols or technologies.
+- JMeter simulates a group of users sending requests to a target server, and returns statistics that show the performance
+or functionality of the target server/application via tables, graphs, etc.
+- The protocols supported by JMeter are:
+    . Web − HTTP, HTTPS sites 'web 1.0' web 2.0 (ajax, flex and flex-ws-amf)
+    . Web Services − SOAP / XML-RPC
+    . Database via JDBC drivers
+    . Directory − LDAP
+    . Messaging Oriented service via JMS
+    . Service − POP3, IMAP, SMTP
+    . FTP Service
+- Features of JMeter
+    . Being an open source software, it is freely available
+    . It has a simple and intuitive GUI
+    . JMeter can conduct load and performance test for many different server types − Web - HTTP, HTTPS, SOAP, Database
+    via JDBC, LDAP, JMS, Mail - POP3, etc
+    . It is a platform-independent tool. On Linux/Unix, JMeter can be invoked by clicking on JMeter shell script. On
+    Windows, it can be invoked by starting the jmeter.bat file
+    . It has full Swing and lightweight component support (precompiled JAR uses packages javax.swing.* )
+    . JMeter store its test plans in XML format. This means you can generate a test plan using a text editor.
+    . Its full multi-threading framework allows concurrent sampling by many threads and simultaneous sampling of different functions by separate thread groups.
+    . It is highly extensible.
+    . It can also be used to perform automated and functional testing of the applications.
+
+
+========================================================================================================================
+	Running a JMeter Test with the JMeter Maven Plugin
+========================================================================================================================
+
+
+========================================================================================================================
+    Viewing the Results in a Graph
+========================================================================================================================

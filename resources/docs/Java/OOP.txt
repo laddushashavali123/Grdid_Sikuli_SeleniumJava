@@ -22,7 +22,7 @@ will allocate a room of memory for that class instance.
 - Inheritance: When one object acquires all the properties and behaviours of parent object i.e. known as inheritance. It
 provides code reusability. It is used to achieve runtime polymorphism.
 
--Polymorphism: When one task is performed by different ways i.e. known as polymorphism. For example: to convince the
+- Polymorphism: When one task is performed by different ways i.e. known as polymorphism. For example: to convince the
 customer differently, to draw something e.g. shape or rectangle etc.
 
 - Abstraction: Hiding internal details and showing functionality is known as abstraction. For example: phone call, we

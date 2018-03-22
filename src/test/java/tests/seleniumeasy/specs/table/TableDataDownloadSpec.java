@@ -15,7 +15,7 @@ public class TableDataDownloadSpec extends DriverBase{
                 .clickDownloadFile("CSV")
                 .verifyFileDownloaded("C:\\Users\\MyPC\\Downloads",
                     "Selenium Easy - Download Table Data to CSV, Excel, PDF and Print.csv",
-                    2)
+                    5)
                 .verifyCSVHasCorrectItemsQuatities("C:\\Users\\MyPC\\Downloads\\Selenium Easy - Download Table Data to CSV, Excel, PDF and Print.csv", 31);
     }
 }
