@@ -269,8 +269,8 @@ the method will be called.
 
 ========================================================================================================================
 ========================================================================================================================
-	Abstraction is a technique that help us identify which specific information should be visible, and which information
-	should be hidden (hiding the implementation details and only the functionality will be provided to the user)
+	Abstraction is a process where you show only “relevant” data and “hide” unnecessary details of an object from the
+	user. Consider an object, we only know what the method do, not how it do it.
 ========================================================================================================================
 Abstraction lets you focus on what the object does instead of how it does it. For example at a high level, an API provide
 a simpler abstraction for usage, blissfully unaware of the underlying complexity behind its internal design.
@@ -344,8 +344,10 @@ class give 0-100% abstraction.
 
 ========================================================================================================================
 ========================================================================================================================
-	Encapsulation is the technique for packaging all similar data and functions into a container (Class or Package) in
-	such a way as to hide what should be hidden, and make visible what is intended to be visible
+	Encapsulation is the process of combining data and functions into a single unit called class. In Encapsulation, the
+	data is not accessed directly; it is accessed through the functions present inside the class. In simpler words,
+	attributes of the class are kept private and public getter and setter methods are provided to manipulate these
+	attributes. Thus, encapsulation makes the concept of data hiding possible.
 ========================================================================================================================
 Package:
 	- Package is a grouping of related files (classes, interfaces and enumerations) providing access protection and

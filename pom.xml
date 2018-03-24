@@ -13,7 +13,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Default Configurable Variable. -->
-        <suiteName>chrome_local</suiteName>
+        <default.suiteName>chrome_local</default.suiteName>
         <retryFailed>0</retryFailed>
 
         <!-- Dependency versions for quickly update -->
@@ -25,8 +25,13 @@
         <logback.classic.version>1.0.13</logback.classic.version>
         <sikuliX.version>1.1.1</sikuliX.version>
         <apache.POI.OOXML.version>3.17</apache.POI.OOXML.version>
-        <jmeter-maven-plugin.version>2.7.0</jmeter-maven-plugin.version>
-        <jmeter-analysis-maven-plugin.version>1.0.6</jmeter-analysis-maven-plugin.version>
+
+        <!-- jMeter Parameter -->
+        <jmeter.maven.plugin.version>2.7.0</jmeter.maven.plugin.version>
+        <jmeter.analysis.maven.plugin.version>1.0.6</jmeter.analysis.maven.plugin.version>
+        <jmeter.test.directory>${project.basedir}\src\test\jmeter\</jmeter.test.directory>
+        <test.duration>30</test.duration>
+        <test.threads>10</test.threads>
     </properties>
 
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
@@ -49,7 +54,7 @@
                         <configuration>
                             <!-- TestNG suite XML allows flexible configuration of the tests to be run on Jenkin -->
                             <suiteXmlFiles>
-                                <suiteXmlFile>suites/${suiteName}.xml</suiteXmlFile>
+                                <suiteXmlFile>suites/${default.suiteName}.xml</suiteXmlFile>
                             </suiteXmlFiles>
                             <systemPropertyVariables>
                                 <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
@@ -120,7 +125,7 @@
                     <plugin>
                         <groupId>com.lazerycode.jmeter</groupId>
                         <artifactId>jmeter-maven-plugin</artifactId>
-                        <version>${jmeter-maven-plugin.version}</version>
+                        <version>${jmeter.maven.plugin.version}</version>
                         <executions>
                             <!-- Run JMeter tests -->
                             <execution>
@@ -129,63 +134,55 @@
                                     <goal>jmeter</goal>
                                 </goals>
                             </execution>
-                            <!-- Fail build on errors in test -->
-                            <execution>
-                                <id>jmeter-check-results</id>
-                                <goals>
-                                    <goal>results</goal>
-                                </goals>
-                            </execution>
                         </executions>
                     </plugin>
 
+                    <!-- Config for Java 9 -->
                     <plugin>
-                        <groupId>com.lazerycode.jmeter</groupId>
-                        <artifactId>jmeter-analysis-maven-plugin</artifactId>
-                        <version>${jmeter.analysis.maven.plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>analyze</goal>
-                                </goals>
-                                <phase>post-integration-test</phase>
-                            </execution>
-                        </executions>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.7.0</version>
                         <configuration>
-                            <!--
-                            source file that contains jmeter result data. Needs to be XML format or a GZIPed XML format
-                            -->
-                            <source>${project.build.directory}/jmeter/results/*</source>
-
-                            <!--
-                            directory where to store analysis report files. At least a file "summary.txt" will be stored here.
-                            -->
-                            <targetDirectory>${project.build.directory}/reports</targetDirectory>
-
-                            <!--
-                            Defines groups of requests by URL patterns,
-                            e.g. URIs starting with /mock/page are associated with group "pages". All analysis results are
-                            If there is no such mapping then the threadgroups from the jmeter.xml are used.
-                            -->
-                            <!--<requestGroups>-->
-                            <!--<test>/en-US/firefox/**</test>-->
-                            <!--</requestGroups>-->
-
-                            <!--
-                            Mapping from resource URL to file name. Every resource will be downloaded and stored in 'targetDirectory'
-                            with the given filename. Tokens "_FROM_" and "_TO_" can be used as placeholders. These placeholders will
-                            be replaced by timestamps of execution interval (formatted as ISO8601, e.g. '20111216T145509+0100').
-                            -->
-                            <!--<remoteResources>-->
-                            <!--<property>-->
-                            <!--<name>http://yourhost/path?from=_FROM_&amp;to=_TO_</name>-->
-                            <!--<value>my_resource.txt</value>-->
-                            <!--</property>-->
-                            <!--</remoteResources>-->
+                            <source>1.8</source>
+                            <target>1.8</target>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                    <version>${testNG.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-server</artifactId>
+                    <version>${selinium.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                    <version>${logback.classic.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.sikulix</groupId>
+                    <artifactId>sikulixapi</artifactId>
+                    <version>${sikuliX.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.poi</groupId>
+                    <artifactId>poi-ooxml</artifactId>
+                    <version>${apache.POI.OOXML.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>8.0.9-rc</version>
+                </dependency>
+            </dependencies>
         </profile>
     </profiles>
 
