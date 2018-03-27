@@ -151,29 +151,29 @@ for that class.
 
 ========================================================================================================================
 ========================================================================================================================
-	Java Inheritance
+	Inheritance
 ========================================================================================================================
 Inheritance represents the (IS-A) relationship, also known as parent-child relationship.
-    - Inheritance is a mechanism in which one object acquires all the properties and behaviors of parent object. When you
-    inherit from an existing class, you can reuse methods and fields of parent class, and you can add new methods, fields
-    or override parent method.
+    - Inheritance is a mechanism in which one class acquires all the properties and behaviors of parent class. A class
+    inherited from parent class is called sub class or child class.
+    - Sub class can reuse methods and fields of parent class, and you can add new methods, fields or override parent
+    method. Sub-class attribute:
+        . Sub class has all public/protected attributes and method from the parent class.
+        . Subclasses don’t inherit constructors so we have to setup manually.
+        . To access the parent class’s private fields, the child class has to call the parent class’s accessor methods.
+        . Keyword 'extend' is used for creating a sub class.
+    - Java only allow for single inheritance, for multiple inheritance use interface.
     - Types of inheritance in java (Note: multiple and hybrid inheritance is supported through interface only)
         . Single:       Class B  --> Class A
         . Multi-level:  Class C --> Class B --> Class A
         . Hierarchical: Class C --> Class B <-- Class A
         . Multiple:     Class C <-- Class B --> Class A
         . Hybrid: combine of Hierarchical and Multiple
-    - Java only allow for single inheritance, for multiple inheritance use interface.
-    - Sub-class attribute:
-        . Sub class has all public/protected attributes and method from the parent class.
-        . Subclasses don’t inherit constructors so we have to setup manually.
-        . To access the parent class’s private fields, the child class has to call the parent class’s accessor methods.
-        . Keyword 'extend' is used for creating a sub class.
     - EX: create a sub/child class FullTimeEmployee from parent/super class Employee
         public class FullTimeEmployee extends Employee {
             public paySalary(int hour){};
         };
-    - Overriding Existing Methods from parent class:
+    - Polymorphism is achieved by Inheritance (Overriding Existing Methods from parent class):
         public class FullTimeEmployeeWithOvertime extends Employee {
             @Override		// this annotation is optional, code will work if method has same parent method name
             public paySalary(int hour){ //pay double };
@@ -206,74 +206,70 @@ Summary:
 
 ========================================================================================================================
 ========================================================================================================================
-	Polymorphism refers to a principle which an organism or species can have many different forms or stages.
+	Polymorphism
 ========================================================================================================================
-For OOP, Subclasses of a class can define their own unique behaviors and yet share some of the same functionality of the
-parent class. Polymorphism in Java has two types:
-    - Compile time polymorphism (static binding).
-    - Runtime polymorphism (dynamic binding).
+Polymorphism lets programmers use the same word to mean different things in different contexts. One form of
+polymorphism in Java is method overloading. That’s when different meanings are implied by the code itself. The other
+form is method overriding. That’s when the different meanings are implied by the values of the supplied variables.
+    - Method overloading means there are several methods present in a class having the same name but different
+    types/order/number of parameters. At compile time, Java know which method to invoke by checking the method
+    signatures. So, this is called compile time polymorphism or static binding.
+          class DemoOverload {
+              public int add(int x, int y){  //method 1
+                  return x+y;
+              }
+
+              public int add(int x, int y, int z){ //method 2
+                  return x+y+z;
+              }
+
+              public int add(double x, int y){ //method 3
+                  return (int)x+y;
+              }
+          }
+          class Test{
+              public static void main(String[] args){
+                  DemoOverload demo=new DemoOverload();
+                  System.out.println(demo.add(2,3));      //method 1 called
+                  System.out.println(demo.add(2,3,4));    //method 2 called
+                  System.out.println(demo.add(2.5,3));    //method 3 called
+              }
+          }
+
+    - Method override means a sub class overrides a particular method of the super class. For example, in the program
+    we create an object of the subclass and assign it to the super class reference, if we call the overridden method on
+    the super class reference then the sub class version of the method will be called.
+          class Vehicle{
+              public void move(){
+                  System.out.println(“Vehicles can move!!”);
+              }
+          }
+
+          class MotorBike extends Vehicle{
+              @Override
+              public void move(){
+                  System.out.println(“MotorBike can move and accelerate too!!”);
+              }
+          }
+
+          class Test{
+              public static void main(String[] args){
+                  Vehicle vh = new MotorBike();
+                  vh.move();    // prints MotorBike can move and accelerate too!!
+                  vh = new Vehicle();
+                  vh.move();    // prints Vehicles can move!
+              }
+          }
 
 Note: It’s also legal to say every object in Java is polymorphic in nature, as each one passes an IS-A test for itself
 and also for Object class.
 
-In Java, static polymorphism is achieved through method overloading. Method overloading means there are several methods
-present in a class having the same name but different types/order/number of parameters. At compile time, Java know which
-method to invoke by checking the method signatures. So, this is called compile time polymorphism or static binding.
-    class DemoOverload {
-        public int add(int x, int y){  //method 1
-            return x+y;
-        }
-
-        public int add(int x, int y, int z){ //method 2
-            return x+y+z;
-        }
-
-        public int add(double x, int y){ //method 3
-            return (int)x+y;
-        }
-    }
-    class Test{
-        public static void main(String[] args){
-            DemoOverload demo=new DemoOverload();
-            System.out.println(demo.add(2,3));      //method 1 called
-            System.out.println(demo.add(2,3,4));    //method 2 called
-            System.out.println(demo.add(2.5,3));    //method 3 called
-        }
-    }
-
-In Java, dynamic polymorphism is achieved through method overridden. Method overloading means a sub class overrides a
-particular method of the super class. For example, in the program we create an object of the subclass and assign it to
-the super class reference, if we call the overridden method on the super class reference then the sub class version of
-the method will be called.
-    class Vehicle{
-        public void move(){
-            System.out.println(“Vehicles can move!!”);
-        }
-    }
-
-    class MotorBike extends Vehicle{
-        @Override
-        public void move(){
-            System.out.println(“MotorBike can move and accelerate too!!”);
-        }
-    }
-
-    class Test{
-        public static void main(String[] args){
-            Vehicle vh = new MotorBike();
-            vh.move();    // prints MotorBike can move and accelerate too!!
-            vh = new Vehicle();
-            vh.move();    // prints Vehicles can move!
-        }
-    }
-
 ========================================================================================================================
 ========================================================================================================================
-	Abstraction is a process where you show only “relevant” data and “hide” unnecessary details of an object from the
-	user. Consider an object, we only know what the method do, not how it do it.
+	Abstraction
 ========================================================================================================================
-Abstraction lets you focus on what the object does instead of how it does it. For example at a high level, an API provide
-a simpler abstraction for usage, blissfully unaware of the underlying complexity behind its internal design.
+Abstraction is a process where you show only “relevant” data and “hide” unnecessary details of an object from the user.
+Consider an object, we only know what the method do, not how it do it.
 
 When do you use abstraction? When you know something needs to be there but not sure how exactly it should look like.
 
@@ -344,21 +340,23 @@ class give 0-100% abstraction.
 
 ========================================================================================================================
 ========================================================================================================================
-	Encapsulation is the process of combining data and functions into a single unit called class. In Encapsulation, the
-	data is not accessed directly; it is accessed through the functions present inside the class. In simpler words,
-	attributes of the class are kept private and public getter and setter methods are provided to manipulate these
-	attributes. Thus, encapsulation makes the concept of data hiding possible.
+	Encapsulation
 ========================================================================================================================
-Package:
-	- Package is a grouping of related files (classes, interfaces and enumerations) providing access protection and
-	namespace management (naming conflicts).
-	- To create a package, you include "package" statement along with package name at the first line of every source
-	files that you want to include in the same package. EX: package com.test.dung
-	- If a package statement is not used then the class, interfaces, enumerations, and annotation types will be placed
-	in the current default package.
+Encapsulation is the process of combining relative data and functions into a single unit called package and class:
+    - Package is a grouping of related files (classes, interfaces and enumerations) providing access protection and
+    namespace management (naming conflicts).
+    - To create a package, you include "package" statement along with package name at the first line of every source
+    files that you want to include in the same package. EX: package com.test.dung
+    - If a package statement is not used then the class, interfaces, enumerations, and annotation types will be placed
+    in the current default package.
     - Package inside the package is called the subpackage. It should be created to categorize the package further.
-    Note: If you import a package, subpackages will not be imported.
+    - Note: If you import a package, subpackages will not be imported.
 
+Encapsulation is also a mechanism for restricting access to some of the object's components known asInformation hidden.
+Information Hiding is hiding the internal data which prevents direct, external change to the data by making them private
+via default access modifier and only modify via a controlled manner method.
+
+Fields can be marked as readonly / final / immutable which further restricts change, even within the class.
 
 Default access:
     - A private member is only accessible within the same class as it is declared.
@@ -378,12 +376,6 @@ Default access:
 ---------------------------------------------------------------------
  private    |    +    |                 |                   |       |
 ---------------------------------------------------------------------
-
-Encapsulation also hide data (fields and methods) owned by a class instance which should be hidden and it is achieved
-through Information Hiding. Information Hiding is hiding the internal data which prevents direct, external change to the
-data by making them private and only modify via a controlled manner method.
-
-Fields can be marked as readonly / final / immutable which further restricts change, even within the class.
 
 For example, hiding the variables of the classes and enforce data access through the accessors (getters) and mutators
 (setters). The role of accessors and mutators are to return and set the values of an object's state.
