@@ -3,48 +3,6 @@ Ref:
 	- https://www.javatpoint.com/java-if-else
 
 ========================================================================================================================
-Java is object-oriented language, Object-oriented languages focus on data. In an object-oriented language, you use objects
-and classes to organize your data. Because Java is an object-oriented programming language, your primary goal is to
-describe classes and objects. A class is the idea behind a certain kind of thing. An object is a concrete instance of a
-class. The programmer defines a class, and from the class definition, Java makes individual objects.
-Example:
-	Account number	|	Type	|	Balance
-		123				Check		100
-		456				Credit		200
-		789				Debit		300
-Think of the table’s column headings as a class, and think of each row of the table as an object. The table’s column
-headings describe the Account class. Each object in the Account class has an account number, a type, and a balance
-property. If you opened a new account, you would have another object, and the table would grow an additional row. The
-new object would be an instance of the same Account class.
-
-========================================================================================================================
-	Glossary:
-========================================================================================================================
-+ Object: Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behavior such as
-wagging their tail, barking, eating. An object is an instance of a class.
-	
-+ Class: A class can be defined as a template/blueprint that describes the behavior/state that the object of its type
-supports. Class can have many sub-class (child class).
-	
-+ Methods: A method is basically a list of things to do. Every method has a name,and you tell the computer to do the
-things in the list by using the method’s name in your program.	A class can contain many methods.
-	
-+ EX:
-	// The main class usually has same name with the java source name: Authenticator.java
-	public class Authenticator {
-		// The instructions in a method aren’t executed until the method is called into action.
-		// But, if you give a method the name main, that method is called into action automatically.
-		public static void main(String args[]) {
-			// Declare a variable with value is 10
-			int number = 10;
-			System.out.println(number);
-		}
-	}
-
-+ Java is case-sensitive language, which means identifier Hello and hello would have different meaning in Java.
-
-
-========================================================================================================================
 	Variable
 ========================================================================================================================
 - Local Variable: a variable which is declared inside the method is called local variable.
@@ -53,6 +11,8 @@ things in the list by using the method’s name in your program.	A class can con
 It is not declared as static.
 
 - Static variable: a variable that is declared as static is called static variable. It cannot be local.
+
+- Java is case-sensitive language, which means Hello and hello are 2 different variables.
 
 - Primitive/Value type variable: A data type is a value type if it holds a data value within its own memory space.
 It means variables of these data types directly contain their values.

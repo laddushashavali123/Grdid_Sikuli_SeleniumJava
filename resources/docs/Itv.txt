@@ -17,7 +17,7 @@ Ref:
 
 	• Explain what is assertion in Selenium and what are the types of assertion?
 	    - Assertion is used as a  verification point. It verifies that the state of the application conforms to what is
-	    expected.  The types of assertion are
+	    expected. The types of assertion are
 	        . Assert: If the assert condition is failed, test will failed
 	        . Verify: If the assert condition is failed, test will continue
 
@@ -133,12 +133,11 @@ hierarchies, modularity, reporting mechanism, test data injections etc. to pilla
     Java
 ========================================================================================================================
 		• What is class and object in Java?
-			=>
+			=> Class is a template/blueprint to create object. Class consists of attribute (varaiable), behavior (method)
+			and constructor use to create object
+			=> Object is an instance (unique copy) of a class which inherits all attribute and behavior of that class
 		• Can you list some primitive types in Java?
-			=> int, long, float, double
-		• How many bits does an int type have?
-			=> The int data type is a 32-bit signed two's complement integer. It has a minimum value of -2,147,483,648
-            and a maximum value of 2,147,483,647 (inclusive).
+			=> byte (-127 to 127), short (-32k to 32k), int (-2.1B to 2.1B), long, float, double
 		• Difference between double and float?
 			=> Precision is the main difference:
 			    Float - 7 digits (32 bit)
@@ -147,14 +146,23 @@ hierarchies, modularity, reporting mechanism, test data injections etc. to pilla
 		• What is break and continue in java?
 			=> Break stop the loop immediately while continue do make the loop continue
 		• Lập trình hướng đối tượng là gì? Các đặc tính của nó?
-			=>
+			=> Object-oriented programming (OOP) is a programming model constructed around objects. These objects have
+			attribute and behavior which describes from a class. There are 4 characteristics:
+			    - Encapsulation: is package technique all related data and behavior into unit (classes) for easy management.
+			    Data in this unit is not allow for direct access so it usually hides and just show all method. Relative
+			    class can be packaging via "package"
+			    - Abstraction: is process to of hiding the implementation details from the user, only the functionality
+			    will be provided to the user.
+			    => By using class, we can implement Encapsulation and Abstraction
+			    - Inheritance: A class can inherit attribute and behavior of the father class
+			    - Polymorphism: a method with same name can act differently
 		• Khai báo 1 lớp kế thừa từ lớp khác thế nào trong Java?
 			=> Use extends keyword
 		• Constructor là gì và cách khai báo như thế nào?
 			=> It is startup task before creating an instance of the class. To create a constructor, we use public modifier
 			and same name of the class with or without the initial parameter
 		• Abstracts va interface là gì? Chúng khác nhau ra sao?
-			=>
+			=> Abstract class can have implement method while interface is not.
 		• Có bao nhiêu Access Modifiers? Tên và chúng khác nhau như thế nào?
 			=> There are 4 access modifier:
 			    private     : only the same class can access this variable or method

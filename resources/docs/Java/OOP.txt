@@ -9,6 +9,20 @@ Reference:
 ========================================================================================================================
 	OOPs Java (In class-based programming)
 ========================================================================================================================
+Java is object-oriented language, Object-oriented languages focus on data. In an object-oriented language, you use objects
+and classes to organize your data. Because Java is an object-oriented programming language, your primary goal is to
+describe classes and objects. A class is the idea behind a certain kind of thing. An object is a concrete instance of a
+class. The programmer defines a class, and from the class definition, Java makes individual objects.
+Example:
+	Account number	|	Type	|	Balance
+		123				Check		100
+		456				Credit		200
+		789				Debit		300
+Think of the table’s column headings as a class, and think of each row of the table as an object. The table’s column
+headings describe the Account class. Each object in the Account class has an account number, a type, and a balance
+property. If you opened a new account, you would have another object, and the table would grow an additional row. The
+new object would be an instance of the same Account class.
+
 - Class: is a “template”/“blueprint” that is used to create objects. Class will consists of field, static field, method,
 static method and constructor. Field (variable) is used to hold the state of the class. Method is used to represent the
 behavior of the class. Constructor is used to create a new Instance of the Class.
@@ -268,8 +282,8 @@ and also for Object class.
 ========================================================================================================================
 	Abstraction
 ========================================================================================================================
-Abstraction is a process where you show only “relevant” data and “hide” unnecessary details of an object from the user.
-Consider an object, we only know what the method do, not how it do it.
+Abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to
+the user. Consider an object, we only know what the method do, not how it do it.
 
 When do you use abstraction? When you know something needs to be there but not sure how exactly it should look like.
 
