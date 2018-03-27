@@ -85,7 +85,29 @@ driver which is written in C language (i.e. platform dependent and unsecured). T
         stmt.close()
 
 2. Using PreparedStatements:
+    - This special type of statement is derived from the more Statement class
+    - If you want to execute a Statement object many times, it usually reduces execution time to use a PreparedStatement
+    object instead.
+    - Although PreparedStatement objects can be used for SQL statements with no parameters, you probably use them most
+    often for SQL statements that take parameters.
 
+
+3. Transactions:
+    - There are times when you do not want one statement to take effect unless another one completes
+    - A transaction is a set of one or more statements that is executed as a unit, so either all of the statements are
+    executed, or none of the statements is executed.
+    - When a connection is created, it is in auto-commit mode. This means that each individual SQL statement is treated
+    as a transaction and is automatically committed right after it is executed. (To be more precise, a SQL statement is
+    committed when it is completed, not when it is executed. A statement is completed when all of its result sets and
+    update counts have been retrieved)
+    - The way to allow two or more statements to be grouped into a transaction is to disable the auto-commit mode. This
+    is demonstrated in the following code, where con is an active connection:
+        con.setAutoCommit(false);
+    - After auto-commit mode is disabled, no SQL statements are committed until you call the method commit explicitly.
+    All statements executed after the previous call to the method commit are included in the current transaction and
+    committed together as a unit:
+        con.commit();
+    -
 
 
 ========================================================================================================================

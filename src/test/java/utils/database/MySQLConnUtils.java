@@ -31,21 +31,4 @@ public class MySQLConnUtils {
             if (stmt != null) { stmt.close(); }
         }
     }
-    public static ResultSet getResult(Connection con, String sqlQuery) throws SQLException {
-        Statement stmt = null;
-        ResultSet rs = null;
-        try {
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(sqlQuery);
-
-        }
-        catch (SQLException  e){
-            e.printStackTrace();
-        }
-        finally {
-            if (stmt != null) { stmt.close(); }
-        }
-        return  rs;
-    }
-
 }

@@ -5,7 +5,7 @@ import utils.database.MySQLConnUtils;
 import java.sql.*;
 
 
-public class CreateTable {
+public class CreateTableWithStatement {
     public static void main(String[] args) throws SQLException {
         String hostName = "localhost";
         String dbName   = "test";
