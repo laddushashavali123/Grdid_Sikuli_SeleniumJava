@@ -16,6 +16,12 @@
         <default.suiteName>chrome_local</default.suiteName>
         <retryFailed>0</retryFailed>
 
+        <!-- Default variable for maven download binary plugin -->
+        <!--<webdriver.chrome.driver>${project.basedir}/resources/drivers/binaries/windows/googlechrome/64bit/chromedriver.exe</webdriver.chrome.driver>
+        <webdriver.firefox.driver>${project.basedir}/resources/drivers/binaries/windows/marionette/64bit/geckodriver.exe</webdriver.firefox.driver>
+        <webdriver.ie.driver/>
+        <webdriver.opera.driver/>-->
+
         <!-- Dependency versions for quickly update -->
         <selinium.version>3.7.1</selinium.version>
         <testNG.version>6.11</testNG.version>
@@ -47,6 +53,57 @@
             </activation>
             <build>
                 <plugins>
+                    <!--<plugin>
+                        <groupId>com.googlecode.maven-download-plugin</groupId>
+                        <artifactId>download-maven-plugin</artifactId>
+                        <version>1.4.0</version>
+                        <executions>
+                            <execution>
+                                <id>install-jbpm</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>https://raw.githubusercontent.com/Ardesco/selenium-standalone-server-plugin/master/src/main/resources/RepositoryMap.xml</url>
+                                    <outputDirectory>${project.basedir}/resources/</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>-->
+
+                    <plugin>
+                        <groupId>com.lazerycode.selenium</groupId>
+                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                        <version>1.0.17</version>
+                        <configuration>
+                            <!-- root directory that downloaded driver binaries will be stored in -->
+                            <rootStandaloneServerDirectory>${project.basedir}/resources/drivers/binaries</rootStandaloneServerDirectory>
+                            <!-- Where you want to store downloaded zip files -->
+                            <downloadedZipFileDirectory>${project.basedir}/resources/drivers/zips</downloadedZipFileDirectory>
+                            <!-- Location of a custom repository map -->
+                            <customRepositoryMap>${project.basedir}/resources/drivers/RepositoryMap.xml</customRepositoryMap>
+                            <!-- This will ensure that the plugin only downloads binaries for the current OS, this will
+                            override anything specified in the <operatingSystems> configuration -->
+                            <onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
+                            <!-- Download 32bit binaries -->
+                            <thirtyTwoBitBinaries>false</thirtyTwoBitBinaries>
+                            <!-- Download 64bit binaries -->
+                            <sixtyFourBitBinaries>true</sixtyFourBitBinaries>
+                            <!-- If set to false will download every version available -->
+                            <onlyGetLatestVersions>true</onlyGetLatestVersions>
+                            <!-- Overwrite any existing binaries that have been downloaded and extracted -->
+                            <overwriteFilesThatExist>true</overwriteFilesThatExist>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>selenium</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -60,6 +117,10 @@
                                 <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
                                 <logback.configurationFile>${project.basedir}\logback.xml</logback.configurationFile>
                                 <retryFailed>${retryFailed}</retryFailed>
+                                <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+                                <webdriver.firefox.driver>${webdriver.firefox.driver}</webdriver.firefox.driver>
+                                <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
+                                <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
                             </systemPropertyVariables>
                         </configuration>
                         <executions>
@@ -70,6 +131,7 @@
                             </execution>
                         </executions>
                     </plugin>
+
                     <!-- Config for Java 9 -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>

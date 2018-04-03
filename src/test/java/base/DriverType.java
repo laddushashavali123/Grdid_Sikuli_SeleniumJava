@@ -96,14 +96,13 @@ public class DriverType {
 		return capabilities;
 	}
 	
-	/*
+	/**
 	 * This method will return the correct local browser
 	 */
 	static WebDriver getLocalDriver(String browser, DesiredCapabilities capabilities) {
-		String resourcesFolder = System.getProperty("user.dir") + "\\resources\\";
-		
 		if (browser.equalsIgnoreCase("chrome")){
-			System.setProperty("webdriver.chrome.driver", resourcesFolder + "chromedriver.exe");
+			System.out.println(" Set chrome driver path to " + System.getProperty("webdriver.chrome.driver"));
+			System.setProperty("webdriver.chrome.driver", System.getProperty("webdriver.chrome.driver"));
 			ChromeOptions options = (ChromeOptions) new ChromeOptions().merge(capabilities);
 			return new ChromeDriver(options);
 		}
@@ -122,7 +121,8 @@ public class DriverType {
 			return new ChromeDriver(options);
 		}
 		else {
-			System.setProperty("webdriver.gecko.driver", resourcesFolder + "geckodriver.exe");
+			System.out.println(" Set chrome driver path to " + System.getProperty("firefox.driver.path"));
+			System.setProperty("webdriver.gecko.driver", System.getProperty("firefox.driver.path"));
 			FirefoxOptions options = new FirefoxOptions().merge(capabilities);
 			return new FirefoxDriver(options);
 		}

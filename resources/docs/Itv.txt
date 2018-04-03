@@ -1,5 +1,6 @@
 Ref:
     1. https://www.guru99.com/top-100-selenium-interview-questions-answers.html
+    2.
 
 ========================================================================================================================
     Selenium
@@ -10,6 +11,30 @@ Ref:
 		- Selenium includes following components:
 		    . Selenium WebDriver: uses to communicate with browser
 		    . Selenium Grid: uses to distribute the test on multiple platform
+
+    • What type of tests have you automated?
+        - Our main focus is to automate test cases to do Regression testing, Smoke testing, and Sanity testing.
+
+    • How many test cases you have automated per day?
+        - It depends on Test case scenario complexity and length. Sometimes just 1 or fewer test scenarios in a day when
+        the complexity is high.
+
+    •
+
+    •  What are the different types of automation frameworks?
+        - Data Driven Testing Framework (can use DataProvider/Parameter of TestNG for this): the test data is separated
+        and kept outside the Test Scripts, while Test Case logic resides in Test Scripts. Test data is read from the
+        external files (Excel Files) and are loaded into the variables inside the Test Script. Variables are used for
+        both for input values and for verification values.
+
+        - Keyword Driven Testing Framework: is an extension to Data-driven Testing Framework in a sense that it not only
+        segregates the test data from the scripts, it also keeps the certain set of code belonging to the test script
+        into an external data file.
+
+        - Behavior Driven Development Framework: (Cucumber) Behavior Driven Development framework allows automation of
+        functional validations in easily readable and understandable
+
+        - Hybrid Testing Framework: Hybrid Testing Framework is a combination of more than one above mentioned frameworks.
 
 	• Do you know about Locator techniques in selenium? And Can you list them out?
 	    - Types of locator in Selenium: ID, Name/Class Name, Name Tag, Link Text, By PartialLinkText, CSS Selector,
@@ -31,11 +56,12 @@ Ref:
 		it doesn't need to start from the root node.
 
 	• How many wait type in Selenium?
-	    - There is 2 type of wait:
+	    - There is 3 type of wait:
 	        . Implicit Wait:Sets a timeout for all successive Web Element searches. For the specified amount of time it
 	        will try looking for element again and again before throwing a NoSuchElementException. It waits for elements
 	        to show up.
 	        . Explicit Wait: wait for a certain condition until timeout. It usually use with ExpectedCondition
+	        . FluentWait
 
 	• How to find dynamic element?
 	    - Use XPath axes: following, following-sibling, ancestor,
@@ -63,21 +89,6 @@ Ref:
         - quit(): Unlike close() method, quit() method closes down all the windows that the program has opened. Same as
         close() method, the command neither requires any parameter nor does is return any value.
 
-    •  What are the different types of automation frameworks?
-        - Data Driven Testing Framework (can use DataProvider/Parameter of TestNG for this): the test data is separated
-        and kept outside the Test Scripts, while Test Case logic resides in Test Scripts. Test data is read from the external
-        files ( Excel Files) and are loaded into the variables inside the Test Script. Variables are used for both for
-        input values and for verification values.
-
-        - Keyword Driven Testing Framework: is an extension to Data-driven Testing Framework in a sense that it not only
-        segregates the test data from the scripts, it also keeps the certain set of code belonging to the test script
-        into an external data file.
-
-        - Behavior Driven Development Framework: (Cucumber) Behavior Driven Development framework allows automation of
-        functional validations in easily readable and understandable
-
-        - Hybrid Testing Framework: Hybrid Testing Framework is a combination of more than one above mentioned frameworks.
-
     • Explain Page Object model?
         - It is a design pattern to create Object Repository for web UI elements.
         - Under this model, for each web page in the application, there should be corresponding page class. Page class
@@ -101,10 +112,10 @@ Ref:
     @AfterClass:   The annotated method will be run after all the test methods in the current class have been run.
     @BeforeMethod: The annotated method will be run before each test method.
     @AfterMethod:  The annotated method will be run after each test method.
-    @DataProvider	Marks a method as supplying data for a test method
-    @Listeners	    Defines listeners on a test class.
-    @Parameters	    Describes how to pass parameters to a @Test method.
-    @Test	        Marks a class or a method as part of the test.
+    @DataProvider: Marks a method as supplying data for a test method
+    @Listeners:	   Defines listeners on a test class.
+    @Parameters:   Describes how to pass parameters to a @Test method.
+    @Test:	       Marks a class or a method as part of the test.
 
 • You can invoke TestNG in several different ways:
     - With a testng.xml file
@@ -126,8 +137,26 @@ Ref:
 ========================================================================================================================
     Framework
 ========================================================================================================================
-- The framework is a constructive blend of various guidelines, coding standards, concepts, processes, practices, project
+• The framework is a constructive blend of various guidelines, coding standards, concepts, processes, practices, project
 hierarchies, modularity, reporting mechanism, test data injections etc. to pillar automation testing.
+
+• Framework includes:
+    - Selenium program language: Java
+    - IDE: Intellij
+    - Maven: software project management (manage a project's build) with POM repos.
+    - Test framework: TestNG (test execution/assertion, report, parallel test)
+    - Type of Framework: Data-driven Framework with Page Object Model design pattern.
+    - Page Object Model: we have maintained a class for every web page. Each web page has a separate class which holds
+    the functionality and members of that web page. Separate classes for every individual test.
+    - Framework structure:
+        . base: establish browser base on configure on TestNG xml file
+        . listener: log, screenshoot and retry
+        . testdata: contain test data (excel file)
+        . sreenshoot: fails scenario screenshoot
+        . utils: common function
+        . tests: include pages and testcase
+    - Version Control Tool: We use SVN as a repository to store our test scripts.
+    - CI Tool: Jenkins, we execute test cases on daily basis and also for nightly execution based on the schedule.
 
 ========================================================================================================================
     Java
@@ -140,22 +169,28 @@ hierarchies, modularity, reporting mechanism, test data injections etc. to pilla
 			=> byte (-127 to 127), short (-32k to 32k), int (-2.1B to 2.1B), long, float, double
 		• Difference between double and float?
 			=> Precision is the main difference:
-			    Float - 7 digits (32 bit)
-			    Double-15-16 digits (64 bit)
-			    Decimal -28-29 significant digits (128 bit)
+			    Float   - 7 digits (32 bit)
+			    Double  - 15-16 digits (64 bit)
+			    Decimal - 28-29 significant digits (128 bit)
 		• What is break and continue in java?
 			=> Break stop the loop immediately while continue do make the loop continue
 		• Lập trình hướng đối tượng là gì? Các đặc tính của nó?
 			=> Object-oriented programming (OOP) is a programming model constructed around objects. These objects have
 			attribute and behavior which describes from a class. There are 4 characteristics:
-			    - Encapsulation: is package technique all related data and behavior into unit (classes) for easy management.
-			    Data in this unit is not allow for direct access so it usually hides and just show all method. Relative
-			    class can be packaging via "package"
-			    - Abstraction: is process to of hiding the implementation details from the user, only the functionality
-			    will be provided to the user.
+			    - Encapsulation: is the process of combining relative data and functions into a single unit, beside it
+			    also a mechanism for restricting access to some of the object's components known as Information hidden
+
+			    - Abstraction: is a process of hiding the implementation details from the user, only the functionality
+			    will be provided to the user. Ex: an object, we only know what the method do, not how it do it.
 			    => By using class, we can implement Encapsulation and Abstraction
-			    - Inheritance: A class can inherit attribute and behavior of the father class
-			    - Polymorphism: a method with same name can act differently
+
+			    - Inheritance:
+			        . Implementation inheritance (subclassing): A class can inherit attribute and behavior of the father
+			        class
+			        . Interface inheritance (subtyping): "interface" construct for declaring a relationship between
+			        unrelated classes, by specifying a common set of methods that each implementing class must include.
+			    - Polymorphism: means the same word to mean different things in different contexts. EX: a method with
+			    same name can act differently (method overloading and override)
 		• Khai báo 1 lớp kế thừa từ lớp khác thế nào trong Java?
 			=> Use extends keyword
 		• Constructor là gì và cách khai báo như thế nào?
