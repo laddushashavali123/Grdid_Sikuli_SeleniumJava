@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <root>
     <windows>
-        <driver id="internetexplorer">
+        <!--<driver id="internetexplorer">
             <version id="3.9.0">
                 <bitrate sixtyfourbit="true">
                     <filelocation>http://selenium-release.storage.googleapis.com/3.9/IEDriverServer_x64_3.9.0.zip</filelocation>
-                    <hash>c9f885b6a339f3f0039d670a23f998868f539e65</hash>
+                    <hash>22965eb1ea60d6ee75ceba2fd16991f4bfdc407e</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
                 <bitrate thirtytwobit="true">
@@ -14,7 +14,7 @@
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
-        </driver>
+        </driver>-->
         <driver id="edge">
             <version id="5.16299">
                 <bitrate sixtyfourbit="true" thirtytwobit="true">

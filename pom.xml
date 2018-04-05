@@ -94,6 +94,8 @@
                             <onlyGetLatestVersions>true</onlyGetLatestVersions>
                             <!-- Overwrite any existing binaries that have been downloaded and extracted -->
                             <overwriteFilesThatExist>true</overwriteFilesThatExist>
+                            <!-- Number of times to attempt to download each file -->
+                            <fileDownloadRetryAttempts>2</fileDownloadRetryAttempts>
                         </configuration>
                         <executions>
                             <execution>
@@ -177,6 +179,32 @@
                     <artifactId>mysql-connector-java</artifactId>
                     <version>8.0.9-rc</version>
                 </dependency>
+                <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+                <dependency>
+                    <groupId>io.appium</groupId>
+                    <artifactId>java-client</artifactId>
+                    <version>5.0.4</version>
+                </dependency>
+                <dependency>
+                    <groupId>net.sf.expectit</groupId>
+                    <artifactId>expectit-core</artifactId>
+                    <version>0.8.1</version>
+                    <scope>test</scope>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/org.json/json -->
+                <dependency>
+                    <groupId>org.json</groupId>
+                    <artifactId>json</artifactId>
+                    <version>20180130</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured -->
+                <dependency>
+                    <groupId>com.jayway.restassured</groupId>
+                    <artifactId>rest-assured</artifactId>
+                    <version>2.9.0</version>
+                    <scope>test</scope>
+                </dependency>
+
             </dependencies>
         </profile>
 
