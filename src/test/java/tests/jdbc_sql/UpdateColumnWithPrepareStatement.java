@@ -13,7 +13,7 @@ import java.util.Map;
 public class UpdateColumnWithPrepareStatement {
     public static void main(String[] args) throws SQLException {
         String hostName = "localhost";
-        String dbName   = "test";
+        String dbName   = "HelloController";
         String userName = "root";
         String password = "root";
 
@@ -28,7 +28,7 @@ public class UpdateColumnWithPrepareStatement {
 
 
         // SQL query
-        updateCoffeeSales(con, "test", salesForWeek);
+        updateCoffeeSales(con, "HelloController", salesForWeek);
 
     }
 

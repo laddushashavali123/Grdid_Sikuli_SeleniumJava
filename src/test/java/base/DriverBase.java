@@ -40,7 +40,7 @@ public class DriverBase {
 
 	
 	/**
-	  * Uses the getDriver() method  on the WebDriverThread object to pass each test a WebDriver instance it can use
+	  * Uses the getDriver() method  on the WebDriverThread object to pass each HelloController a WebDriver instance it can use
 	  * @return browser Desired Capabilities which defined in WebDriverThread.java
 	  * @throws Exception
 	  */
@@ -49,7 +49,7 @@ public class DriverBase {
 	 }
 
 	 /**
-	  * Automatic clear browser cookies after complete each test so no need to close browser for next test. 
+	  * Automatic clear browser cookies after complete each HelloController so no need to close browser for next HelloController.
 	  * @throws Exception
 	  */
 	 @AfterMethod
@@ -61,7 +61,7 @@ public class DriverBase {
 
 	 
 	 /**
-	  * Automatically destroy the driver instance in each thread (close all browsers) after running all test 
+	  * Automatically destroy the driver instance in each thread (close all browsers) after running all HelloController
 	  * @throws Exception
 	  */
 	 @AfterSuite

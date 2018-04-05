@@ -23,7 +23,7 @@ public class ClickToCall extends DriverBase {
     public void install() throws Exception {
         WebDriver driver = getDriver();
         driver.get("https://chrome.google.com/webstore/detail/click-to-call/djmahmfbjmiaepjbjkoekidjfcgbcfhc");
-        By button = By.className("webstore-test-button-label");
+        By button = By.className("webstore-HelloController-button-label");
         WebUtils.clickWhenReady(button,5);
         Thread.sleep(8000);
         WebUtils.pressKeyboard(KeyEvent.VK_TAB);

@@ -17,7 +17,7 @@ public class TablePaginationPage {
 
     // Method
     public TablePaginationPage goToPaginationPage() throws InterruptedException {
-        driver.get("http://www.seleniumeasy.com/test/table-pagination-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/table-pagination-demo.html");
         driver.manage().window().maximize();
         return this;
     }

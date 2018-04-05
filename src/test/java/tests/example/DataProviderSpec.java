@@ -36,7 +36,7 @@ public class DataProviderSpec extends DriverBase{
 
     /**
      * TestNG Data provider example
-     * @Parameters annotation is easy but to test with multiple sets of data we need to use Data Provider.
+     * @Parameters annotation is easy but to HelloController with multiple sets of data we need to use Data Provider.
      * @throws InterruptedException
      */
     /*@DataProvider(name="whateverNameYouWant")
@@ -72,7 +72,7 @@ public class DataProviderSpec extends DriverBase{
      */
     @DataProvider(name="fromExcelFile")
     public Object[][] getDataFromDataprovider() throws IOException {
-        String fileLocation = System.getProperty("user.dir")+ "\\src\\test\\java\\testsdata\\data.xlsx";
+        String fileLocation = System.getProperty("user.dir")+ "\\src\\HelloController\\java\\testsdata\\data.xlsx";
         Object[][] arrayObject = ExcelUtils.getExcelDataToDataProvider(fileLocation,"Sheet1");
         return arrayObject;
     }

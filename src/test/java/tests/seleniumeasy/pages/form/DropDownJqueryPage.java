@@ -23,7 +23,7 @@ public class DropDownJqueryPage {
 
     // Action
     public DropDownJqueryPage goJqueryDropDown() {
-        driver.get("http://www.seleniumeasy.com/test/jquery-dropdown-search-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/jquery-dropdown-search-demo.html");
         driver.manage().window().maximize();
         return this;
     }

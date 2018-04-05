@@ -24,7 +24,7 @@ public class RadioButtonPage {
 
     // Action
     public RadioButtonPage goRadioButton() {
-        driver.get("http://www.seleniumeasy.com/test/basic-radiobutton-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/basic-radiobutton-demo.html");
         driver.manage().window().maximize();
         return this;
     }

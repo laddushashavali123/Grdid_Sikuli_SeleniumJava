@@ -12,33 +12,37 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Default Configurable Variable. -->
+        <!-- Selenium profile Parameter -->
         <default.suiteName>chrome_local</default.suiteName>
         <retryFailed>0</retryFailed>
 
-        <!-- Default variable for maven download binary plugin -->
-        <!--<webdriver.chrome.driver>${project.basedir}/resources/drivers/binaries/windows/googlechrome/64bit/chromedriver.exe</webdriver.chrome.driver>
-        <webdriver.firefox.driver>${project.basedir}/resources/drivers/binaries/windows/marionette/64bit/geckodriver.exe</webdriver.firefox.driver>
-        <webdriver.ie.driver/>
-        <webdriver.opera.driver/>-->
-
-        <!-- Dependency versions for quickly update -->
-        <selinium.version>3.7.1</selinium.version>
-        <testNG.version>6.11</testNG.version>
-
-        <!-- Plug-in version for quickly update -->
-        <maven.failsafe.plugin.version>2.20.1</maven.failsafe.plugin.version>
-        <logback.classic.version>1.0.13</logback.classic.version>
-        <sikuliX.version>1.1.1</sikuliX.version>
-        <apache.POI.OOXML.version>3.17</apache.POI.OOXML.version>
-
-        <!-- jMeter Parameter -->
+        <!-- jMeter Profile Parameter -->
         <jmeter.maven.plugin.version>2.7.0</jmeter.maven.plugin.version>
         <jmeter.analysis.maven.plugin.version>1.0.6</jmeter.analysis.maven.plugin.version>
         <jmeter.test.directory>${project.basedir}\src\test\jmeter\</jmeter.test.directory>
         <test.duration>30</test.duration>
         <test.threads>10</test.threads>
+
+        <!-- Spring profile Parameter -->
+        <java.version>1.8</java.version>
+
+        <!-- Dependency versions for quickly update -->
+        <selinium.version>3.7.1</selinium.version>
+        <testNG.version>6.11</testNG.version>
+        <maven.failsafe.plugin.version>2.20.1</maven.failsafe.plugin.version>
+        <logback.classic.version>1.2.3</logback.classic.version>
+        <sikuliX.version>1.1.1</sikuliX.version>
+        <apache.POI.OOXML.version>3.17</apache.POI.OOXML.version>
+        <mysql-connector-java>8.0.9-rc</mysql-connector-java>
+        <appium.version>5.0.4</appium.version>
+
     </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.RELEASE</version>
+    </parent>
 
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
          turn them in a separate UI block of tests on our continuous integration server. A profile called selenium is
@@ -146,66 +150,6 @@
                     </plugin>
                 </plugins>
             </build>
-
-            <dependencies>
-                <dependency>
-                    <groupId>org.testng</groupId>
-                    <artifactId>testng</artifactId>
-                    <version>${testNG.version}</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-server</artifactId>
-                    <version>${selinium.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                    <version>${logback.classic.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>com.sikulix</groupId>
-                    <artifactId>sikulixapi</artifactId>
-                    <version>${sikuliX.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.poi</groupId>
-                    <artifactId>poi-ooxml</artifactId>
-                    <version>${apache.POI.OOXML.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <version>8.0.9-rc</version>
-                </dependency>
-                <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
-                <dependency>
-                    <groupId>io.appium</groupId>
-                    <artifactId>java-client</artifactId>
-                    <version>5.0.4</version>
-                </dependency>
-                <dependency>
-                    <groupId>net.sf.expectit</groupId>
-                    <artifactId>expectit-core</artifactId>
-                    <version>0.8.1</version>
-                    <scope>test</scope>
-                </dependency>
-                <!-- https://mvnrepository.com/artifact/org.json/json -->
-                <dependency>
-                    <groupId>org.json</groupId>
-                    <artifactId>json</artifactId>
-                    <version>20180130</version>
-                </dependency>
-                <!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured -->
-                <dependency>
-                    <groupId>com.jayway.restassured</groupId>
-                    <artifactId>rest-assured</artifactId>
-                    <version>2.9.0</version>
-                    <scope>test</scope>
-                </dependency>
-
-            </dependencies>
         </profile>
 
         <profile>
@@ -239,43 +183,90 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
 
-            <dependencies>
-                <dependency>
-                    <groupId>org.testng</groupId>
-                    <artifactId>testng</artifactId>
-                    <version>${testNG.version}</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-server</artifactId>
-                    <version>${selinium.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                    <version>${logback.classic.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>com.sikulix</groupId>
-                    <artifactId>sikulixapi</artifactId>
-                    <version>${sikuliX.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.poi</groupId>
-                    <artifactId>poi-ooxml</artifactId>
-                    <version>${apache.POI.OOXML.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <version>8.0.9-rc</version>
-                </dependency>
-            </dependencies>
+        <profile>
+            <id>spring</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>2.0.0.RELEASE</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testNG.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selinium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.classic.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sikulix</groupId>
+            <artifactId>sikulixapi</artifactId>
+            <version>${sikuliX.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache.POI.OOXML.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.expectit</groupId>
+            <artifactId>expectit-core</artifactId>
+            <version>0.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured -->
+        <dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>2.9.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

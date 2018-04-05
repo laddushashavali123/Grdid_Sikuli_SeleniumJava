@@ -22,7 +22,7 @@ public class ShortestWord {
     @Test
     public void findShort() throws Exception {
         assertEquals(3, findShort("bitcoin take over the world maybe who knows perhaps"));
-        assertEquals(3, findShort("turns out random test cases are easier than writing out basic ones"));
+        assertEquals(3, findShort("turns out random HelloController cases are easier than writing out basic ones"));
     }
 
 }

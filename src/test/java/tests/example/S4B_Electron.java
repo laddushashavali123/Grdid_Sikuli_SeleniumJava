@@ -14,7 +14,7 @@ import java.net.URL;
 public class S4B_Electron {
 	@Test
 	public void login() throws Exception {
-		//System.setProperty("webdriver.chrome.driver", "E:\\zDung\\eclipse\\workspace\\test\\src\\test\\resources\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "E:\\zDung\\eclipse\\workspace\\HelloController\\src\\HelloController\\resources\\chromedriver.exe");
 		String S4BLocation = "C:\\Users\\test1\\AppData\\Local\\Programs\\1RTC_Client_for_Skype_for_Business_SV_KBSUCC_Skype2015\\RTC Client for Skype for Business - SV KBSUCC Skype2015.exe";
 		// C:\Users\test1\AppData\Local\Programs\1RTC_Client_for_Skype_for_Business_SV_KBSUCC_Skype2015\RTC Client for Skype for Business - SV KBSUCC Skype2015.exe
 

@@ -19,7 +19,7 @@ public class FormAjaxPage {
 
     // Method
     public FormAjaxPage goAjaxForm() {
-        driver.get("http://www.seleniumeasy.com/test/ajax-form-submit-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/ajax-form-submit-demo.html");
         driver.manage().window().maximize();
         return this;
     }

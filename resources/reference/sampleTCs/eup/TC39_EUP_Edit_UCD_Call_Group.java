@@ -42,7 +42,7 @@ public class TC39_EUP_Edit_UCD_Call_Group extends DriverFactory {
 		loginPortal.Login(portal_user, portal_password, portal_url);
 		
 		//Add Call Answer Group
-		logger.info("------------------------Add Call Answer Group on Portal before starting this test case------------------------");
+		logger.info("------------------------Add Call Answer Group on Portal before starting this HelloController case------------------------");
 		
 		MenuAfterChoseCustomer menuAfter = new MenuAfterChoseCustomer(driver, timeout);
 		logger.info("Portal - Click 'Provision' Then Choose 'Subscribers'");
@@ -322,7 +322,7 @@ public class TC39_EUP_Edit_UCD_Call_Group extends DriverFactory {
 		}
 		
 		//Delete Call Answer Group on Portal
-		logger.info("------------------------Delete Call Answer Group on Portal before completing this test case------------------------");
+		logger.info("------------------------Delete Call Answer Group on Portal before completing this HelloController case------------------------");
 		logger.info("Launch Portal '" + portal_url + "'");
 		driver.get(portal_url);
 

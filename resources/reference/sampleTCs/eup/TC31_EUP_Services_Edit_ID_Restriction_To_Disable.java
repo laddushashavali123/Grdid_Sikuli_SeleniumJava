@@ -45,7 +45,7 @@ public class TC31_EUP_Services_Edit_ID_Restriction_To_Disable extends DriverFact
 		logger.info("'ID Restriction' is currently set as '" + currentIDRestriction + "'");
 		
 		if ( currentIDRestriction.equals("Disabled") ) {
-			logger.info("Set 'ID Restriction' as 'Enabled' before running test case 'Edit ID Restriction to disable'");
+			logger.info("Set 'ID Restriction' as 'Enabled' before running HelloController case 'Edit ID Restriction to disable'");
 			serviceT.selectIDRestriction("Enabled");
 			logger.info("Set 'Auto Retrieve' as 'Disabled'");
 			serviceT.selectAutoRetrieve("Disabled");

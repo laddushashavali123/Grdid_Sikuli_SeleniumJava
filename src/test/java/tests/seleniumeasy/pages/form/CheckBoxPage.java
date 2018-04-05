@@ -27,7 +27,7 @@ public class CheckBoxPage {
 
     // Action
     public CheckBoxPage goCheckBox() {
-        driver.get("http://www.seleniumeasy.com/test/basic-checkbox-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/basic-checkbox-demo.html");
         driver.manage().window().maximize();
         return this;
     }

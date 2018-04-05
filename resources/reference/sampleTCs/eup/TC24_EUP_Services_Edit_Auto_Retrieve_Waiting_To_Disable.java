@@ -48,7 +48,7 @@ public class TC24_EUP_Services_Edit_Auto_Retrieve_Waiting_To_Disable extends Dri
 		if ( currentAutoRetrieve.equals("Disabled") ) {
 			logger.info("Set 'ID Restriction' as 'Disabled'");
 			serviceT.selectIDRestriction("Disabled");
-			logger.info("Set 'Auto Retrieve' as 'Enabled' before running test case 'Edit ID auto retrieve waiting to disable'");
+			logger.info("Set 'Auto Retrieve' as 'Enabled' before running HelloController case 'Edit ID auto retrieve waiting to disable'");
 			serviceT.selectAutoRetrieve("Enabled");
 			logger.info("Set 'Auto Retrieve Timer' as '150'");
 			serviceT.setAutoRetrieveTimer("150");

@@ -20,7 +20,7 @@ public class FormInputPage {
 
     // Method
     public FormInputPage goInputForm() {
-        driver.get("http://www.seleniumeasy.com/test/input-form-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/input-form-demo.html");
         driver.manage().window().maximize();
         return this;
     }

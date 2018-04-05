@@ -30,7 +30,7 @@ public class DropDownSelectPage {
 
     // Action
     public DropDownSelectPage goSelectDropDown() throws AWTException {
-        driver.get("http://www.seleniumeasy.com/test/basic-select-dropdown-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/basic-select-dropdown-demo.html");
         driver.manage().window().maximize();
         Robot rb = new Robot();
         rb.keyPress(KeyEvent.VK_PAGE_DOWN);

@@ -20,7 +20,7 @@ public class TableFilterPage {
 
     // Method
     public TableFilterPage goTableFilterPage(){
-        driver.get("http://www.seleniumeasy.com/test/table-records-filter-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/table-records-filter-demo.html");
         driver.manage().window().maximize();
         return this;
     }

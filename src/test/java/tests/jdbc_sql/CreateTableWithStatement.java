@@ -8,7 +8,7 @@ import java.sql.*;
 public class CreateTableWithStatement {
     public static void main(String[] args) throws SQLException {
         String hostName = "localhost";
-        String dbName   = "test";
+        String dbName   = "HelloController";
         String userName = "root";
         String password = "root";
 

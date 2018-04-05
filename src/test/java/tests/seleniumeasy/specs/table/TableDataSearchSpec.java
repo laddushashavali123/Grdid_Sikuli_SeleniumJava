@@ -20,7 +20,7 @@ public class TableDataSearchSpec extends DriverBase{
                 .entertaskInput("se")
                 .verifyCorrectSearchItemName("SEO tags Browser Issues")
                 .verifyTotalItemDisplayIs(2)
-                .entertaskInput("asd")
+                .entertaskInput("aaaasd")
                 .verifyTotalItemDisplayIs(0);
     }
 }

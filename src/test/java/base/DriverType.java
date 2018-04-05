@@ -82,7 +82,7 @@ public class DriverType {
 			capabilities = DesiredCapabilities.safari();
 		    capabilities.setCapability("safari.cleanSession", true);
 		}
-		// can use this for test COC COC browser
+		// can use this for HelloController COC COC browser
 		else if (browser.equalsIgnoreCase("electron")){
 			String S4BLocation = "C:\\Users\\test1\\AppData\\Local\\Programs\\RTC_Client_for_Skype_for_Business.S4B2015UCCSV\\RTC Client for Skype for Business - S4B2015UCCSV.exe";
 			ChromeOptions options = new ChromeOptions();
@@ -101,7 +101,6 @@ public class DriverType {
 	 */
 	static WebDriver getLocalDriver(String browser, DesiredCapabilities capabilities) {
 		if (browser.equalsIgnoreCase("chrome")){
-			System.out.println(" Set chrome driver path to " + System.getProperty("webdriver.chrome.driver"));
 			System.setProperty("webdriver.chrome.driver", System.getProperty("webdriver.chrome.driver"));
 			ChromeOptions options = (ChromeOptions) new ChromeOptions().merge(capabilities);
 			return new ChromeDriver(options);
@@ -121,7 +120,6 @@ public class DriverType {
 			return new ChromeDriver(options);
 		}
 		else {
-			System.out.println(" Set chrome driver path to " + System.getProperty("firefox.driver.path"));
 			System.setProperty("webdriver.gecko.driver", System.getProperty("firefox.driver.path"));
 			FirefoxOptions options = new FirefoxOptions().merge(capabilities);
 			return new FirefoxDriver(options);

@@ -24,7 +24,7 @@ public class FormSimplePage {
 
     // Action
     public FormSimplePage goSimpleForm() {
-        driver.get("http://www.seleniumeasy.com/test/basic-first-form-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/basic-first-form-demo.html");
         driver.manage().window().maximize();
         return this;
     }

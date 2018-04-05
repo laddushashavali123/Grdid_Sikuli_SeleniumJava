@@ -531,8 +531,8 @@ public class EUP_Section {
 //		System.out.println("=============++++++" + elm.getText());
 //		return ((driver.findElements( By.xpath(xpath) ).size() != 0) && label.equals(elm.getText()));
 		List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'" + label + "')]"));
-//		Boolean test = list.size() > 0;
-//		System.out.println("=============++++++" + test);
+//		Boolean HelloController = list.size() > 0;
+//		System.out.println("=============++++++" + HelloController);
 		return ( list.size() > 0);
 	}
 	

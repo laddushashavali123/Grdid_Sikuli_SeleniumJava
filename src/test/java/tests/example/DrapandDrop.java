@@ -15,7 +15,7 @@ public class DrapandDrop extends DriverBase {
     @Test
     public void test() throws InterruptedException {
         WebDriver driver = getDriver();
-        driver.get("http://demo.guru99.com/test/drag_drop.html");
+        driver.get("http://demo.guru99.com/HelloController/drag_drop.html");
 
         By plus5000      = By.xpath("//*[@id='fourth']/a");
         By saleIcon      = By.xpath("//*[@id='credit1']/a");

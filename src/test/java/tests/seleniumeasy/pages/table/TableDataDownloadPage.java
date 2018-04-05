@@ -20,7 +20,7 @@ public class TableDataDownloadPage {
 
     // Action
     public TableDataDownloadPage goTableDataDownloadPage(){
-        driver.get("http://www.seleniumeasy.com/test/table-data-download-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/table-data-download-demo.html");
         driver.manage().window().maximize();
         return this;
     }

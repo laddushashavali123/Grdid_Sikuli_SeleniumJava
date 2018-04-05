@@ -14,13 +14,13 @@ public class Log_Report extends DriverBase {
     @Test
     public void test1() throws Exception {
         Thread.sleep(3000);
-        logger.info("This is test 1");
+        logger.info("This is HelloController 1");
     }
 
     @Test
     public void test3() throws Exception {
         Thread.sleep(2000);
-        logger.info("This is test 3");
+        logger.info("This is HelloController 3");
         Reporter.log("This is fucking log in report!!");
     }
 
@@ -29,7 +29,7 @@ public class Log_Report extends DriverBase {
     public void test2() throws Exception  {
         WebDriver driver = DriverBase.getDriver();
         Thread.sleep(1000);
-        logger.info("This is test 2");
+        logger.info("This is HelloController 2");
         Reporter.log("This is error:");
         try {
             driver.get("google.com");

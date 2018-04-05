@@ -46,7 +46,7 @@ public class TC25_EUP_Services_Edit_Auto_Retrieve_Waiting_To_Enable extends Driv
 		logger.info("'Auto Retrieve' is currently set as '" + currentAutoRetrieve + "'");
 		
 		if ( currentAutoRetrieve.equals("Enabled") ) {
-			logger.info("Set 'Auto Retrieve' as 'Disabled' before running test case 'Edit ID auto retrieve waiting to enabled'");
+			logger.info("Set 'Auto Retrieve' as 'Disabled' before running HelloController case 'Edit ID auto retrieve waiting to enabled'");
 			serviceT.selectAutoRetrieve("Disabled");
 			logger.info("Click 'SAVE SETTINGS' Button");
 			serviceT.clickSaveSettingsButton();

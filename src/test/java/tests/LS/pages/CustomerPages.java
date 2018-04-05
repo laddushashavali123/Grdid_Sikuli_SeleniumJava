@@ -69,13 +69,12 @@ public class CustomerPages {
         tabPosition.add(returnNewTabID(tabPosition, driver.getWindowHandles()));
         logger.info("Second tab ID is " + tabPosition.get(1));
 
-        driver.switchTo().window(tabPosition.get(1));
+        switchToTab(2);
         return this;
     }
 
-    public CustomerPages switchToTab(int i){
+    public void switchToTab(int i){
         driver.switchTo().window(tabPosition.get(i-1));
-        return this;
     }
 
 

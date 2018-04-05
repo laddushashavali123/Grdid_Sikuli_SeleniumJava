@@ -25,7 +25,7 @@ public class TableDataSearchPage {
 
     // Method
     public TableDataSearchPage goTableDataSearchPage(){
-        driver.get("http://www.seleniumeasy.com/test/table-search-filter-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/table-search-filter-demo.html");
         driver.manage().window().maximize();
         return this;
     }

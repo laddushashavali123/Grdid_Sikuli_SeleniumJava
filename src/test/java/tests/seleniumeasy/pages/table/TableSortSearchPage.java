@@ -22,7 +22,7 @@ public class TableSortSearchPage {
 
     // Action
     public TableSortSearchPage goTableSortSearchPage(){
-        driver.get("http://www.seleniumeasy.com/test/table-sort-search-demo.html");
+        driver.get("http://www.seleniumeasy.com/HelloController/table-sort-search-demo.html");
         driver.manage().window().maximize();
         return this;
     }

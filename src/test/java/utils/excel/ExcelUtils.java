@@ -154,7 +154,7 @@ public class ExcelUtils {
 
     @Test
     public void test() throws IOException {
-        String fileLocation = System.getProperty("user.dir")+ "\\src\\test\\java\\testsdata\\data.xlsx";
+        String fileLocation = System.getProperty("user.dir")+ "\\src\\HelloController\\java\\testsdata\\data.xlsx";
         System.out.println(fileLocation);
         getExcelDataToDataProvider(fileLocation,"Sheet1");
     }

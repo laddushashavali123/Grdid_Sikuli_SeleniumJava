@@ -5,6 +5,8 @@ import static com.jayway.restassured.RestAssured.given;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import com.jayway.restassured.builder.RequestSpecBuilder;
 import com.jayway.restassured.response.Response;
@@ -14,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 public class OpenJira {
 	public static final Logger logger = LoggerFactory.getLogger("OpenJira");
-	public static void RaiseJira(){
+	public static void RaiseJira() throws JSONException {
 		String workingDir = System.getProperty("user.dir");
 		//Read JSON file
 		JSONObject obj = new JSONObject();
