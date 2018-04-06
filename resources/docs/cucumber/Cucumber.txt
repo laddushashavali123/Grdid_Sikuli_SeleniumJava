@@ -1,6 +1,9 @@
 Ref:
-	- https://medium.com/coding-millennials/starting-with-bdd-for-collaborative-development-in-agile-environments-5fb034078b3c
-	- https://medium.com/agile-vision/cucumber-bdd-part-2-creating-a-sample-java-project-with-cucumber-testng-and-maven-127a1053c180
+	- https://github.com/cucumber/cucumber/wiki/Gherkin
+	- https://cucumber.io/docs/reference
+	- https://www.youtube.com/watch?v=WBk1tLjph-0&list=PL6tu16kXT9Pqr70SZlwcmTSAfOw_0Qj3R
+	- https://www.youtube.com/watch?v=TUX7ntXlVkc&list=PL6tu16kXT9PpteusHGISu_lHcV6MbBtA6
+	http://www.executeautomation.com/demosite/index.html?UserName=asd&Password=asd&Login=Login
 
 ========================================================================================================================
 	Overview:
@@ -16,64 +19,18 @@ Test types:
     a domain-specific language like Gherkin). BDD combines the principles of TDD and ATDD and forms an approach for
     building a shared understanding on what kind of software to build by discussing examples.
 
-BDD cycles consists:
-    - Identify business feature.
-    - Identify scenarios under the selected feature.
-    - Define steps for each scenario.
-    - Run feature and fail.
-    - Write code to make steps pass.
-    - Refactor code, Create reusable automation library.
-    - Run feature and pass.
-    - Generate test reports.
+Advantages of BDD: The biggest advantage of behavioral tests might be that they describe a set of functions that a user
+expects from a system in a very concrete and direct manner. The sum of these behaviors essentially document a contract
+with the user/client. If any of the tests fail, this contract is not upheld.
 
-Advantages of BDD:
-    - The biggest advantage of behavioral tests might be that they describe a set of functions that a user expects from
-    a system in a very concrete and direct manner. The sum of these behaviors essentially document a contract with the
-    user/client. If any of the tests fail, this contract is not upheld.
-
-BDD test steps:
-    1. Writing Features
-        - Features, scenarios, and steps together form Behavior tests. These tests are normally written in a business
-        readable, domain specific language (DSL). Gherkin is a popular language which is used for writing narrative user
-        stories.
-        - This step is the most important stage of BDD. Three amigos (business person, developer, tester) get together
-        and identify the expected behavior of our product by discussing examples.
-        - Example:
-            Feature: feature name
-              As a [role]
-              I want [feature]
-              So that [benefit/business reason]
-
-             Scenario: title
-              Given context
-              When event
-              Then outcome
-              And/But more of the same ...
-
-             Scenario Outline: title
-              Given .... <placeholder 1> .....
-              When .... <placeholder 2> ...
-              Then ... <placeholder 3> ...
-
-              Examples:
-                | placeholder 1 | placeholder 2 | placeholder 3 |
-                |  value        |   value       |  value        |
-                |  value        |   value       |  value        |
-
-    2. Creating Tests
-        - After business persons write the feature file, QA people start implementing the test suites. For writing BDD
-        tests, BDD Test Frameworks are used.
-        - Popular BDD Frameworks:
-              . Java: Cucumber, JBehave
-              . Ruby:Cucumber
-              . PHP: Behat
-              . JavaScript: cucumber.js, jasmine
-
-    3. Complete Test Cycle
-
+Popular BDD Frameworks:
+    - Java: Cucumber, JBehave
+    - Ruby:Cucumber
+    - PHP: Behat
+    - JavaScript: cucumber.js, jasmine
 
 ========================================================================================================================
-	Cucumber: BDD framework
+	Cucumber (BDD framework)
 ========================================================================================================================
 - Cucumber is first and foremost a collaboration tool that aims to bring a common understanding to software teams — across
 roles. BDD tools like Cucumber are made to drive the entire life cycle of software implementation in more collaborative
@@ -81,7 +38,7 @@ manner.
 - Cucumber features should drive the implementation, not reflect it. Cucumber is not a tool for testing software. It is
 a tool for testing people’s understanding of how software (yet to be written) should behave.
 
-1. Writing Features
+1. Analyze the Feature
     - Use Feature Mapping approach to effectively analyse and elaborate the product behavior:
         a. Define a feature or story, or pick one from the backlog
         b. Understand what actors are involved in the story
@@ -135,12 +92,33 @@ a tool for testing people’s understanding of how software (yet to be written) 
                   And I should see "Welcome to your profile" message
                   And I should see the "Log out" button
 
+2. Create Step Definitions for Cucumber
+    - Cucumber doesn't know how to execute your scenarios out-of-the-box. It needs Step Definitions to translate plain
+    text Gherkin steps into actions that will interact with the system.
 
-2. Create test script with Cucumber java and TestNG
-    - Add cucumber-java dependency to POM file
-    - Add Cucumber for Java IntelliJ IDEA plugin
-    - Project Directory Structure:
-        .
-    -
+    - When Cucumber executes a Step in a Scenario it will look for a matching Step Definition to execute.
 
+    - A Step Definition is a small piece of code with a pattern attached to it. The pattern is used to link the step
+    definition to all the matching Steps, and the code is what Cucumber will execute when it sees a Gherkin Step.
 
+    - To understand how Step Definitions work, consider the following Scenario:
+        Scenario: Some cukes
+          Given I have 20 pieces of candy
+    "I have 20 pieces of candy" statement of the step (the text following the Given keyword) will match the Step
+    Definition below in JAVA:
+        @Given("I have (\\+d) pieces of candy"
+        public void I_have_pieces_of_candy(int pieceNumber){    // pieceNumber = 20
+            System.out.println("I have " + pieceNumber + "pieces of candy"
+        }
+
+    - Cucumber does not differentiate between the five step keywords Given, When, Then, And and But.
+
+========================================================================================================================
+    Configure Cucumber with TestNG on InteliJ
+========================================================================================================================
+- Search and install "Cucumber for Java" plugin on File > Settings > Plugins for IntelliJ
+- Cucumber package structure:
+    cucumber
+        features (contains Gherkin feature file)
+        steps
+        runner

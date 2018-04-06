@@ -29,21 +29,14 @@
         <!-- Dependency versions for quickly update -->
         <selinium.version>3.7.1</selinium.version>
         <testNG.version>6.11</testNG.version>
-        <maven.failsafe.plugin.version>2.20.1</maven.failsafe.plugin.version>
+        <maven.surefire.plugin.version>2.20.1</maven.surefire.plugin.version>
         <logback.classic.version>1.2.3</logback.classic.version>
         <sikuliX.version>1.1.1</sikuliX.version>
         <apache.POI.OOXML.version>3.17</apache.POI.OOXML.version>
         <mysql-connector-java>8.0.9-rc</mysql-connector-java>
         <appium.version>5.0.4</appium.version>
         <cucumber.version>2.3.1</cucumber.version>
-
     </properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
-    </parent>
 
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
          turn them in a separate UI block of tests on our continuous integration server. A profile called selenium is
@@ -114,7 +107,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.20.1</version>
+                        <version>${maven.surefire.plugin.version}</version>
                         <configuration>
                             <!-- TestNG suite XML allows flexible configuration of the tests to be run on Jenkin -->
                             <suiteXmlFiles>
@@ -190,10 +183,10 @@
             <id>cucumber</id>
             <build>
                 <plugins>
-                    <plugin>
+                    <!--<plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
-                        <version>2.4</version>
+                        <version>3.0.2</version>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -204,11 +197,11 @@
                                 <suiteXmlFile>testng.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
-                    </plugin>
+                    </plugin>-->
                     <plugin>
                         <groupId>net.masterthought</groupId>
-                        <artifactId>maven-cucumber-reporting</artifactId>
-                        <version>3.8.0</version>
+                        <artifactId>cucumber-reporting</artifactId>
+                        <version>3.16.0</version>
                         <executions>
                             <execution>
                                 <id>execution</id>
@@ -229,34 +222,10 @@
                 </plugins>
             </build>
         </profile>
-
-        <profile>
-            <id>spring</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
     </profiles>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.0.0.RELEASE</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>-->
 
+    <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -322,7 +291,7 @@
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>3.8.0</version>
+            <version>3.16.0</version>
         </dependency>
     </dependencies>
 </project>

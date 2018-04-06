@@ -1,4 +1,4 @@
-package cucumber.stepdefs;
+package cucumber.steps;
 
 public class ServiceHooks {
 }
