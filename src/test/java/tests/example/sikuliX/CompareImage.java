@@ -16,7 +16,7 @@ public class CompareImage extends DriverBase {
         driver.manage().window().maximize();
 
         // Verify that logo is existed
-        Pattern checkedLogo = new Pattern(System.getProperty("user.dir") + "\\sikulix_img\\googlelogo.png");
+        Pattern checkedLogo = new Pattern(System.getProperty("user.dir") + "\\img\\sikulixDemo\\googlelogo.png");
         Screen screen = new Screen();
         try{
             double score = screen.find(checkedLogo).getScore();

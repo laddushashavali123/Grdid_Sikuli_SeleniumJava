@@ -1,0 +1,146 @@
+Ref:
+	- https://medium.com/coding-millennials/starting-with-bdd-for-collaborative-development-in-agile-environments-5fb034078b3c
+	- https://medium.com/agile-vision/cucumber-bdd-part-2-creating-a-sample-java-project-with-cucumber-testng-and-maven-127a1053c180
+
+========================================================================================================================
+	Overview:
+========================================================================================================================
+Test types:
+    - Test Driven Development (TDD) — Tests are written before code and passing the tests is the critical driver of
+    development.
+
+    - Acceptance Test Driven Development (ATDD) — Team members with different perspectives (customer, business analyst,
+    tester, developer) collaborate and write acceptance tests in advance of implementing the corresponding functionality.
+
+    - Behavior Driven Development (BDD) — Tests are written in a non-technical language that everyone can understand (ex:
+    a domain-specific language like Gherkin). BDD combines the principles of TDD and ATDD and forms an approach for
+    building a shared understanding on what kind of software to build by discussing examples.
+
+BDD cycles consists:
+    - Identify business feature.
+    - Identify scenarios under the selected feature.
+    - Define steps for each scenario.
+    - Run feature and fail.
+    - Write code to make steps pass.
+    - Refactor code, Create reusable automation library.
+    - Run feature and pass.
+    - Generate test reports.
+
+Advantages of BDD:
+    - The biggest advantage of behavioral tests might be that they describe a set of functions that a user expects from
+    a system in a very concrete and direct manner. The sum of these behaviors essentially document a contract with the
+    user/client. If any of the tests fail, this contract is not upheld.
+
+BDD test steps:
+    1. Writing Features
+        - Features, scenarios, and steps together form Behavior tests. These tests are normally written in a business
+        readable, domain specific language (DSL). Gherkin is a popular language which is used for writing narrative user
+        stories.
+        - This step is the most important stage of BDD. Three amigos (business person, developer, tester) get together
+        and identify the expected behavior of our product by discussing examples.
+        - Example:
+            Feature: feature name
+              As a [role]
+              I want [feature]
+              So that [benefit/business reason]
+
+             Scenario: title
+              Given context
+              When event
+              Then outcome
+              And/But more of the same ...
+
+             Scenario Outline: title
+              Given .... <placeholder 1> .....
+              When .... <placeholder 2> ...
+              Then ... <placeholder 3> ...
+
+              Examples:
+                | placeholder 1 | placeholder 2 | placeholder 3 |
+                |  value        |   value       |  value        |
+                |  value        |   value       |  value        |
+
+    2. Creating Tests
+        - After business persons write the feature file, QA people start implementing the test suites. For writing BDD
+        tests, BDD Test Frameworks are used.
+        - Popular BDD Frameworks:
+              . Java: Cucumber, JBehave
+              . Ruby:Cucumber
+              . PHP: Behat
+              . JavaScript: cucumber.js, jasmine
+
+    3. Complete Test Cycle
+
+
+========================================================================================================================
+	Cucumber: BDD framework
+========================================================================================================================
+- Cucumber is first and foremost a collaboration tool that aims to bring a common understanding to software teams — across
+roles. BDD tools like Cucumber are made to drive the entire life cycle of software implementation in more collaborative
+manner.
+- Cucumber features should drive the implementation, not reflect it. Cucumber is not a tool for testing software. It is
+a tool for testing people’s understanding of how software (yet to be written) should behave.
+
+1. Writing Features
+    - Use Feature Mapping approach to effectively analyse and elaborate the product behavior:
+        a. Define a feature or story, or pick one from the backlog
+        b. Understand what actors are involved in the story
+        c. Break the feature into tasks to identify the main flows
+        d. Identify examples that illustrate a principle or variant flow (Ask questions like: “But what if…”; “what else
+        could lead to this outcome”; “what other outcomes might happen”; and use the answers to create new examples)
+        e. Create Executable Specifications: automate the main high-level flows with pending steps.
+    - Example:
+        a. Writing a high level features and scenarios in a business readable grammar
+        b. In this case, there is only one actor  -  the employee:
+            Feature 1: Login Profile
+              As an employee of the company
+              I want to login my employee profile using my credentials
+              In order to collaborate with my colleagues
+            Feature 2: Update Profile
+              As an employee of the company
+              I want to be able to update my name, projects, email, and phone numbers on my profile
+              In order to share my contact information with my colleagues
+        c. Break feature into tasks and scenarios:
+            Feature 1: Login Profile
+                Scenario: Successful login
+                Scenario: Failed login using wrong credentials
+            Feature 2: Update Profile
+                Scenario: Update name
+                Scenario: Add new projects
+        d. To execute scenarios, we need to establish the steps and rules involved in each scenario:
+            Feature 1:
+                Background: User navigates to Company home page
+                Steps: 1) Go to company home page
+                       2) See login option (this is a consequence of above step)
+
+                Scenario: Successful login
+                Steps: 1) Enter correct credentials
+                       2) Login to account
+                       3) See welcome message (this is a consequence of above step)
+                Scenario: Failed login using wrong credentials
+                Steps: 1) Enter incorrect credentials
+                       2) Login to account
+                       3) See error message (this is a consequence of above step)
+        e. Convert above story-like scenarios to executable steps in Given/When/Then format of Gherkin language:
+            Feature 1:
+                Background: User navigates to Company home page
+                  Given I am on the "Company home" page on URL "www.mycomany.com"
+                  Then I should see "Log In as Employee" message
+
+                Scenario: Successful login
+                  When I fill in "Username" with "Test"
+                  And I fill in "Password" with "123"
+                  And I click on the "Log In" button
+                  Then I am on the "My profile" page on URL "www.mycompany.com/myprofile"
+                  And I should see "Welcome to your profile" message
+                  And I should see the "Log out" button
+
+
+2. Create test script with Cucumber java and TestNG
+    - Add cucumber-java dependency to POM file
+    - Add Cucumber for Java IntelliJ IDEA plugin
+    - Project Directory Structure:
+        .
+    -
+
+
