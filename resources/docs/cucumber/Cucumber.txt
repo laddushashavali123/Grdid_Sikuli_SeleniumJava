@@ -1,9 +1,9 @@
 Ref:
+	- https://www.guru99.com/using-cucumber-selenium.html
 	- https://github.com/cucumber/cucumber/wiki/Gherkin
 	- https://cucumber.io/docs/reference
 	- https://www.youtube.com/watch?v=WBk1tLjph-0&list=PL6tu16kXT9Pqr70SZlwcmTSAfOw_0Qj3R
 	- https://www.youtube.com/watch?v=TUX7ntXlVkc&list=PL6tu16kXT9PpteusHGISu_lHcV6MbBtA6
-	http://www.executeautomation.com/demosite/index.html?UserName=asd&Password=asd&Login=Login
 
 ========================================================================================================================
 	Overview:
@@ -113,12 +113,22 @@ a tool for testing people’s understanding of how software (yet to be written) 
 
     - Cucumber does not differentiate between the five step keywords Given, When, Then, And and But.
 
+3. Hook annotation (it same as before annotation of testNG)
+
+
+
 ========================================================================================================================
-    Configure Cucumber with TestNG on InteliJ
+    Cucumber with Selenium and TestNG
 ========================================================================================================================
 - Search and install "Cucumber for Java" plugin on File > Settings > Plugins for IntelliJ
 - Cucumber package structure:
     cucumber
-        features (contains Gherkin feature file)
-        steps
-        runner
+        features    (contains Gherkin feature file)
+        steps       (contain mapping actual code with steps on feature file)
+        runner      (use to run cucumber with testNG)
+- Step:
+    1. Write Gherkin feature file
+    2. Write steps file which extend our base class which map which step in feature file
+    3. Using @CucumberOptions() annotation to map step in steps file and Gherkin feature file in test runner class:
+        @CucumberOptions() annotation: is used to set some properties for our cucumber test like feature file, step
+        definition, etc.
