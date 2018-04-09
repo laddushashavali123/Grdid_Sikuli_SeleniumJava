@@ -42,18 +42,20 @@ public class DriverBase {
 	/**
 	  * Uses the getDriver() method  on the WebDriverThread object to pass each HelloController a WebDriver instance it can use
 	  * @return browser Desired Capabilities which defined in WebDriverThread.java
-	  * @throws Exception
 	  */
 	 public static WebDriver getDriver()  {
-		return driverThread.get();
+		if (driverThread.get() == null){
+			System.out.println("!!! WebDriver is not established !!!");
+			throw new NullPointerException();
+		}
+	 	return driverThread.get();
 	 }
 
 	 /**
 	  * Automatic clear browser cookies after complete each HelloController so no need to close browser for next HelloController.
-	  * @throws Exception
 	  */
 	 @AfterMethod
-	 public static void clearCookies() throws Exception { 
+	 public static void clearCookies(){
 		 getDriver().manage().deleteAllCookies();
 		 // deleteAllCookies is not working with Safari Driver
 		 // workaround solution: https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/5212
@@ -62,10 +64,9 @@ public class DriverBase {
 	 
 	 /**
 	  * Automatically destroy the driver instance in each thread (close all browsers) after running all HelloController
-	  * @throws Exception
 	  */
 	 @AfterSuite
-	 public static void quitDriver() throws Exception {
+	 public static void quitDriver() {
 		for (WebDriver driver : driverThreadPool) {
 			if (driver != null) {
 				driver.close();

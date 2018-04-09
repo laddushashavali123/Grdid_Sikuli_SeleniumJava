@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -17,27 +18,20 @@ public class StepDefinitions extends DriverBase {
     final Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
     WebDriver driver;
 
-    @Before
-    public void beforeScenario() throws Exception {
-        driver = getDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver.manage().window().maximize();
-    }
-
-
     @Given("^I am on the Login page on URL \"([^\"]*)\"$")
-    public void iAmOnTheLoginPageOnURL(String arg0) throws Throwable {
+    public void iAmOnTheLoginPageOnURL(String arg0){
+        this.driver = getDriver();
         driver.get(arg0);
     }
 
     @When("^I fill in \"([^\"]*)\" with \"([^\"]*)\"$")
-    public void i_fill_in_with(String arg1, String arg2) throws Throwable {
+    public void i_fill_in_with(String arg1, String arg2){
         driver.findElement(By.xpath("//*[contains(text(),'" + arg1 + "')]/input")).sendKeys(arg2);
 
     }
 
     @When("^I click on the \"([^\"]*)\" button$")
-    public void i_click_on_the_button(String arg1) throws Throwable {
+    public void i_click_on_the_button(String arg1){
         driver.findElement(By.xpath("//input[@name='" + arg1 + "']")).click();
 
     }
