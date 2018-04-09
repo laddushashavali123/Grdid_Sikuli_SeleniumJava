@@ -8,6 +8,7 @@
     <artifactId>myAuto</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Default value for a variable -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -23,9 +24,6 @@
         <test.duration>30</test.duration>
         <test.threads>10</test.threads>
 
-        <!-- Spring profile Parameter -->
-        <java.version>1.8</java.version>
-
         <!-- Dependency versions for quickly update -->
         <selinium.version>3.7.1</selinium.version>
         <testNG.version>6.11</testNG.version>
@@ -35,7 +33,7 @@
         <apache.POI.OOXML.version>3.17</apache.POI.OOXML.version>
         <mysql-connector-java>8.0.9-rc</mysql-connector-java>
         <appium.version>5.0.4</appium.version>
-        <cucumber.version>2.3.1</cucumber.version>
+        <cucumber.version>1.2.5</cucumber.version>
     </properties>
 
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
@@ -93,6 +91,7 @@
                             <suiteXmlFiles>
                                 <suiteXmlFile>suites/${suite}.xml</suiteXmlFile>
                             </suiteXmlFiles>
+                            <!-- Global variables which can change via maven command line, class ca also get this value -->
                             <systemPropertyVariables>
                                 <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
                                 <logback.configurationFile>${project.basedir}\logback.xml</logback.configurationFile>
@@ -112,7 +111,7 @@
                         </executions>
                     </plugin>
 
-                    <!-- Config for Java 9 -->
+                    <!-- Set compile Java SDK to Java 8 if PC has a lot of Java version -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
@@ -172,24 +171,71 @@
                             <target>1.8</target>
                         </configuration>
                     </plugin>
-                    <!--<plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-resources-plugin</artifactId>
-                        <version>2.4</version>
-                    </plugin>-->
+
+                    <plugin>
+                        <groupId>com.lazerycode.selenium</groupId>
+                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                        <version>1.0.17</version>
+                        <configuration>
+                            <!-- root directory that downloaded driver binaries will be stored in -->
+                            <rootStandaloneServerDirectory>${project.basedir}/resources/drivers/binaries</rootStandaloneServerDirectory>
+                            <!-- Where you want to store downloaded zip files -->
+                            <downloadedZipFileDirectory>${project.basedir}/resources/drivers/zips</downloadedZipFileDirectory>
+                            <!-- Location of a custom repository map -->
+                            <customRepositoryMap>${project.basedir}/resources/drivers/RepositoryMap.xml</customRepositoryMap>
+                            <!-- This will ensure that the plugin only downloads binaries for the current OS, this will
+                            override anything specified in the <operatingSystems> configuration -->
+                            <onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
+                            <!-- Download 32bit binaries -->
+                            <thirtyTwoBitBinaries>false</thirtyTwoBitBinaries>
+                            <!-- Download 64bit binaries -->
+                            <sixtyFourBitBinaries>true</sixtyFourBitBinaries>
+                            <!-- If set to false will download every version available -->
+                            <onlyGetLatestVersions>true</onlyGetLatestVersions>
+                            <!-- Overwrite any existing binaries that have been downloaded and extracted -->
+                            <overwriteFilesThatExist>true</overwriteFilesThatExist>
+                            <!-- Number of times to attempt to download each file -->
+                            <fileDownloadRetryAttempts>2</fileDownloadRetryAttempts>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>selenium</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.14.1</version>
+                        <version>${maven.surefire.plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>testng.xml</suiteXmlFile>
+                                <suiteXmlFile>suites/cucumber.xml</suiteXmlFile>
                             </suiteXmlFiles>
+                            <systemPropertyVariables>
+                                <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
+                                <logback.configurationFile>${project.basedir}\logback.xml</logback.configurationFile>
+                                <retryFailed>${retryFailed}</retryFailed>
+                                <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+                                <webdriver.firefox.driver>${webdriver.firefox.driver}</webdriver.firefox.driver>
+                                <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
+                                <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
+                            </systemPropertyVariables>
                         </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
-                    <plugin>
+
+                    <!--<plugin>
                         <groupId>net.masterthought</groupId>
-                        <artifactId>maven-cucumber-reporting</artifactId>
+                        <artifactId>cucumber-reporting</artifactId>
                         <version>3.8.0</version>
                         <executions>
                             <execution>
@@ -199,7 +245,7 @@
                                     <goal>generate</goal>
                                 </goals>
                                 <configuration>
-                                    <projectName>MyProjectName</projectName>  <!-- Replace with project name -->
+                                    <projectName>MyProjectName</projectName>  &lt;!&ndash; Replace with project name &ndash;&gt;
                                     <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
                                     <cucumberOutput>target/cucumber-reports/json-reports</cucumberOutput>
                                     <buildNumber>1</buildNumber>
@@ -207,7 +253,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
                 </plugins>
             </build>
         </profile>
@@ -273,9 +319,10 @@
         </dependency>
         <!-- Cucumber dependency -->
         <dependency>
-            <groupId>io.cucumber</groupId>
+            <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
+            <version>1.2.5</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.masterthought</groupId>

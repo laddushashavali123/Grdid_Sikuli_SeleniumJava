@@ -19,7 +19,7 @@
 	<parameter name="browserVersion" value=""/>			
 
 
-    <test name="Test" annotations="JDK" preserve-order="true">
+    <test name="Test">
         <classes>
             <class name="cucumber.TestRunner" />
         </classes>

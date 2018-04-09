@@ -1,44 +1,25 @@
 package cucumber;
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.testng.CucumberFeatureWrapper;
-import cucumber.api.testng.TestNGCucumberRunner;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(
-    features = "src/test/java/cucumber/features",
-    glue = {"cucumber/steps"},
-    tags = {"~@Ignore"},
-    format = {
-        "pretty",
-        "html:target/cucumber-reports/cucumber-pretty",
-        "json:target/cucumber-reports/CucumberTestReport.json",
-        "rerun:target/cucumber-reports/rerun.txt"
-})
-public class TestRunner {
-    private TestNGCucumberRunner testNGCucumberRunner;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUpClass() throws Exception {
-        testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-    }
-
-    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
-    public void feature(CucumberFeatureWrapper cucumberFeature) {
-        testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
-    }
-
-    @DataProvider
-    public Object[][] features() {
-        return testNGCucumberRunner.provideFeatures();
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDownClass() throws Exception {
-        testNGCucumberRunner.finish();
-    }
+        // Indicat the location folder of feature file
+        features = "src/test/java/cucumber/features",
+        // Indicate the location folder of steps file
+        glue = {"cucumber/steps"},
+        // The tags can be used when specifying what tests to run through any of the running mechanism.
+        // Run multiple feature with specific tags, tags ={“@SoapUI","@Functional"},...
+        // Run @SoapUI tag feature and does not run feature with @Functional tag, tags ={“@SoapUI","~@Functional"},...
+        tags = {"~@Ignore"}
+        // Plugin option is used to specify different formatting options for the output reports.
+        /*plugin = {
+                "pretty",
+                "html:target/cucumber-reports/cucumber-pretty",
+                "json:target/cucumber-reports/json-reports/CucumberTestReport.json",
+                "rerun:target/cucumber-reports/rerun-reports/rerun.txt"
+        }*/
+)
+public class TestRunner extends AbstractTestNGCucumberTests {
 }
 

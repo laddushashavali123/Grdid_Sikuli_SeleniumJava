@@ -1,39 +1,52 @@
 package cucumber.steps;
 
-import cucumber.api.PendingException;
+import base.DriverBase;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 
-public class StepDefinitions {
-    @Given("^I am on the \"([^\"]*)\" page on URL \"([^\"]*)\"$")
-    public void i_am_on_the_page_on_URL(String arg1, String arg2) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+import java.util.concurrent.TimeUnit;
+
+public class StepDefinitions extends DriverBase {
+    final Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
+    WebDriver driver;
+
+    @Before
+    public void beforeScenario() throws Exception {
+        driver = getDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().window().maximize();
+    }
+
+
+    @Given("^I am on the Login page on URL \"([^\"]*)\"$")
+    public void iAmOnTheLoginPageOnURL(String arg0) throws Throwable {
+        driver.get(arg0);
     }
 
     @When("^I fill in \"([^\"]*)\" with \"([^\"]*)\"$")
     public void i_fill_in_with(String arg1, String arg2) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        driver.findElement(By.xpath("//*[contains(text(),'" + arg1 + "')]/input")).sendKeys(arg2);
+
     }
 
     @When("^I click on the \"([^\"]*)\" button$")
     public void i_click_on_the_button(String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        driver.findElement(By.xpath("//input[@name='" + arg1 + "']")).click();
+
     }
 
     @Then("^I should see \"([^\"]*)\" message$")
     public void i_should_see_message(String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
+        String actualText = driver.findElement(By.xpath("//*[text()='" + arg1 + "']")).getText();
+        Assert.assertEquals(actualText, arg1);
+        logger.info("I saw " + arg1);
 
-    @Then("^I should see the \"([^\"]*)\" button$")
-    public void i_should_see_the_button(String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
     }
-
 }

@@ -1,9 +1,6 @@
 Ref:
 	- https://www.guru99.com/using-cucumber-selenium.html
-	- https://github.com/cucumber/cucumber/wiki/Gherkin
-	- https://cucumber.io/docs/reference
-	- https://www.youtube.com/watch?v=WBk1tLjph-0&list=PL6tu16kXT9Pqr70SZlwcmTSAfOw_0Qj3R
-	- https://www.youtube.com/watch?v=TUX7ntXlVkc&list=PL6tu16kXT9PpteusHGISu_lHcV6MbBtA6
+	- https://testingneeds.wordpress.com/2015/12/26/test-automation-with-cucumber-jvm/
 
 ========================================================================================================================
 	Overview:
