@@ -1,18 +1,14 @@
 package cucumber.steps;
 
 import base.DriverBase;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-
-import java.util.concurrent.TimeUnit;
 
 public class StepDefinitions extends DriverBase {
     final Logger logger = LoggerFactory.getLogger(StepDefinitions.class);
@@ -37,10 +33,11 @@ public class StepDefinitions extends DriverBase {
     }
 
     @Then("^I should see \"([^\"]*)\" message$")
-    public void i_should_see_message(String arg1) throws Throwable {
-        String actualText = driver.findElement(By.xpath("//*[text()='" + arg1 + "']")).getText();
+    public void i_should_see_message(String arg1) {
+        String actualText = driver.findElement(By.xpath("//h2[contains(text(),'" + arg1 + "')]")).getText();
+        logger.info("Actual text is " + actualText);
         Assert.assertEquals(actualText, arg1);
-        logger.info("I saw " + arg1);
+        logger.info("I saw correct text");
 
     }
 }

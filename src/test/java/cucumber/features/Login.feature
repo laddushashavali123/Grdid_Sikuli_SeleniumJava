@@ -1,4 +1,4 @@
-@LoginProfile
+@Login
 Feature: Login Profile
   As an employee of the company
   I want to login my employee profile using my credentials

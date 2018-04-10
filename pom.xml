@@ -36,6 +36,21 @@
         <cucumber.version>1.2.5</cucumber.version>
     </properties>
 
+    <!-- Set compile Java SDK to Java 8 if PC has a lot of Java version, and specific maven compiler plugin version -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <!-- Maven profile enable us to isolate our Selenium tests from the rest of the build if desired, so that we can
          turn them in a separate UI block of tests on our continuous integration server. A profile called selenium is
          created. If we want to run this in isolation we can now use the following command:
@@ -110,68 +125,15 @@
                             </execution>
                         </executions>
                     </plugin>
-
-                    <!-- Set compile Java SDK to Java 8 if PC has a lot of Java version -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                            <version>3.7.0</version>
-                        <configuration>
-                            <source>1.8</source>
-                            <target>1.8</target>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
 
-        <profile>
-            <id>jmeter</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.lazerycode.jmeter</groupId>
-                        <artifactId>jmeter-maven-plugin</artifactId>
-                        <version>${jmeter.maven.plugin.version}</version>
-                        <executions>
-                            <!-- Run JMeter tests -->
-                            <execution>
-                                <id>jmeter-tests</id>
-                                <goals>
-                                    <goal>jmeter</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <!-- Config for Java 9 -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.7.0</version>
-                        <configuration>
-                            <source>1.8</source>
-                            <target>1.8</target>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
 
         <profile>
             <id>cucumber</id>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.7.0</version>
-                        <configuration>
-                            <source>1.8</source>
-                            <target>1.8</target>
-                        </configuration>
-                    </plugin>
-
                     <plugin>
                         <groupId>com.lazerycode.selenium</groupId>
                         <artifactId>driver-binary-downloader-maven-plugin</artifactId>
@@ -233,10 +195,10 @@
                         </executions>
                     </plugin>
 
-                    <!--<plugin>
+                    <plugin>
                         <groupId>net.masterthought</groupId>
-                        <artifactId>cucumber-reporting</artifactId>
-                        <version>3.8.0</version>
+                        <artifactId>maven-cucumber-reporting</artifactId>
+                        <version>3.16.0</version>
                         <executions>
                             <execution>
                                 <id>execution</id>
@@ -245,15 +207,39 @@
                                     <goal>generate</goal>
                                 </goals>
                                 <configuration>
-                                    <projectName>MyProjectName</projectName>  &lt;!&ndash; Replace with project name &ndash;&gt;
-                                    <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
-                                    <cucumberOutput>target/cucumber-reports/json-reports</cucumberOutput>
-                                    <buildNumber>1</buildNumber>
+                                    <projectName>myAuto</projectName>  <!-- Replace with project name -->
+                                    <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+                                    <jsonFiles>
+                                        <!-- supports wildcard or name pattern -->
+                                        <param>${project.build.directory}\cucumber-reports\json-reports\CucumberTestReport.json</param>
+                                    </jsonFiles>
                                     <parallelTesting>false</parallelTesting>
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>-->
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>jmeter</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.lazerycode.jmeter</groupId>
+                        <artifactId>jmeter-maven-plugin</artifactId>
+                        <version>${jmeter.maven.plugin.version}</version>
+                        <executions>
+                            <!-- Run JMeter tests -->
+                            <execution>
+                                <id>jmeter-tests</id>
+                                <goals>
+                                    <goal>jmeter</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
