@@ -1,11 +1,23 @@
 package listeners;
 
+import base.DriverBase;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author MyPC
@@ -15,6 +27,10 @@ public class LogListener extends TestListenerAdapter {
     private static final Logger log = LoggerFactory.getLogger(LogListener.class);
     private static final String TEST_NAME = "testname";
 
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+    private Date date = new Date();
+    private String screenshotDirectory = System.getProperty("screenshotDirectory") + File.separator + dateFormat.format(date);
+
     @Override
     public void onTestStart(ITestResult tr)  {
         MDC.put(TEST_NAME, tr.getName());
@@ -23,12 +39,16 @@ public class LogListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult tr) {
+        String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_PASSED_" + tr.getName() + ".png";
+        takeScreenShot(screenshotAbsolutePath);
         log.info(tr.getMethod() + " is PASSED.");
         MDC.remove(TEST_NAME);
     }
 
     @Override
     public void onTestFailure(ITestResult tr) {
+        String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_FAILED_" + tr.getName() + ".png";
+        takeScreenShot(screenshotAbsolutePath);
         log.error(tr.getMethod() + " is FAILED.");
         MDC.remove(TEST_NAME);
     }
@@ -40,4 +60,49 @@ public class LogListener extends TestListenerAdapter {
     }
 
 
+
+    private boolean createFile(File screenshot) throws IOException {
+        boolean fileCreated = false;
+        if (screenshot.exists()) {
+            fileCreated = true;
+        }
+        else {
+            File parentDirectory = new File(screenshot.getParent());
+            if (parentDirectory.exists() || parentDirectory.mkdirs()) {
+                fileCreated = screenshot.createNewFile();
+            }
+        }
+        return fileCreated;
+    }
+
+    private void writeScreenshotToFile(WebDriver driver, File screenshot) throws IOException {
+        FileOutputStream screenshotStream = new
+                FileOutputStream(screenshot);
+        screenshotStream.write(((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES));
+        screenshotStream.close();
+    }
+
+    public void takeScreenShot(String savePath){
+        try {
+            WebDriver driver = DriverBase.getDriver();
+
+            File screenshot = new File(savePath);
+            if (createFile(screenshot)) {
+                try {
+                    writeScreenshotToFile(driver, screenshot);
+                }
+                catch (ClassCastException weNeedToAugmentOurDriverObject) {
+                    writeScreenshotToFile(new Augmenter().augment(driver), screenshot);
+                }
+                log.info("Written screenshot to " + screenshot);
+            }
+            else {
+                log.error("Unable to create " + screenshot);
+            }
+        }
+        catch (Exception ex) {
+            log.error("Unable to capture screenshot...");
+            ex.printStackTrace();
+        }
+    }
 }

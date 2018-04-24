@@ -108,7 +108,7 @@
                             </suiteXmlFiles>
                             <!-- Global variables which can change via maven command line, class ca also get this value -->
                             <systemPropertyVariables>
-                                <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
+                                <screenshotDirectory>${project.basedir}\screenshoots</screenshotDirectory>
                                 <logback.configurationFile>${project.basedir}\logback.xml</logback.configurationFile>
                                 <retryFailed>${retryFailed}</retryFailed>
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
@@ -177,7 +177,7 @@
                                 <suiteXmlFile>suites/cucumber.xml</suiteXmlFile>
                             </suiteXmlFiles>
                             <systemPropertyVariables>
-                                <screenshotDirectory>${project.build.directory}\failedScreenshots</screenshotDirectory>
+                                <screenshotDirectory>${project.basedir}\screenshoots</screenshotDirectory>
                                 <logback.configurationFile>${project.basedir}\logback.xml</logback.configurationFile>
                                 <retryFailed>${retryFailed}</retryFailed>
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
@@ -211,7 +211,7 @@
                                     <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
                                     <jsonFiles>
                                         <!-- supports wildcard or name pattern -->
-                                        <param>${project.build.directory}\cucumber-reports\json-reports\CucumberTestReport.json</param>
+                                        <param>${project.build.directory}\cucumber-reports\json-reports\CucumberTestReport .json</param>
                                     </jsonFiles>
                                     <parallelTesting>false</parallelTesting>
                                 </configuration>

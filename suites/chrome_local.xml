@@ -3,11 +3,7 @@
 <!-- parallel: which type runs parallel (methods/classes/HelloController/instance)
 	 thread-count: is number of concurrent thread running -->
 <suite name="Suite" parallel="methods" thread-count="1">
-    <listeners>
-        <listener class-name="listeners.RetryListener"/>
-    </listeners>
-	
-	<!-- Supported browser: chrome, firefox, ie, safari -->
+ 	<!-- Supported browser: chrome, firefox, ie, safari -->
 	<parameter name="browserName" value="chrome"/>
 
 	<!-- Use grid: y or n -->

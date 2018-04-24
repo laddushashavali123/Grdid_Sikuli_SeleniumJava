@@ -8,14 +8,14 @@ import java.util.Collections;
 import java.util.List;
 
 import listeners.LogListener;
+import listeners.RetryListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 import org.testng.annotations.Listeners;
-import listeners.ScreenshotListener;
 
 
-@Listeners({ScreenshotListener.class, LogListener.class})
+@Listeners({LogListener.class, RetryListener.class})
 public class DriverBase {
 	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<WebDriver>();
 	private static List<WebDriver> driverThreadPool = Collections.synchronizedList(new ArrayList<WebDriver>());
