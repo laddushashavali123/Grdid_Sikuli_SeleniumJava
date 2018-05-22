@@ -19,8 +19,6 @@ Ref:
         - It depends on Test case scenario complexity and length. Sometimes just 1 or fewer test scenarios in a day when
         the complexity is high.
 
-    •
-
     •  What are the different types of automation frameworks?
         - Data Driven Testing Framework (can use DataProvider/Parameter of TestNG for this): the test data is separated
         and kept outside the Test Scripts, while Test Case logic resides in Test Scripts. Test data is read from the
@@ -55,6 +53,13 @@ Ref:
 		- Relative path starts with Double forward slash(//), which means the path start from the node of your choice
 		it doesn't need to start from the root node.
 
+	• How to find dynamic element?
+        - Use XPath axes: following, following-sibling, ancestor,
+        - Use Xpath with partial matching on Html attributes:
+            ^= as in input[id^='Tech'] means Starting with the given string.
+            $= as in input[id$='_Beamers'] means Ending with the given text.
+            *= as in Input[id*='techbeamers'] means Containing the given value.
+
 	• How many wait type in Selenium?
 	    - There is 3 type of wait:
 	        . Implicit Wait:Sets a timeout for all successive Web Element searches. For the specified amount of time it
@@ -62,13 +67,6 @@ Ref:
 	        to show up.
 	        . Explicit Wait: wait for a certain condition until timeout. It usually use with ExpectedCondition
 	        . FluentWait
-
-	• How to find dynamic element?
-	    - Use XPath axes: following, following-sibling, ancestor,
-	    - Use Xpath with partial matching on Html attributes:
-	        ^= as in input[id^='Tech'] means Starting with the given string.
-            $= as in input[id$='_Beamers'] means Ending with the given text.
-            *= as in Input[id*='techbeamers'] means Containing the given value.
 
     • Mention 5 different exceptions you had in Selenium web driver?
         - WebDriverException, NoAlertPresentException, NoSuchWindowException, NoSuchElementException, TimeoutException
@@ -172,6 +170,13 @@ hierarchies, modularity, reporting mechanism, test data injections etc. to pilla
 			    Float   - 7 digits (32 bit)
 			    Double  - 15-16 digits (64 bit)
 			    Decimal - 28-29 significant digits (128 bit)
+		• immutable (unchangeable) vs mutable object/variable?
+		    => immutable object (unchangeable object) is an object whose state cannot be modified after it is created
+		    We can use final keyword to create an immutable object/variable:
+		        - final variable: is the variable you cannot change the value
+		        - final method: cannot be overrided by subclasses.
+		        - final class: is the class cannot be inherit
+
 		• What is break and continue in java?
 			=> Break stop the loop immediately while continue do make the loop continue
 		• Lập trình hướng đối tượng là gì? Các đặc tính của nó?
@@ -235,3 +240,43 @@ hierarchies, modularity, reporting mechanism, test data injections etc. to pilla
 ========================================================================================================================
     SQL
 ========================================================================================================================
+1. SELECT:
+	- Show all column in table posts:
+	    SELECT * FROM posts
+	- Show id, title and body when slug equals post1
+	    SELECT id, title, body, slug FROM posts WHERE slug="post1"
+	- Show all column in table post when slug starts with post
+        SELECT * FROM posts WHERE slug LIKE "post%"
+	- Show all column in table post when slug end with 2
+        SELECT * FROM posts WHERE slug LIKE "%2"
+	- Show all column in table post when id is between 1 to 4
+        SELECT * FROM posts WHERE id IN (1,4)
+	- Show all column in table post when when slug equals post1 and post2
+        SELECT * FROM posts WHERE slug="post1" OR slug="post2"
+
+  2. SELECT within SELECT
+	- List all post which has category id bigger than category id of post id 1
+	    SELECT * FROM posts WHERE category_id > (SELECT category_id FROM posts WHERE id="1")
+
+  3. Aggregate function:
+	- Show the total post which has category_id is 1
+	    SELECT COUNT(id) AS TotalPost FROM posts WHERE category_id="1"
+	- Show the Maximun of category_id
+	    SELECT MAX(category_id) AS MaxCategoryID FROM posts
+	- Show the total post for each category_id
+	    SELECT category_id,COUNT(id) AS MaxPost FROM posts GROUP BY category_id ORDER BY category_id ASC
+	    SELECT category_id,COUNT(id) AS MaxPost FROM posts GROUP BY category_id ORDER BY category_id DESC
+	- Show the total post for each category_id when it is bigger than 1
+	    SELECT category_id, COUNT(id) AS TotalPost FROM posts GROUP BY category_id HAVING category_id>1
+
+  4. JOIN table:
+	- Show JOIN table comment body for each post
+	    // Only show post which has comment
+        SELECT * FROM posts JOIN comments ON (posts.id = comments.post_id)
+        // Show all record of left table if there no data for right table, it displays as NULL
+        SELECT * FROM posts LEFT JOIN comments ON (posts.id = comments.post_id)
+        // Show all record of right table if there no data for left table, it displays as NULL
+        SELECT * FROM posts LEFT JOIN comments ON (posts.id = comments.post_id)
+    - Show total comment for each post:
+        SELECT posts.id, posts.title, a.TotalComment FROM posts JOIN (SELECT comments.post_id, COUNT(comments.id) as
+        TotalComment FROM comments GROUP BY comments.post_id) AS a ON (posts.id = a.post_id)
