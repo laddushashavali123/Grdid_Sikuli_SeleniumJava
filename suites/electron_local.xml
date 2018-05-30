@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- parallel: which type runs parallel (methods/classes/HelloController/instance)
+	 thread-count: is number of concurrent thread running -->
+<suite name="Suite" parallel="methods" thread-count="1">
+ 	<!-- Supported browser: chrome, firefox, ie, safari -->
+	<parameter name="browserName" value="electron"/>
+
+	<!-- Use grid: y or n -->
+	<parameter name="remote" value="n"/>
+	<!-- URL of grid hub -->
+	<parameter name="gridURL" value=""/>
+	<!-- selected OS Flatform: https://github.com/SeleniumHQ/selenium/wiki/Grid-Platforms -->
+	<parameter name="desiredPlatform" value=""/>
+	<!-- selected browser version -->
+	<parameter name="browserVersion" value=""/>			
+
+
+    <test name="Test">
+        <classes>
+            <class name="tests.example.S4B_Electron" />
+            <!--<class name="tests.example.sikuliX.SikuliX" />-->
+            <!--<class name="tests.demoqa.testcase.SortableSpec" />-->
+            <!--<class name="tests.seleniumeasy.specs.table.TableDataDownloadSpec" />-->
+            <!--<class name="tests.chrome_extension.ClickToCall" />-->
+            <!--<class name="tests.LS.specs.DCA" />-->
+        </classes>
+    </test>
+</suite>

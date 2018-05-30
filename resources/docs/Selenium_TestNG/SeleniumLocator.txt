@@ -71,7 +71,7 @@ Types of locator in Selenium:
 		- To select the link element which contains the matching text.
 		- It is a perfect way to find the links on a page or checking navigation flows.
 		- Cons:
-			It�ll only work for anchor tags.
+			It will only work for anchor tags.
 			You need to provide the link text for it to work.
 		- Syntax:
 			<a href="http://www.techbeamers.com">How to use locators?</a>

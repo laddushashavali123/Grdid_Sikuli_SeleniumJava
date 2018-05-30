@@ -24,7 +24,7 @@
                 </bitrate>
             </version>
         </driver>
-        <driver id="googlechrome">
+        <!--<driver id="googlechrome">
             <version id="2.37">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
                     <filelocation>https://chromedriver.storage.googleapis.com/2.37/chromedriver_win32.zip</filelocation>
@@ -32,7 +32,7 @@
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
-        </driver>
+        </driver>-->
         <driver id="operachromium">
             <version id="2.35">
                 <bitrate sixtyfourbit="true">

@@ -84,7 +84,7 @@ public class DriverType {
 		}
 		// can use this for HelloController COC COC browser
 		else if (browser.equalsIgnoreCase("electron")){
-			String S4BLocation = "C:\\Users\\test1\\AppData\\Local\\Programs\\RTC_Client_for_Skype_for_Business.S4B2015UCCSV\\RTC Client for Skype for Business - S4B2015UCCSV.exe";
+			String S4BLocation = "C:\\Users\\kadung\\AppData\\Local\\Programs\\RTC_Client_for_Skype_for_Business_SV_NVS_Vz_CuCM_O365\\RTC Client for Skype for Business - SV NVS Vz CuCM O365.exe";
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary(S4BLocation);
 			capabilities = DesiredCapabilities.chrome();
