@@ -20,81 +20,119 @@
  *   - Write tests to cover your code, make sure that the weighted random condition is satisfied and all edge cases are
  *   checked properly.
  *   - Your code should be production ready, well organised and well tested.
+ *
+ *     private int randomSelection(ad[] ad_list) {
+ *         int weight_sum = 0;
+ *         // Add up all the weights for all the items in the list
+ *         for (ad a : ad_list){
+ *             weight_sum += a.ad_weight;
+ *         }
+ *         if (weight_sum == 0) {
+ *             weight_sum = ad_list.length;
+ *         }
+ *
+ *         // Pick a number at random between 1 and the sum of the weights
+ *         Random rand = new Random();
+ *         int randomVal = rand.nextInt(weight_sum)+1;
+ *         System.out.println("Random number is " + randomVal);
+ *
+ *         // Iterate over the items
+ *         for (ad a : ad_list){
+ *             // For the current item, subtract the item’s weight from the random number that was originally picked
+ *             randomVal -= a.ad_weight;
+ *             if (randomVal <= 0) {
+ *                 return a.ad_id;
+ *             }
+ *         }
+ *         return 0;
+ *     }
+ *     @Test
+ *     public void Test1() {
+ *         int noOfMessage = 120;
+ *         int noOfSelect_0 = 0, noOfSelect_1 = 0, noOfSelect_2 = 0, incorrect = 0;
+ *
+ *         for (int i=0; i<= noOfMessage; i++){
+ *             int result = randomSelection(ad_list1);
+ *             if (result == 0) {
+ *                 noOfSelect_0 += 1;
+ *             }
+ *             else if (result == 1) {
+ *                 noOfSelect_1 += 1;
+ *             }
+ *             else if (result == 2) {
+ *                 noOfSelect_2 += 1;
+ *             }
+ *             else {
+ *                 incorrect += 1;
+ *             }
+ *         }
+ *
+ *         System.out.println("Number select of 0 is " + noOfSelect_0);
+ *         System.out.println("Number select of 1 is " + noOfSelect_1);
+ *         System.out.println("Number select of 2 is " + noOfSelect_2);
+ *         System.out.println("Incorrect response " + incorrect);
+ *     }
  */
 
 package tests.java;
 
 import org.testng.annotations.Test;
-
 import java.util.HashMap;
 import java.util.Random;
-import static org.testng.Assert.assertEquals;
 
 public class ATest {
-
-    @Test
-    public void Test1() {
-        ad[] ad_list = {new ad(0,50), new ad(1,30), new ad(2,60)};
-        int noOfMessage = 280;
-        int noOfSelect_0 = 0, noOfSelect_1 = 0, noOfSelect_2 = 0, incorrect = 0;
-
-
-        for (int i=0; i<= noOfMessage; i++){
-            int result = randomSelection(ad_list);
-            if (result == 0) {
-                noOfSelect_0 += 1;
-            }
-            else if (result == 1) {
-                noOfSelect_1 += 1;
-            }
-            else if (result == 2) {
-                noOfSelect_2 += 1;
-            }
-            else {
-                incorrect += 1;
-            }
-        }
-
-        System.out.println("Number select of 0 is " + noOfSelect_0);
-        System.out.println("Number select of 1 is " + noOfSelect_1);
-        System.out.println("Number select of 2 is " + noOfSelect_2);
-        System.out.println("Incorrect response " + incorrect);
-    }
+    ad[][] testList = {
+            {new ad(0,0)},
+            {new ad(0,0),  new ad(1,0)},
+            {new ad(0,2)},
+            {new ad(0,2),  new ad(1,2)},
+            {new ad(0,0),  new ad(1,2),  new ad(2,2)},
+            {new ad(0,50), new ad(1,30), new ad(2,60)}
+    };
 
     @Test
     public void basicTest(){
-        ad[] ad_list = {new ad(0,50), new ad(1,30), new ad(2,60)};
+        int count = 1;
+        for (ad[] a : testList){
+            System.out.println("Test array " + count);
+            HashMap<Integer, Integer> result = verify(a,1400);
+            for (HashMap.Entry<Integer, Integer> entry : result.entrySet()) {
+                System.out.println("ID " + entry.getKey() + " has seclected " + entry.getValue() + " times");
+            }
+            count += 1;
+            System.out.println("-----------------");
+        }
+
+    }
+
+    public HashMap verify(ad[] ad_list, int NoOfMessage){
         HashMap<Integer, Integer> result = new HashMap<>();
+        int weightSum = 0;
         for (ad a : ad_list){
             result.put(a.ad_id, 0);
+            weightSum += a.ad_weight;
         }
 
-        System.out.println(randomSelection(ad_list));
-    }
+        if(weightSum > 0){
+            for(int i=0; i < NoOfMessage; i++){
+                // Pick a number at random between 1 and the sum of the weights
+                Random rand = new Random();
+                int randomVal = rand.nextInt(weightSum)+1;
+                //System.out.println("Random number is " + randomVal);
 
-    private int randomSelection(ad[] ad_list) {
-        int weight_sum = 0;
-        // Add up all the weights for all the items in the list
-        for (ad a : ad_list){
-            weight_sum += a.ad_weight;
-        }
-
-        // Pick a number at random between 1 and the sum of the weights
-        Random rand = new Random();
-        int randomVal = rand.nextInt(weight_sum)+1;
-
-        // Iterate over the items
-        for (ad a : ad_list){
-            // For the current item, subtract the item’s weight from the random number that was originally picked
-            randomVal -= a.ad_weight;
-            if (randomVal <= 0) {
-                return a.ad_id;
+                for (ad a : ad_list){
+                    randomVal -= a.ad_weight;
+                    if (randomVal <= 0) {
+                        int temp = result.get(a.ad_id);
+                        //System.out.println("Temp of " + a.ad_id + " is " + temp);
+                        result.put(a.ad_id,temp + 1);
+                        break;
+                    }
+                }
             }
         }
-
-        return 0;
+        return result;
     }
-
 }
 
 class ad {
