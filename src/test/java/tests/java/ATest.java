@@ -31,21 +31,19 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class ATest {
-    ad[][] testList = {
-            {new ad(0,50), new ad(1,30), new ad(2,60)},
-            {},
-            {new ad(0,0)},
-            {new ad(0,-10)},
-            {new ad(0,1000000000)},
-            {new ad(0,0),  new ad(1,0)},
-            {new ad(0,-1), new ad(1,10)},
-            {new ad(0,10), new ad(1,1000000000)},
-            {new ad(0,2),  new ad(1,2),  new ad(2,2)},
-
-    };
-
     @Test
     public void basicTest(){
+        ad[][] testList = {
+                {new ad(0,50), new ad(1,30), new ad(2,60)},
+                {},
+                {new ad(0,0)},
+                {new ad(0,-10)},
+                {new ad(0,1000000000)},
+                {new ad(0,0),  new ad(1,0)},
+                {new ad(0,-1), new ad(1,10)},
+                {new ad(0,10), new ad(1,1000000000)},
+                {new ad(0,2),  new ad(1,2),  new ad(2,2)},
+        };
         int count = 1;
         for (ad[] a : testList){
             System.out.println("Test array " + count);
