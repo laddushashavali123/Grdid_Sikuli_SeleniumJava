@@ -21,57 +21,7 @@
  *   checked properly.
  *   - Your code should be production ready, well organised and well tested.
  *
- *     private int randomSelection(ad[] ad_list) {
- *         int weight_sum = 0;
- *         // Add up all the weights for all the items in the list
- *         for (ad a : ad_list){
- *             weight_sum += a.ad_weight;
- *         }
- *         if (weight_sum == 0) {
- *             weight_sum = ad_list.length;
- *         }
- *
- *         // Pick a number at random between 1 and the sum of the weights
- *         Random rand = new Random();
- *         int randomVal = rand.nextInt(weight_sum)+1;
- *         System.out.println("Random number is " + randomVal);
- *
- *         // Iterate over the items
- *         for (ad a : ad_list){
- *             // For the current item, subtract the item’s weight from the random number that was originally picked
- *             randomVal -= a.ad_weight;
- *             if (randomVal <= 0) {
- *                 return a.ad_id;
- *             }
- *         }
- *         return 0;
- *     }
- *     @Test
- *     public void Test1() {
- *         int noOfMessage = 120;
- *         int noOfSelect_0 = 0, noOfSelect_1 = 0, noOfSelect_2 = 0, incorrect = 0;
- *
- *         for (int i=0; i<= noOfMessage; i++){
- *             int result = randomSelection(ad_list1);
- *             if (result == 0) {
- *                 noOfSelect_0 += 1;
- *             }
- *             else if (result == 1) {
- *                 noOfSelect_1 += 1;
- *             }
- *             else if (result == 2) {
- *                 noOfSelect_2 += 1;
- *             }
- *             else {
- *                 incorrect += 1;
- *             }
- *         }
- *
- *         System.out.println("Number select of 0 is " + noOfSelect_0);
- *         System.out.println("Number select of 1 is " + noOfSelect_1);
- *         System.out.println("Number select of 2 is " + noOfSelect_2);
- *         System.out.println("Incorrect response " + incorrect);
- *     }
+ * Solution: https://medium.com/@peterkellyonline/weighted-random-selection-3ff222917eb6
  */
 
 package tests.java;
@@ -82,12 +32,16 @@ import java.util.Random;
 
 public class ATest {
     ad[][] testList = {
+            {new ad(0,50), new ad(1,30), new ad(2,60)},
+            {},
             {new ad(0,0)},
+            {new ad(0,-10)},
+            {new ad(0,1000000000)},
             {new ad(0,0),  new ad(1,0)},
-            {new ad(0,2)},
-            {new ad(0,2),  new ad(1,2)},
-            {new ad(0,0),  new ad(1,2),  new ad(2,2)},
-            {new ad(0,50), new ad(1,30), new ad(2,60)}
+            {new ad(0,-1), new ad(1,10)},
+            {new ad(0,10), new ad(1,1000000000)},
+            {new ad(0,2),  new ad(1,2),  new ad(2,2)},
+
     };
 
     @Test
@@ -102,34 +56,71 @@ public class ATest {
             count += 1;
             System.out.println("-----------------");
         }
+    }
 
+    @Test
+    public void largeArrayTest(){
+        ad[] array100 = new ad[100];
+        ad[] array101 = new ad[101];
+        for (int a = 0; a < array100.length; a++) {
+            array100[a] = new ad(a, a + 1);
+            array101[a] = new ad(a, a + 1);
+        }
+        array101[100] = new ad(100, 101);
+
+        System.out.println("Test array 100 elements");
+        HashMap<Integer, Integer> result100 = verify(array100,1400);
+
+        for (HashMap.Entry<Integer, Integer> entry : result100.entrySet()) {
+            System.out.println("ID " + entry.getKey() + " has seclected " + entry.getValue() + " times");
+        }
+
+        System.out.println("-----------------");
+        System.out.println("Test array 101 elements");
+        HashMap<Integer, Integer> result101 = verify(array101,1400);
+        for (HashMap.Entry<Integer, Integer> entry : result101.entrySet()) {
+            System.out.println("ID " + entry.getKey() + " has seclected " + entry.getValue() + " times");
+        }
     }
 
     public HashMap verify(ad[] ad_list, int NoOfMessage){
         HashMap<Integer, Integer> result = new HashMap<>();
-        int weightSum = 0;
-        for (ad a : ad_list){
-            result.put(a.ad_id, 0);
-            weightSum += a.ad_weight;
-        }
+        // Warn if array has no element
+        if (ad_list.length > 0 && ad_list.length <= 100){
+            int weightSum = 0;
+            for (ad a : ad_list){
+                // Check if any weight is less than zero
+                if (a.ad_weight >= 0 && a.ad_weight <= 1000000000){
+                    result.put(a.ad_id, 0);
+                    weightSum += a.ad_weight;
+                }
+                else{
+                    System.out.println("ID " + a.ad_id + "'s weight is out of range. Supported range: 0 to  1.000.000.000");
+                    result = new HashMap<>();
+                    return result;
+                }
+            }
 
-        if(weightSum > 0){
-            for(int i=0; i < NoOfMessage; i++){
-                // Pick a number at random between 1 and the sum of the weights
-                Random rand = new Random();
-                int randomVal = rand.nextInt(weightSum)+1;
-                //System.out.println("Random number is " + randomVal);
+            if(weightSum > 0){
+                for(int i=0; i < NoOfMessage; i++){
+                    // Pick a number at random between 1 and the sum of the weights
+                    Random rand = new Random();
+                    int randomVal = rand.nextInt(weightSum)+1;
+                    //System.out.println("Random number is " + randomVal);
 
-                for (ad a : ad_list){
-                    randomVal -= a.ad_weight;
-                    if (randomVal <= 0) {
-                        int temp = result.get(a.ad_id);
-                        //System.out.println("Temp of " + a.ad_id + " is " + temp);
-                        result.put(a.ad_id,temp + 1);
-                        break;
+                    for (ad a : ad_list){
+                        randomVal -= a.ad_weight;
+                        if (randomVal <= 0) {
+                            int temp = result.get(a.ad_id);
+                            result.put(a.ad_id,temp + 1);
+                            break;
+                        }
                     }
                 }
             }
+        }
+        else{
+            System.out.println("Input array size is out of range. Supported range: 1 to 100");
         }
         return result;
     }
