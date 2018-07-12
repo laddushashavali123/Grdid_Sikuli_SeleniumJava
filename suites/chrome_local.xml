@@ -4,26 +4,31 @@
 	 thread-count: is number of concurrent thread running -->
 <suite name="Suite" parallel="methods" thread-count="1">
  	<!-- Supported browser: chrome, firefox, ie, safari -->
-	<parameter name="browserName" value="chrome"/>
+	<parameter name="BrowserName" value="chrome"/>
 
-	<!-- Use grid: y or n -->
-	<parameter name="remote" value="n"/>
-	<!-- URL of grid hub -->
-	<parameter name="gridURL" value=""/>
-	<!-- selected OS Flatform: https://github.com/SeleniumHQ/selenium/wiki/Grid-Platforms -->
-	<parameter name="desiredPlatform" value=""/>
-	<!-- selected browser version -->
-	<parameter name="browserVersion" value=""/>			
+	<!-- Run test on Selenium Grid: Y/N -->
+	<parameter name="UseRemote" value="N"/>
+	<!-- Set URL of Selenium Grid -->
+	<parameter name="GridURL" value=""/>
+	<!-- Select Node OS Platform -->
+	<parameter name="DesiredPlatform" value=""/>
+	<!-- Select Node Browser Version -->
+	<parameter name="BrowserVersion" value=""/>
 
+    <!-- Use proxy for browser: Y/N -->
+    <parameter name="ProxyEnabled" value="N"/>
+    <!-- Set Proxy host -->
+    <parameter name="ProxyHost" value=""/>
+    <!-- Set Proxy port -->
+    <parameter name="ProxyPort" value=""/>
 
     <test name="Test">
         <classes>
-            <class name="tests.example.TabSwitch" />
+            <class name="tests.page_object.specs.Login_Normal" />
+            <class name="tests.page_object.specs.Login_Hashmap" />
+            <class name="tests.page_object.specs.Login_Annotation" />
             <!--<class name="tests.example.sikuliX.SikuliX" />-->
-            <!--<class name="tests.demoqa.testcase.SortableSpec" />-->
-            <!--<class name="tests.seleniumeasy.specs.table.TableDataDownloadSpec" />-->
             <!--<class name="tests.chrome_extension.ClickToCall" />-->
-            <!--<class name="tests.LS.specs.DCA" />-->
         </classes>
     </test>
 </suite>

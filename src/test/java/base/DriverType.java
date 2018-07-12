@@ -7,7 +7,7 @@ package base;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
@@ -23,51 +23,64 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.Proxy;
 
-public class DriverType {
+import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
+
+class DriverType {
 	
-	static WebDriver getDriverType(String browser, String remote, String GridURL, String platform, String browserVersion ) {
-		WebDriver driver = null;
+	static WebDriver getDriverType(String browserName, String useRemote, String GridURL, String platform, String browserVersion,
+								   String proxyEnabled, String proxyHost, String proxyPort) {
+		WebDriver driver;
 	
-		DesiredCapabilities capabilities = getDesiredCapabilities(browser);
+		DesiredCapabilities capabilities = getDesiredCapabilities(browserName);
+
+		// Add proxy
+		if (proxyEnabled.equalsIgnoreCase("y") || proxyEnabled.equalsIgnoreCase("yes")){
+			String proxyDetails = proxyHost + ":" + proxyPort;
+			Proxy proxy = new Proxy();
+			proxy.setProxyType(MANUAL);
+			proxy.setHttpProxy(proxyDetails);
+			proxy.setSslProxy(proxyDetails);
+			capabilities.setCapability("PROXY", proxy);
+		}
 		
-		if (remote.equalsIgnoreCase("y")) {
+		if (useRemote.equalsIgnoreCase("y") || useRemote.equalsIgnoreCase("yes")) {
 			URL seleniumGridURL = null;
 			try {
 				seleniumGridURL = new URL(GridURL);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}
-			String desiredBrowserVersion = browserVersion;
-			String desiredPlatform = platform;
-			if (null != desiredPlatform && !desiredPlatform.isEmpty()) {
-				capabilities.setPlatform(Platform.valueOf(desiredPlatform.toUpperCase()));
+
+			if (null != platform && !platform.isEmpty()) {
+				capabilities.setPlatform(Platform.valueOf(platform.toUpperCase()));
 	    	}
-	    	if (null != desiredBrowserVersion && !desiredBrowserVersion.isEmpty()) {
-	    		capabilities.setVersion(desiredBrowserVersion);
+	    	if (null != browserVersion && !browserVersion.isEmpty()) {
+	    		capabilities.setVersion(platform);
 	    	}
 	    	driver = new RemoteWebDriver(seleniumGridURL, capabilities);
 	    	System.out.println("Remote driver is created on thread " + Thread.currentThread().getId());
 		}
 		else {
-			driver = getLocalDriver(browser, capabilities);
+			driver = getLocalDriver(browserName, capabilities);
 			System.out.println("Local driver is created on thread " + Thread.currentThread().getId());
 		}
 		return driver;
 	}
-	
+
 	/**
 	 * If you want to add more Capabilities for browser modify this method
-	 * @param browser
+	 * @param browser is browser name
 	 * @return WebDriver Capabilities for selected browser
 	 */
-	static DesiredCapabilities getDesiredCapabilities(String browser) {
-		DesiredCapabilities capabilities = null;
+	private static DesiredCapabilities getDesiredCapabilities(String browser) {
+		DesiredCapabilities capabilities;
 		if (browser.equalsIgnoreCase("chrome")){
 			capabilities = DesiredCapabilities.chrome();
 		    // Turn off default browser selection and remember password
-		    capabilities.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
-		    HashMap<String, String> chromePreferences = new HashMap<String, String>();
+		    capabilities.setCapability("chrome.switches", Collections.singletonList("--no-default-browser-check"));
+		    HashMap<String, String> chromePreferences = new HashMap<>();
 		    chromePreferences.put("profile.password_manager_enabled", "false");
 		    capabilities.setCapability("chrome.prefs", chromePreferences);
 		}
@@ -82,11 +95,11 @@ public class DriverType {
 			capabilities = DesiredCapabilities.safari();
 		    capabilities.setCapability("safari.cleanSession", true);
 		}
-		// can use this for HelloController COC COC browser
+		// can use this for COC COC browser and change hard location to dynamic system variable
 		else if (browser.equalsIgnoreCase("electron")){
-			String S4BLocation = "C:\\Users\\kadung\\AppData\\Local\\Programs\\RTC_Client_for_Skype_for_Business_SV_NVS_Vz_CuCM_O365\\RTC Client for Skype for Business - SV NVS Vz CuCM O365.exe";
+			String ChromeniumLocation = "xxx";
 			ChromeOptions options = new ChromeOptions();
-			options.setBinary(S4BLocation);
+			options.setBinary(ChromeniumLocation);
 			capabilities = DesiredCapabilities.chrome();
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		}
@@ -99,18 +112,18 @@ public class DriverType {
 	/**
 	 * This method will return the correct local browser
 	 */
-	static WebDriver getLocalDriver(String browser, DesiredCapabilities capabilities) {
+	private static WebDriver getLocalDriver(String browser, DesiredCapabilities capabilities) {
 		if (browser.equalsIgnoreCase("chrome")){
 			System.setProperty("webdriver.chrome.driver", System.getProperty("webdriver.chrome.driver"));
-			ChromeOptions options = (ChromeOptions) new ChromeOptions().merge(capabilities);
+			ChromeOptions options = new ChromeOptions().merge(capabilities);
 			return new ChromeDriver(options);
 		}
 		else if (browser.equalsIgnoreCase("ie")) {
-			InternetExplorerOptions options = (InternetExplorerOptions) new InternetExplorerOptions().merge(capabilities);
+			InternetExplorerOptions options = new InternetExplorerOptions().merge(capabilities);
 			return new InternetExplorerDriver(options);
 		}
 		else if (browser.equalsIgnoreCase("safari")) {
-			SafariOptions options = (SafariOptions) new SafariOptions().merge(capabilities);
+			SafariOptions options = new SafariOptions().merge(capabilities);
 			return new SafariDriver(options);
 		}
 		else if (browser.equalsIgnoreCase("electron")){

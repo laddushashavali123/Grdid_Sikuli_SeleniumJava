@@ -21,17 +21,23 @@ public class DriverBase {
 	private static List<WebDriver> driverThreadPool = Collections.synchronizedList(new ArrayList<WebDriver>());
 
 	@BeforeSuite
-	@Parameters({"browserName", "remote", "gridURL", "desiredPlatform", "browserVersion"})
-	public void DriverSetup(String browserName, String remote, String gridURL, String desiredPlatform, String browserVersion) {
-	    final String browser = browserName;
-		final String useRemote = remote;
-		final String url = gridURL;
-		final String flatform = desiredPlatform;
-		final String version = browserVersion;
+	@Parameters({"BrowserName", "remote", "GridURL", "DesiredPlatform", "BrowserVersion", "ProxyEnabled", "ProxyHost",
+			"ProxyPort"})
+	public void DriverSetup(String BrowserName, String UseRemote, String GridURL, String DesiredPlatform,
+							String BrowserVersion, String ProxyEnabled, String ProxyHost, String ProxyPort) {
+	    final String browserName = BrowserName;
+		final String useRemote = UseRemote;
+		final String gridURL = GridURL;
+		final String desiredPlatform = DesiredPlatform;
+		final String browserVersion = BrowserVersion;
+		final String proxyEnabled = ProxyEnabled;
+		final String proxyHost = ProxyHost;
+		final String proxyPort = ProxyPort;
 		driverThread = new ThreadLocal<WebDriver>() {
 			@Override
 			protected WebDriver initialValue() {
-				final WebDriver driver = DriverType.getDriverType(browser, useRemote, url, flatform, version);
+				final WebDriver driver = DriverType.getDriverType(browserName, useRemote, gridURL, desiredPlatform,
+						browserVersion, proxyEnabled, proxyHost, proxyPort);
 				driverThreadPool.add(driver);
 				return driver;
 			}

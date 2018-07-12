@@ -62,11 +62,14 @@ Ref:
 
 	• How many wait type in Selenium?
 	    - There is 3 type of wait:
-	        . Implicit Wait:Sets a timeout for all successive Web Element searches. For the specified amount of time it
-	        will try looking for element again and again before throwing a NoSuchElementException. It waits for elements
-	        to show up.
-	        . Explicit Wait: wait for a certain condition until timeout. It usually use with ExpectedCondition
-	        . FluentWait
+	        . Implicit Wait: tell to the web driver to wait for certain amount of time before it throws a "No Such
+	        Element Exception". The default setting is 0. Once we set the time, it is applied to all the elements in the
+	        script
+	        . Explicit Wait: tell the Web Driver to wait for certain conditions (ExpectedConditions) and the maximum
+	        time exceeded before throwing an "ElementNotVisibleException" exception. Explicit Wait time is applied only
+	        to those elements which are intended by us
+	        . FluentWait: tell the Web Driver to wait for special conditions (defined by you) and the maximum time
+	        exceeded before throwing an "ElementNotVisibleException" exception.
 
     • Mention 5 different exceptions you had in Selenium web driver?
         - WebDriverException, NoAlertPresentException, NoSuchWindowException, NoSuchElementException, TimeoutException
@@ -179,6 +182,7 @@ hierarchies, modularity, reporting mechanism, test data injections etc. to pilla
 
 		• What is break and continue in java?
 			=> Break stop the loop immediately while continue do make the loop continue
+
 		• Lập trình hướng đối tượng là gì? Các đặc tính của nó?
 			=> Object-oriented programming (OOP) is a programming model constructed around objects. These objects have
 			attribute and behavior which describes from a class. There are 4 characteristics:
@@ -196,13 +200,31 @@ hierarchies, modularity, reporting mechanism, test data injections etc. to pilla
 			        unrelated classes, by specifying a common set of methods that each implementing class must include.
 			    - Polymorphism: means the same word to mean different things in different contexts. EX: a method with
 			    same name can act differently (method overloading and override)
+
 		• Khai báo 1 lớp kế thừa từ lớp khác thế nào trong Java?
 			=> Use extends keyword
+
 		• Constructor là gì và cách khai báo như thế nào?
 			=> It is startup task before creating an instance of the class. To create a constructor, we use public modifier
 			and same name of the class with or without the initial parameter
+
 		• Abstracts va interface là gì? Chúng khác nhau ra sao?
-			=> Abstract class can have implement method while interface is not.
+			=> Both of them are use to achieve OOP Abstraction characteristic. They are used to be the template
+			other class.
+			Abstract class:
+			    - can have both abstract methods(no implement code) and non-abstract methods.
+			    - can have instance variables.
+			    - can have constructor.
+			    - can have all access modifier.
+			    - A class may extend only one abstract class.
+			Interface:
+			    - cannot provide any code at all, just the signature (abstract methods).
+			    - cannot have instance variables.
+			    - cannot contain constructors
+			    - access modifier must be public or none.
+			    - A Class may implement several interfaces.
+
+
 		• Có bao nhiêu Access Modifiers? Tên và chúng khác nhau như thế nào?
 			=> There are 4 access modifier:
 			    private     : only the same class can access this variable or method
@@ -217,24 +239,17 @@ hierarchies, modularity, reporting mechanism, test data injections etc. to pilla
 
 		• Cách khởi tạo 1 instance trong java.
 			=> Use new keywork with corresponding constructor
-		• Exercise: Tuỳ nhà tuyển dụng. Hôm này có bài tập viết 1 chương trình biến các chữ cái của 1 string từ hoa sang
-		thường và từ thường sang hoa các chữ cái thuộc bảng ASCII. Các ký tự không thuộc chữ cái thì để nguyên. Cuối cùng
-		trả về kết quả và thống kê có bao nhiêu sự thay đổi.
-		Bài tập phần này có vẻ chỉ kiểm tra về if else, loops (hình như thế)  
-	Section 3: Testing (10’)
-		•	Lợi ích của automation test?
-		•	Khi nào nên dùng automation test và khi nào dùng manual testing?
-		•	Keyword-driven và data-driven framework là gì?
-		•	Hybrid framework là gì?
-		•	Report bug cần những thông tin gì?
-		• Sự khác nhau giữa severity và priority trong quá trình mở bug?
-		    => Both Severity and Priority are attributes of a defect and should be provided in the bug report.
 
-	Section 4: Asking about working experience and a way to solve them(15’)
-		•	Do you work overtime? How do you feel about this situation?
-		•	Why do you work overtime?
-		•	Do you have any confliction with your boss and colleagues? If yes, how do you solve it?
-		•	If your tasks not completed and the deadline is coming soon. How do you do now?
+		•
+
+	    • What is the difference between equals() and == ?
+            => Equals() method is defined in Object class in Java and used for checking equality of two objects defined
+            by business logic.
+
+	    •
+
+
+	    •
 
 
 ========================================================================================================================

@@ -1,0 +1,32 @@
+Ref:
+    1.
+
+========================================================================================================================
+    CLI
+========================================================================================================================
++ List Docker CLI commands:
+    docker
+    docker container --help
+
++ Display Docker version and info
+    docker --version
+    docker version
+    docker info
+
++ Login Docker:
+    docker login
+
++ Run a docker image (create new container):
+    docker run [image_name]
+
++ List all downloaded images:
+    docker image ls
+
++ List all running container:
+    docker container ls
+
++ List all all container including the stopped container:
+    docker container ls --all
+
++ Remove an container:
+    docker container rm

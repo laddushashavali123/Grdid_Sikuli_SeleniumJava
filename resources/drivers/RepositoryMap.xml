@@ -24,7 +24,7 @@
                 </bitrate>
             </version>
         </driver>
-        <!--<driver id="googlechrome">
+        <driver id="googlechrome">
             <version id="2.37">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
                     <filelocation>https://chromedriver.storage.googleapis.com/2.37/chromedriver_win32.zip</filelocation>
@@ -32,7 +32,7 @@
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
-        </driver>-->
+        </driver>
         <driver id="operachromium">
             <version id="2.35">
                 <bitrate sixtyfourbit="true">
@@ -43,15 +43,6 @@
                 <bitrate thirtytwobit="true">
                     <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.35/operadriver_win32.zip</filelocation>
                     <hash>55d43156716d7d1021733c2825e99896fea73815</hash>
-                    <hashtype>sha1</hashtype>
-                </bitrate>
-            </version>
-        </driver>
-        <driver id="phantomjs">
-            <version id="1.9.8">
-                <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-windows.zip</filelocation>
-                    <hash>4531bd64df101a689ac7ac7f3e11bb7e77af8eff</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
