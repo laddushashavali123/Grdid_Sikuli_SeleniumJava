@@ -18,15 +18,16 @@
     <!-- Use proxy for browser: Y/N -->
     <parameter name="ProxyEnabled" value="N"/>
     <!-- Set Proxy host -->
-    <parameter name="ProxyHost" value=""/>
+    <parameter name="ProxyHost" value="localhost"/>
     <!-- Set Proxy port -->
-    <parameter name="ProxyPort" value=""/>
+    <parameter name="ProxyPort" value="8888"/>
 
     <test name="Test">
         <classes>
             <class name="tests.page_object.specs.Login_Normal" />
-            <class name="tests.page_object.specs.Login_Hashmap" />
-            <class name="tests.page_object.specs.Login_Annotation" />
+            <!--<class name="tests.page_object.specs.Login_Hashmap" />
+            <class name="tests.page_object.specs.Login_Annotation" />-->
+            <!--<class name="cucumber.TestRunner" />-->
             <!--<class name="tests.example.sikuliX.SikuliX" />-->
             <!--<class name="tests.chrome_extension.ClickToCall" />-->
         </classes>

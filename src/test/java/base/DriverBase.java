@@ -17,11 +17,11 @@ import org.testng.annotations.Listeners;
 
 @Listeners({LogListener.class, RetryListener.class})
 public class DriverBase {
-	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<WebDriver>();
-	private static List<WebDriver> driverThreadPool = Collections.synchronizedList(new ArrayList<WebDriver>());
+	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
+	private static List<WebDriver> driverThreadPool = Collections.synchronizedList(new ArrayList<>());
 
 	@BeforeSuite
-	@Parameters({"BrowserName", "remote", "GridURL", "DesiredPlatform", "BrowserVersion", "ProxyEnabled", "ProxyHost",
+	@Parameters({"BrowserName", "UseRemote", "GridURL", "DesiredPlatform", "BrowserVersion", "ProxyEnabled", "ProxyHost",
 			"ProxyPort"})
 	public void DriverSetup(String BrowserName, String UseRemote, String GridURL, String DesiredPlatform,
 							String BrowserVersion, String ProxyEnabled, String ProxyHost, String ProxyPort) {
@@ -33,20 +33,17 @@ public class DriverBase {
 		final String proxyEnabled = ProxyEnabled;
 		final String proxyHost = ProxyHost;
 		final String proxyPort = ProxyPort;
-		driverThread = new ThreadLocal<WebDriver>() {
-			@Override
-			protected WebDriver initialValue() {
-				final WebDriver driver = DriverType.getDriverType(browserName, useRemote, gridURL, desiredPlatform,
-						browserVersion, proxyEnabled, proxyHost, proxyPort);
-				driverThreadPool.add(driver);
-				return driver;
-			}
-		};
+		driverThread = ThreadLocal.withInitial(() -> {
+			final WebDriver driver = DriverType.getDriverType(browserName, useRemote, gridURL, desiredPlatform,
+					browserVersion, proxyEnabled, proxyHost, proxyPort);
+			driverThreadPool.add(driver);
+			return driver;
+		});
 	}
 
 	
 	/**
-	  * Uses the getDriver() method  on the WebDriverThread object to pass each HelloController a WebDriver instance it can use
+	  * Uses the getDriver() on the WebDriverThread object to pass each HelloController a WebDriver instance it can use
 	  * @return browser Desired Capabilities which defined in WebDriverThread.java
 	  */
 	 public static WebDriver getDriver()  {

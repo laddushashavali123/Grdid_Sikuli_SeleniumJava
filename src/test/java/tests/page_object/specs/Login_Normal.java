@@ -17,5 +17,7 @@ public class Login_Normal extends DriverBase {
                 .enterPassword("YbEhege")
                 .clickSubmit()
                 .verifyLoginSuccess();
+
+        Thread.sleep(20000);
     }
 }

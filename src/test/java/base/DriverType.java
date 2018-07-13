@@ -4,7 +4,6 @@
  */
 package base;
 
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
@@ -32,17 +31,17 @@ class DriverType {
 	static WebDriver getDriverType(String browserName, String useRemote, String GridURL, String platform, String browserVersion,
 								   String proxyEnabled, String proxyHost, String proxyPort) {
 		WebDriver driver;
-	
 		DesiredCapabilities capabilities = getDesiredCapabilities(browserName);
 
 		// Add proxy
 		if (proxyEnabled.equalsIgnoreCase("y") || proxyEnabled.equalsIgnoreCase("yes")){
 			String proxyDetails = proxyHost + ":" + proxyPort;
+			System.out.println("Proxy is used as " + proxyDetails);
 			Proxy proxy = new Proxy();
 			proxy.setProxyType(MANUAL);
 			proxy.setHttpProxy(proxyDetails);
 			proxy.setSslProxy(proxyDetails);
-			capabilities.setCapability("PROXY", proxy);
+			capabilities.setCapability(CapabilityType.PROXY, proxy);
 		}
 		
 		if (useRemote.equalsIgnoreCase("y") || useRemote.equalsIgnoreCase("yes")) {

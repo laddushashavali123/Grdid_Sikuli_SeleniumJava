@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="classes" thread-count="1">
-	<!-- Supported browser: chrome, firefox, ie, safari -->
-	<parameter name="browserName" value="electron"/>
-	
-	<!-- Use grid: y or n -->
-	<parameter name="remote" value="y"/>
-				
-	<!-- URL of grid hub -->
-	<parameter name="gridURL" value="http://10.250.193.110:4444/wd/hub"/>
-					
-	<!-- selected OS Flatform: https://github.com/SeleniumHQ/selenium/wiki/Grid-Platforms -->
-	<parameter name="desiredPlatform" value="WINDOWS"/>
-			
-	<!-- selected browser version -->
-	<parameter name="browserVersion" value=""/>			
-	
+<!-- parallel: which type runs parallel (methods/classes/HelloController/instance)
+	 thread-count: is number of concurrent thread running -->
+<suite name="Suite" parallel="methods" thread-count="1">
+ 	<!-- Supported browser: chrome, firefox, ie, safari -->
+	<parameter name="BrowserName" value="chrome"/>
+
+	<!-- Run test on Selenium Grid: Y/N -->
+	<parameter name="UseRemote" value="Y"/>
+	<!-- Set URL of Selenium Grid -->
+	<parameter name="GridURL" value="http://10.250.193.110:4444/wd/hub"/>
+	<!-- Select Node OS Platform -->
+	<parameter name="DesiredPlatform" value="WINDOWS"/>
+	<!-- Select Node Browser Version -->
+	<parameter name="BrowserVersion" value=""/>
+
+    <!-- Use proxy for browser: Y/N -->
+    <parameter name="ProxyEnabled" value="N"/>
+    <!-- Set Proxy host -->
+    <parameter name="ProxyHost" value=""/>
+    <!-- Set Proxy port -->
+    <parameter name="ProxyPort" value=""/>
+
     <test name="Test">
         <classes>
-            <class name="tests.example.S4B_Electron" />
+            <class name="tests.page_object.specs.Login_Normal" />
+            <class name="tests.page_object.specs.Login_Hashmap" />
+            <class name="tests.page_object.specs.Login_Annotation" />
+            <!--<class name="tests.example.sikuliX.SikuliX" />-->
+            <!--<class name="tests.chrome_extension.ClickToCall" />-->
         </classes>
     </test>
 </suite>
