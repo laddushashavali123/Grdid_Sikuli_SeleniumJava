@@ -1,21 +1,15 @@
 @Login
-Feature: Login Profile
+Feature: Login Feature
   As an employee of the company
   I want to login my employee profile using my credentials
   In order to collaborate with my colleagues
 
-  Background: User navigates to Company home page
-    Given I am on the Login page on URL "http://executeautomation.com/demosite/Login.html"
-    Then I should see "Login" message
+  Background: User navigates to login page
+    Given I am on the Login page
 
-  Scenario: Successful login
-    When I fill in "UserName" with "Test"
-    And I fill in "Password" with "123"
-    And I click on the "Login" button
-    Then I should see "User Form" message
+  Scenario: Successful login one time
+    When I fill in username with "mngr145007"
+    And I fill in password with "batYmar"
+    And I click on the login button
+    Then I should login successfully
 
-  Scenario: Successful login
-    When I fill in "UserName" with "Test"
-    And I fill in "Password" with "1234"
-    And I click on the "Login" button
-    Then I should see "User Form" message

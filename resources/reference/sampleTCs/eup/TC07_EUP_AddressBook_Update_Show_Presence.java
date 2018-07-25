@@ -29,7 +29,7 @@ public class TC07_EUP_AddressBook_Update_Show_Presence extends DriverFactory {
 		user = user + "@" + domain;
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		PageAccountEUP accountP = new PageAccountEUP(driver, timeout);

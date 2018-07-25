@@ -31,7 +31,7 @@ public class TC20_EUP_Routing_Edit_Call_Redirection_To_Sequential_Mode extends D
 		String mode = "Sequential";
 
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		PageAccountEUP accountP = new PageAccountEUP(driver, timeout);

@@ -64,8 +64,6 @@ assist in creating a real and continuous load:
 ========================================================================================================================
 	jMeter Elements
 ========================================================================================================================
-0.
-
 1. Thread Group:
     - Thread Groups is a collection of Threads. Each thread represents one user using the application under test.
     Basically each Thread simulates one real user request to the server. The controls for a thread group allow you to

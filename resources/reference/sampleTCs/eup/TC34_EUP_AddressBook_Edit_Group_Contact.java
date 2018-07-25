@@ -29,7 +29,7 @@ public class TC34_EUP_AddressBook_Edit_Group_Contact extends DriverFactory {
 		user = user + "@" + domain;
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		PageAccountEUP accountP = new PageAccountEUP(driver, timeout);

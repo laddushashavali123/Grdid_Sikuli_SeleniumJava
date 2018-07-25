@@ -34,7 +34,7 @@ public class TC26_EUP_Services_Edit_Auto_Retrieve_Timer extends DriverFactory {
 		String timer3 = "360";
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		PageAccountEUP accountP = new PageAccountEUP(driver, timeout);

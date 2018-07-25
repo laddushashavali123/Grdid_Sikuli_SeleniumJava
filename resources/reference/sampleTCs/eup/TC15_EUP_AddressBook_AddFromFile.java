@@ -32,7 +32,7 @@ public class TC15_EUP_AddressBook_AddFromFile extends DriverFactory {
 		String file = fileLocation + "BatchAddressBook_Personal_Worksheet.csv";
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		PageAccountEUP accountP = new PageAccountEUP(driver, timeout);

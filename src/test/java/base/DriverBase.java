@@ -25,14 +25,14 @@ public class DriverBase {
 			"ProxyPort"})
 	public void DriverSetup(String BrowserName, String UseRemote, String GridURL, String DesiredPlatform,
 							String BrowserVersion, String ProxyEnabled, String ProxyHost, String ProxyPort) {
-	    final String browserName = BrowserName;
-		final String useRemote = UseRemote;
-		final String gridURL = GridURL;
+	    final String browserName     = BrowserName;
+		final String useRemote       = UseRemote;
+		final String gridURL         = GridURL;
 		final String desiredPlatform = DesiredPlatform;
-		final String browserVersion = BrowserVersion;
-		final String proxyEnabled = ProxyEnabled;
-		final String proxyHost = ProxyHost;
-		final String proxyPort = ProxyPort;
+		final String browserVersion  = BrowserVersion;
+		final String proxyEnabled    = ProxyEnabled;
+		final String proxyHost       = ProxyHost;
+		final String proxyPort       = ProxyPort;
 		driverThread = ThreadLocal.withInitial(() -> {
 			final WebDriver driver = DriverType.getDriverType(browserName, useRemote, gridURL, desiredPlatform,
 					browserVersion, proxyEnabled, proxyHost, proxyPort);

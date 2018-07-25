@@ -4,10 +4,7 @@ Ref:
 ========================================================================================================================
 	Build a jMeter test plan from a Selenium test
 ========================================================================================================================
-Step 1: Set up the proxy that we are going to connect Selenium to
-    - Start up JMeter
-    - Add an HTTP(S) test script recorder in Non-Test Element
-    - Start the recorder
+Step 1: Set up the proxy with jMeter that we are going to connect Selenium to as 3. Build-Record-Run scenario
 
 Step 2: Run our Selenium tests and tell them to connect to the JMeter proxy
     - Run mvn clean install –DproxyEnabled=true –DproxyHost=localhost –DproxyPort=8080

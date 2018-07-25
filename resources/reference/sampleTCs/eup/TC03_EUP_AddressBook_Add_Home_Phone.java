@@ -37,7 +37,7 @@ public class TC03_EUP_AddressBook_Add_Home_Phone extends DriverFactory {
 		String datetext = dateFormat.format(date);
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		String homePhone = "11111 - home " + datetext;

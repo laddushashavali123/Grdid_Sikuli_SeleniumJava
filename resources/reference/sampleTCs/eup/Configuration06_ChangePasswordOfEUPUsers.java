@@ -37,22 +37,22 @@ public class Configuration06_ChangePasswordOfEUPUsers extends DriverFactory {
 		
 		String old_password = "12345678x@X";
 		
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login_changePW(user, old_password, password);
 		
-		logger.info("Login with User ID '" + user_circular + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user_circular + "' and Password '" + password + "'");
 		loginP.login_changePW(user_circular, old_password, password);
 		
-		logger.info("Login with User ID '" + user_linear + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user_linear + "' and Password '" + password + "'");
 		loginP.login_changePW(user_linear, old_password, password);
 		
-		logger.info("Login with User ID '" + user_simring + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user_simring + "' and Password '" + password + "'");
 		loginP.login_changePW(user_simring, old_password, password);
 		
-		logger.info("Login with User ID '" + user_sla + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user_sla + "' and Password '" + password + "'");
 		loginP.login_changePW(user_sla, old_password, password);
 		
-		logger.info("Login with User ID '" + user_ucd + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user_ucd + "' and Password '" + password + "'");
 		loginP.login_changePW(user_ucd, old_password, password);
  		
 	}

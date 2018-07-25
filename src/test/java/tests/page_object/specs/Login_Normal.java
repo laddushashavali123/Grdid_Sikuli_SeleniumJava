@@ -12,12 +12,14 @@ public class Login_Normal extends DriverBase {
     @Test
     public void Normal() throws InterruptedException {
         WebDriver driver = getDriver();
+        driver.manage().window().fullscreen();
         Normal_BankLogin login = new Normal_BankLogin(driver);
-        login.enterUsername("mngr136913")
+        login.openLoginPage()
+                .enterUsername("mngr136913")
                 .enterPassword("YbEhege")
                 .clickSubmit()
                 .verifyLoginSuccess();
 
-        Thread.sleep(20000);
+        Thread.sleep(5000);
     }
 }

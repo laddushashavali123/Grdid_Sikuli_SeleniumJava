@@ -47,7 +47,7 @@ public class TC_008_EUPChangeLanguageFromPortugueseToEnglishAndVersa  extends Dr
 		//Thread.sleep(mid);
 		
 		if(eupHeader.verifyLoginByWelcome())
-			logger.info("Login successfully");
+			logger.info("login successfully");
 		
 		// Move to Service tab
 		eupHeader.clickButtonService();		

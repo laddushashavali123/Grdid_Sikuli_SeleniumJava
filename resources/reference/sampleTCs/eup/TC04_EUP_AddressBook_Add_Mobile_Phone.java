@@ -40,7 +40,7 @@ public class TC04_EUP_AddressBook_Add_Mobile_Phone extends DriverFactory {
 		String datetext = dateFormat.format(date);
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		String mobilePhone = "4444 - Edit " + datetext;

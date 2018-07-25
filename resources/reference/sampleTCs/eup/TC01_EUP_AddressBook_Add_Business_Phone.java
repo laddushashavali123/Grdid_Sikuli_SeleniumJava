@@ -31,7 +31,7 @@ public class TC01_EUP_AddressBook_Add_Business_Phone extends DriverFactory {
 		user = user + "@" + domain;
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		String businessPhone = "123456789";

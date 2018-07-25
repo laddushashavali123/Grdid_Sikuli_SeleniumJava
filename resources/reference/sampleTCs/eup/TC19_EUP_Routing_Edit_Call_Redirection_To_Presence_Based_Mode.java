@@ -32,7 +32,7 @@ public class TC19_EUP_Routing_Edit_Call_Redirection_To_Presence_Based_Mode exten
 		String mode = "Presence Based";
 
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		PageAccountEUP accountP = new PageAccountEUP(driver, timeout);

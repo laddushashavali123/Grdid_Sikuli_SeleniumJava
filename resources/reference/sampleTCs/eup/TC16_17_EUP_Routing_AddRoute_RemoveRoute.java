@@ -28,7 +28,7 @@ public class TC16_17_EUP_Routing_AddRoute_RemoveRoute extends DriverFactory {
 		user = user + "@" + domain;
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		String name = "addroute";

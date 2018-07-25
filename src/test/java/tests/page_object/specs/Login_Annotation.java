@@ -8,10 +8,11 @@ import tests.page_object.pages.Normal_BankLogin;
 
 public class Login_Annotation extends DriverBase {
     @Test
-    public void Annotations(){
+    public void AnnotationTest(){
         WebDriver driver = getDriver();
-        Annotation_BankLogin login = new Annotation_BankLogin(driver);
-        login.enterUsername("mngr136913")
+        Annotation_BankLogin loginPage = new Annotation_BankLogin(driver);
+        loginPage.nagivateToLoginPage()
+                .enterUsername("mngr136913")
                 .enterPassword("YbEhege")
                 .clickSubmit()
                 .verifyLoginSuccess();

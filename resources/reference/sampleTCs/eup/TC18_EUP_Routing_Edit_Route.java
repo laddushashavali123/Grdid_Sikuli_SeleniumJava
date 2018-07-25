@@ -28,7 +28,7 @@ public class TC18_EUP_Routing_Edit_Route extends DriverFactory {
 		user = user + "@" + domain;
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		String name = "editroute";

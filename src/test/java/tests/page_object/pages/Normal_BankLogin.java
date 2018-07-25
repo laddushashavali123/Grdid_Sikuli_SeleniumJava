@@ -16,8 +16,6 @@ public class Normal_BankLogin {
 
     public Normal_BankLogin(WebDriver driver){
         this.driver = driver;
-        driver.manage().window().fullscreen();
-        driver.get(pageURL);
     }
 
     // Locator
@@ -27,6 +25,11 @@ public class Normal_BankLogin {
     By resetButton  = By.name("btnReset");
 
     // Method
+    public Normal_BankLogin openLoginPage(){
+        driver.get(pageURL);
+        return this;
+    }
+
     public Normal_BankLogin enterUsername(String content){
         driver.findElement(username).sendKeys(content);
         logger.info("Entering username as " + content);

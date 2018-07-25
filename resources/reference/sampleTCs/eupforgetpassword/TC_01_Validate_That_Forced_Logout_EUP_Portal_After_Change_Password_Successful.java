@@ -26,9 +26,9 @@ public class TC_01_Validate_That_Forced_Logout_EUP_Portal_After_Change_Password_
 		if (getProtocol().equals("selenium")) {
 			driver.manage().window().maximize();
 		}
-		/* Step 1. Login EUP on browser 1 */
-		logger.info("----- Step 1. Login EUP on browser 1 ----- ");
-		Reporter.log("----- Step 1. Login EUP on browser 1 -----");
+		/* Step 1. login EUP on browser 1 */
+		logger.info("----- Step 1. login EUP on browser 1 ----- ");
+		Reporter.log("----- Step 1. login EUP on browser 1 -----");
 
 		logger.info("Launch EUP Portal '"+url+"'");
 		driver.get(url);
@@ -38,7 +38,7 @@ public class TC_01_Validate_That_Forced_Logout_EUP_Portal_After_Change_Password_
 		String emailPassword ="longhai686995";
 
 		PageLoginEUP eupPage = new PageLoginEUP(driver, timeout);
-		logger.info("'Login EUP' '"+userEUP+"'");
+		logger.info("'login EUP' '"+userEUP+"'");
 		try {
 			eupPage.login(userEUP, password);
 		}catch (Exception e)
@@ -49,13 +49,13 @@ public class TC_01_Validate_That_Forced_Logout_EUP_Portal_After_Change_Password_
 		try {
 			pageMenu.clickAccountThenClickServiceTab();
 			logger.info("----------------------------------------");
-			logger.info("Login EUP on browser 1 Successful : PASSED");
-			Reporter.log("---Login EUP on browser 1 Successful : PASSED");
+			logger.info("login EUP on browser 1 Successful : PASSED");
+			Reporter.log("---login EUP on browser 1 Successful : PASSED");
 			logger.info("----------------------------------------");
 		} catch (Exception e1) {
 			logger.info("----------------------------------------");
-			logger.info("Login EUP on browser 1 Successful : FAILED");
-			Reporter.log("---Login EUP on browser 1 Successful : FAILED");
+			logger.info("login EUP on browser 1 Successful : FAILED");
+			Reporter.log("---login EUP on browser 1 Successful : FAILED");
 			GetScreenshot.capture(this.getClass().getSimpleName() + "_1");
 			logger.info("----------------------------------------");
 		}

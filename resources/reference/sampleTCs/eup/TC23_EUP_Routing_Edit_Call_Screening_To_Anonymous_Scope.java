@@ -31,7 +31,7 @@ public class TC23_EUP_Routing_Edit_Call_Screening_To_Anonymous_Scope extends Dri
 		String scope = "Anonymous";
 
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		PageAccountEUP accountP = new PageAccountEUP(driver, timeout);

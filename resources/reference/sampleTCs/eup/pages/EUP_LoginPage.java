@@ -100,7 +100,7 @@ public class EUP_LoginPage {
 		logger.info("Set password: " + password);
 		setPassWord(password);
 		
-		logger.info("Click 'Login' Button");
+		logger.info("Click 'login' Button");
 		 clickButtonLogin();
 		 
 		 WebElementSupport2.waitForElementSupport(By.xpath(".//*[@id='address_book']"), driver, timeout, 1000);

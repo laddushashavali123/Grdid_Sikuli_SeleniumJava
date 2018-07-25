@@ -1,4 +1,4 @@
-package cucumber;
+package cucumber.testrunner;
 
 import base.DriverBase;
 import cucumber.api.CucumberOptions;
@@ -6,7 +6,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 public class TestRunner extends DriverBase {
     @CucumberOptions(
-            // Indicat the location folder of feature file
+            // Indicate the location folder of feature file (Run all features file in this folder)
             features = "src/test/java/cucumber/features",
             // Indicate the location folder of steps file
             glue = {"cucumber/steps"},

@@ -27,7 +27,6 @@
  */
 package tests.page_object.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,16 +38,15 @@ import org.testng.Assert;
 public class Annotation_BankLogin {
     final private Logger logger = LoggerFactory.getLogger(Annotation_BankLogin.class);
     private WebDriver driver;
-    String pageURL = "http://demo.guru99.com/v4/index.php";
+    private String pageURL = "http://demo.guru99.com/v4/index.php";
+
 
     public Annotation_BankLogin(WebDriver driver){
         this.driver = driver;
-        driver.manage().window().fullscreen();
-        driver.get(pageURL);
         PageFactory.initElements(driver, this);
     }
 
-    // Locator
+    // Elements
     @FindBy(name = "uid")      private WebElement username;
     @FindBy(name = "password") private WebElement password;
     @FindBy(name = "btnLogin") private WebElement submitButton;
@@ -56,6 +54,12 @@ public class Annotation_BankLogin {
 
 
     // Method
+    public Annotation_BankLogin nagivateToLoginPage(){
+        driver.get(pageURL);
+        driver.manage().window().fullscreen();
+        return this;
+    }
+
     public Annotation_BankLogin enterUsername(String content){
         username.sendKeys(content);
         logger.info("Entering username as " + content);

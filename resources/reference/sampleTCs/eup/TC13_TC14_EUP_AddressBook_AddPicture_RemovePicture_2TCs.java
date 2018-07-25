@@ -33,7 +33,7 @@ public class TC13_TC14_EUP_AddressBook_AddPicture_RemovePicture_2TCs extends Dri
 		String alertRemove1 = "Picture removed. Changes will be reflected only after save.";
 		
 		PageLoginEUP loginP = new PageLoginEUP(driver, timeout);
-		logger.info("Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("login with User ID '" + user + "' and Password '" + password + "'");
 		loginP.login(user, password);
 		
 		PageAccountEUP accountP = new PageAccountEUP(driver, timeout);

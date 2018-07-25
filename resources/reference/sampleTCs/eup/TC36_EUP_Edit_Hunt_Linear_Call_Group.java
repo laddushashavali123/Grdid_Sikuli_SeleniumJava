@@ -38,7 +38,7 @@ public class TC36_EUP_Edit_Hunt_Linear_Call_Group extends DriverFactory {
 		}
 		
 		LoginPage loginPortal = new LoginPage(driver, timeout);
-		logger.info("Portal - Login with User ID '" + portal_user + "' and Password '" + portal_password + "'");
+		logger.info("Portal - login with User ID '" + portal_user + "' and Password '" + portal_password + "'");
 		loginPortal.Login(portal_user, portal_password, portal_url);
 		
 		//Add Call Answer Group
@@ -78,7 +78,7 @@ public class TC36_EUP_Edit_Hunt_Linear_Call_Group extends DriverFactory {
 		
 		PageLoginEUP loginEUP = new PageLoginEUP(driver, timeout);
 		user = user + "@" + domain;
-		logger.info("EUP - Login with User ID '" + user + "' and Password '" + password + "'");
+		logger.info("EUP - login with User ID '" + user + "' and Password '" + password + "'");
 		loginEUP.login(user, password);
 		
 		PageMenuEUP menuEUP = new PageMenuEUP(driver, timeout);
@@ -232,7 +232,7 @@ public class TC36_EUP_Edit_Hunt_Linear_Call_Group extends DriverFactory {
 		logger.info("Launch Portal '" + portal_url + "'");
 		driver.get(portal_url);
 
-		logger.info("Portal - Login with User ID '" + portal_user + "' and Password '" + portal_password + "'");
+		logger.info("Portal - login with User ID '" + portal_user + "' and Password '" + portal_password + "'");
 		loginPortal.Login(portal_user, portal_password, portal_url);
 		
 		logger.info("Portal - Click 'Provision' Then Choose 'Subscribers'");

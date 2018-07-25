@@ -27,7 +27,7 @@ public class AgentAdminPage {
     // Locator
     By userTextBox = By.xpath("//input[contains(@placeholder, 'Username')]");
     By passTextBox = By.xpath("//input[contains(@placeholder, 'Password')]");
-    By loginButton = By.xpath("//input[contains(@value, 'Login')]");
+    By loginButton = By.xpath("//input[contains(@value, 'login')]");
 
 
     // Method

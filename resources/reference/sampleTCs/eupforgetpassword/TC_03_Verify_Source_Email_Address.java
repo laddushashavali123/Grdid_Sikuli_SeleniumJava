@@ -39,7 +39,7 @@ public class TC_03_Verify_Source_Email_Address extends DriverFactory {
 		logger.info("Launch Admin Portal '"+url+"'");
 		driver.get(url);
 
-		logger.info("Login Admin Portal '"+user+"'");
+		logger.info("login Admin Portal '"+user+"'");
 		LoginPage login = new LoginPage(driver, timeout); 		
 		login.Login(user, password, url);
 

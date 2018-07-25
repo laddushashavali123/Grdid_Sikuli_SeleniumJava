@@ -41,7 +41,7 @@ public class TC_05_Verify_Able_To_Reset_Password_Successfully_When_Subscriber_Re
 		logger.info("Launch Admin Portal '"+url+"'");
 		driver.get(url);
 
-		logger.info("Login Admin Portal '"+user+"'");
+		logger.info("login Admin Portal '"+user+"'");
 		LoginPage login = new LoginPage(driver, timeout); 		
 		login.Login(user, password, url);
 
@@ -106,9 +106,9 @@ public class TC_05_Verify_Able_To_Reset_Password_Successfully_When_Subscriber_Re
 		}
 		logger.info("----------------------------------------");
 
-		/* Step 2. Login EUP with correct password, input email and log out */
-		logger.info("------- Step 2. Login EUP with correct password, input email and log out -------");
-		Reporter.log("------- Step 2. Login EUP with correct password, input email and log out -------");
+		/* Step 2. login EUP with correct password, input email and log out */
+		logger.info("------- Step 2. login EUP with correct password, input email and log out -------");
+		Reporter.log("------- Step 2. login EUP with correct password, input email and log out -------");
 
 		String userEUP = userID + "@" + domain;	
 		String email = "hailhl3045@gmail.com";
@@ -140,13 +140,13 @@ public class TC_05_Verify_Able_To_Reset_Password_Successfully_When_Subscriber_Re
 			pageMenu.clickAccountThenClickServiceTab();
 			result2 = true;
 			logger.info("--------------------------------");
-			logger.info("Login EUP Successful : PASSED");
-			Reporter.log("--> Login EUP Successful : PASSED");
+			logger.info("login EUP Successful : PASSED");
+			Reporter.log("--> login EUP Successful : PASSED");
 			logger.info("----------------------------------------");
 		} catch (Exception e) { 
 			result2 = false;
-			logger.info("Login EUP Successful : FAILED");
-			Reporter.log("--> Login EUP Successful : FAILED");
+			logger.info("login EUP Successful : FAILED");
+			Reporter.log("--> login EUP Successful : FAILED");
 			GetScreenshot.capture(this.getClass().getSimpleName() + "_2");
 			logger.info("----------------------------------------");
 		}
@@ -155,26 +155,26 @@ public class TC_05_Verify_Able_To_Reset_Password_Successfully_When_Subscriber_Re
 		logoutPage.logoutEUP();
 		Thread.sleep(2000);
 
-		/* Step 3.  Login with incorrect password and request reset password */
-		logger.info("------- Step 3.  Login with incorrect password and request reset password -------");
-		Reporter.log("------- Step 3.  Login with incorrect password and request reset password -------");
+		/* Step 3.  login with incorrect password and request reset password */
+		logger.info("------- Step 3.  login with incorrect password and request reset password -------");
+		Reporter.log("------- Step 3.  login with incorrect password and request reset password -------");
 
 		String passwordWrong= "0987-Kandy";
-		logger.info("Login EUP wrong password '"+passwordWrong+"'");
+		logger.info("login EUP wrong password '"+passwordWrong+"'");
 		eupPage.login(userEUP, passwordWrong);
 
 		String loginIncorrectAlert = "That combination of credentials is not valid. Please try again.";
-		logger.info("Verify 'Login Incorrect Password' by Alert");
+		logger.info("Verify 'login Incorrect Password' by Alert");
 
 		boolean result3a = eupPage.verifyAlertAppears(loginIncorrectAlert);
 		logger.info("----------------------------------------");
 		if (result3a) {
-			logger.info("--> 'Login EUP Wrong Password': PASSED");
-			Reporter.log("--> 'Login EUP Wrong Password': PASSED");
+			logger.info("--> 'login EUP Wrong Password': PASSED");
+			Reporter.log("--> 'login EUP Wrong Password': PASSED");
 		} 
 		else {
-			logger.info("--> 'Login EUP Wrong Password': FAILED");
-			Reporter.log("--> 'Login EUP Wrong Password': FAILED");
+			logger.info("--> 'login EUP Wrong Password': FAILED");
+			Reporter.log("--> 'login EUP Wrong Password': FAILED");
 			GetScreenshot.capture(this.getClass().getSimpleName() + "_3a");
 		}
 		logger.info("----------------------------------------");
@@ -268,7 +268,7 @@ public class TC_05_Verify_Able_To_Reset_Password_Successfully_When_Subscriber_Re
 		driver.get(urlEUP);
 		Thread.sleep(5000);
 
-		logger.info("Login EUP new password '"+newPassword+"'");
+		logger.info("login EUP new password '"+newPassword+"'");
 		eupPage.login(userEUP, newPassword);
 		Thread.sleep(2000);
 		boolean result5 = true;
@@ -276,13 +276,13 @@ public class TC_05_Verify_Able_To_Reset_Password_Successfully_When_Subscriber_Re
 			pageMenu.clickAccountThenClickServiceTab();
 			result5 = true;
 			logger.info("--------------------------------");
-			logger.info("Login EUP Successful : PASSED");
-			Reporter.log("--> Login EUP Successful : PASSED");
+			logger.info("login EUP Successful : PASSED");
+			Reporter.log("--> login EUP Successful : PASSED");
 			logger.info("----------------------------------------");
 		} catch (Exception e2) { 
 			result5 = false;
-			logger.info("Login EUP Successful : FAILED");
-			Reporter.log("--> Login EUP Successful : FAILED");
+			logger.info("login EUP Successful : FAILED");
+			Reporter.log("--> login EUP Successful : FAILED");
 			GetScreenshot.capture(this.getClass().getSimpleName() + "_5");
 			logger.info("----------------------------------------");
 		}
