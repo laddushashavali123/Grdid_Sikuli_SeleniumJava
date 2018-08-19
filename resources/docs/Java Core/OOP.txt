@@ -23,41 +23,32 @@ headings describe the Account class. Each object in the Account class has an acc
 property. If you opened a new account, you would have another object, and the table would grow an additional row. The
 new object would be an instance of the same Account class.
 
-- Class: is a “template”/“blueprint” that is used to create objects. Class will consists of field, static field, method,
-static method and constructor. Field (variable) is used to hold the state of the class. Method is used to represent the
-behavior of the class. Constructor is used to create a new Instance of the Class.
-
-- Object: is an instance of a class, and may be called a class instance or class object; instantiation is also known as
-construction (Not all classes can be instantiated - Abstract class)
-
-- Instance: is a unique copy of a Class that representing an Object. When a new instance of a class is created, the JVM
-will allocate a room of memory for that class instance.
-
-- Inheritance: When one object acquires all the properties and behaviours of parent object i.e. known as inheritance. It
-provides code reusability. It is used to achieve runtime polymorphism.
-
-- Polymorphism: When one task is performed by different ways i.e. known as polymorphism. For example: to convince the
-customer differently, to draw something e.g. shape or rectangle etc.
-
-- Abstraction: Hiding internal details and showing functionality is known as abstraction. For example: phone call, we
-don't know the internal processing.
-
-- Encapsulation is a process of wrapping code and data together into a single unit, for example capsule i.e. mixed of
-several elements.
-
-==> Through the use of Classes, we implement all three concepts - Abstraction, Information Hiding and Encapsulation
-
 ========================================================================================================================
 ========================================================================================================================
-	Class
+	Class and Object
 ========================================================================================================================
-- When you declare a class to be public, you must declare the class in a file whose name is exactly the same as the name
-of the class (but with the .java extension added). For example, if you declare public class MyImportantCode , you must
-put the class's code in a file named MyImportantCode.java. In other words, you can't declare two public classes in one
-.java file.
-- The parentheses contain all the things you’re going to pass to the method when you call it.
+- The Java programming language is a statically typed language, which means that every variable has a type that is known
+at compile time.
 
-- EX:
+- The types of the Java programming language are divided into two categories:
+    1. Primitive type are boolean type (boolean), character type (char) and the numeric types(int, float, ...). A
+    variable of primitive type always holds a primitive value.
+
+    2. Reference type are class types (String, Integer, ...), interface types (List, Collection, ...) and array types
+    (int[], String[], ...). A variable of reference type always holds the value of a reference to an object, this
+    reference is the address of the memory location where the object is stored.
+
+- Class is a construct that allow us to create a type which defined the data structure and methods that we can interact
+with.
+
+- Object is a variable of a class type. It is a unique copy of the class which has all attributes and methods.
+
+- Create class and object in Java:
+    . When you declare a class to be public, you must declare the class in a file whose name is exactly the same as the
+    name of the class (but with the .java extension added). For example, if you declare public class MyImportantCode ,
+    you must put the class's code in a file named MyImportantCode.java. In other words, you can't declare two public
+    classes in one .java file.
+    . Example:
 // The Account class is public, a public class is available for use by all other classes
 public class Account {
 	// A variable declared inside a class but not inside any particular method is a field or instance variable. These are
@@ -113,6 +104,27 @@ public class UseAccount {
 
 ========================================================================================================================
 ========================================================================================================================
+	Interface
+========================================================================================================================
+- An interface is a reference type in Java and it is similar to class.
+
+- Interface is different from a class in several ways, including:
+    1. An interface does not contain any constructors so you cannot instantiate an interface
+    2. All of the methods in an interface are abstract
+    3. An interface cannot contain instance fields. The only fields that can appear in an interface must be declared
+    both static and final.
+
+- A class can implement an interface, or many interfaces and it inherits everything from these interfaces.
+
+========================================================================================================================
+========================================================================================================================
+	Abstract class
+========================================================================================================================
+
+
+
+========================================================================================================================
+========================================================================================================================
 	Constructors: initialize Object/Instance
 ========================================================================================================================
 - A constructor tells the Java to perform a new object’s start-up tasks.
@@ -162,6 +174,24 @@ for that class.
     		out.printf("%5.2f degrees %s\n", getNumber(), getScale());
     	}
     }
+
+========================================================================================================================
+========================================================================================================================
+    OOP 4 characteristic
+========================================================================================================================
+- Inheritance: When one object acquires all the properties and behaviours of parent object i.e. known as inheritance. It
+provides code reusability. It is used to achieve runtime polymorphism.
+
+- Polymorphism: When one task is performed by different ways i.e. known as polymorphism. For example: to convince the
+customer differently, to draw something e.g. shape or rectangle etc.
+
+- Abstraction: Hiding internal details and showing functionality is known as abstraction. For example: phone call, we
+don't know the internal processing.
+
+- Encapsulation is a process of wrapping code and data together into a single unit, for example capsule i.e. mixed of
+several elements.
+
+==> Through the use of Classes, we implement all three concepts - Abstraction, Information Hiding and Encapsulation
 
 ========================================================================================================================
 ========================================================================================================================
