@@ -12,6 +12,7 @@ The automation framework is written with Java, Selenium and TestNG and it can:
 * Work with SikuliX
 * Run jMetter test
 * Capture screen shoot after test or anytime to screenshoot folder
+* Automatically download browser driver (update resources/driver/RepositoryMap.xml for latest version)
 
 
 Prerequisites:
