@@ -39,16 +39,18 @@ public class LogListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-        String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_PASSED_" + tr.getName() + ".png";
-        takeScreenShot(screenshotAbsolutePath);
+        String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis()
+                + "_PASSED_" + tr.getName() + ".png";
+        Screenshoot.takeScreenShot(screenshotAbsolutePath);
         log.info(tr.getMethod() + " is PASSED.");
         MDC.remove(TEST_NAME);
     }
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_FAILED_" + tr.getName() + ".png";
-        takeScreenShot(screenshotAbsolutePath);
+        String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis()
+                + "_FAILED_" + tr.getName() + ".png";
+        Screenshoot.takeScreenShot(screenshotAbsolutePath);
         log.error(tr.getMethod() + " is FAILED.");
         MDC.remove(TEST_NAME);
     }
@@ -57,52 +59,5 @@ public class LogListener extends TestListenerAdapter {
     public void onTestSkipped(ITestResult tr) {
         log.info(tr.getMethod() + " is SKIPPED.");
         MDC.remove(TEST_NAME);
-    }
-
-
-
-    private boolean createFile(File screenshot) throws IOException {
-        boolean fileCreated = false;
-        if (screenshot.exists()) {
-            fileCreated = true;
-        }
-        else {
-            File parentDirectory = new File(screenshot.getParent());
-            if (parentDirectory.exists() || parentDirectory.mkdirs()) {
-                fileCreated = screenshot.createNewFile();
-            }
-        }
-        return fileCreated;
-    }
-
-    private void writeScreenshotToFile(WebDriver driver, File screenshot) throws IOException {
-        FileOutputStream screenshotStream = new
-                FileOutputStream(screenshot);
-        screenshotStream.write(((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES));
-        screenshotStream.close();
-    }
-
-    public void takeScreenShot(String savePath){
-        try {
-            WebDriver driver = DriverBase.getDriver();
-
-            File screenshot = new File(savePath);
-            if (createFile(screenshot)) {
-                try {
-                    writeScreenshotToFile(driver, screenshot);
-                }
-                catch (ClassCastException weNeedToAugmentOurDriverObject) {
-                    writeScreenshotToFile(new Augmenter().augment(driver), screenshot);
-                }
-                log.info("Written screenshot to " + screenshot);
-            }
-            else {
-                log.error("Unable to create " + screenshot);
-            }
-        }
-        catch (Exception ex) {
-            log.error("Unable to capture screenshot...");
-            ex.printStackTrace();
-        }
     }
 }

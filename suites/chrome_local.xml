@@ -26,9 +26,9 @@
         <classes>
             <!--<class name="tests.page_object.specs.Login_Normal" />-->
             <!--<class name="tests.page_object.specs.Login_Hashmap" />-->
-            <class name="tests.page_object.specs.Login_Annotation" />
+            <!--<class name="tests.page_object.specs.Login_Annotation" />-->
             <!--<class name="cucumber.TestRunner" />-->
-            <!--<class name="tests.example.sikuliX.SikuliX" />-->
+            <class name="tests.example.MouseHoverandTooltip" />
             <!--<class name="tests.chrome_extension.ClickToCall" />-->
         </classes>
     </test>
