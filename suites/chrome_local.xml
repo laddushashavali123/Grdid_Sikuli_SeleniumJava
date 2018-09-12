@@ -4,7 +4,7 @@
 	 thread-count: is number of concurrent thread running -->
 <suite name="Suite" parallel="methods" thread-count="1">
  	<!-- Supported browser: chrome, firefox, ie, safari -->
-	<parameter name="BrowserName" value="chrome"/>
+	<parameter name="BrowserName" value="firefox"/>
 
 	<!-- Run test on Selenium Grid: Y/N -->
 	<parameter name="UseRemote" value="N"/>
@@ -28,7 +28,7 @@
             <!--<class name="tests.page_object.specs.Login_Hashmap" />-->
             <!--<class name="tests.page_object.specs.Login_Annotation" />-->
             <!--<class name="cucumber.TestRunner" />-->
-            <class name="tests.example.MouseHoverandTooltip" />
+            <class name="tests.example.Scroll" />
             <!--<class name="tests.chrome_extension.ClickToCall" />-->
         </classes>
     </test>

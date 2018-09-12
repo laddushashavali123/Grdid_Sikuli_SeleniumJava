@@ -112,7 +112,7 @@
                                 <logback.configurationFile>${project.basedir}\logback.xml</logback.configurationFile>
                                 <retryFailed>${retryFailed}</retryFailed>
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
-                                <webdriver.firefox.driver>${webdriver.firefox.driver}</webdriver.firefox.driver>
+                                <webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
                                 <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
                                 <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
                                 <proxyEnabled>false</proxyEnabled>

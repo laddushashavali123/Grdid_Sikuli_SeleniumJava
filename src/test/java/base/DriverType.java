@@ -94,13 +94,8 @@ class DriverType {
 			capabilities = DesiredCapabilities.safari();
 		    capabilities.setCapability("safari.cleanSession", true);
 		}
-		// can use this for COC COC browser and change hard location to dynamic system variable
-		else if (browser.equalsIgnoreCase("electron")){
-			String ChromeniumLocation = "xxx";
-			ChromeOptions options = new ChromeOptions();
-			options.setBinary(ChromeniumLocation);
-			capabilities = DesiredCapabilities.chrome();
-			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		else if (browser.equalsIgnoreCase("firefox")){
+			capabilities = DesiredCapabilities.firefox();
 		}
 		else {
 			capabilities = DesiredCapabilities.firefox();
@@ -112,29 +107,26 @@ class DriverType {
 	 * This method will return the correct local browser
 	 */
 	private static WebDriver getLocalDriver(String browser, DesiredCapabilities capabilities) {
+		WebDriver webDriver;
 		if (browser.equalsIgnoreCase("chrome")){
 			System.setProperty("webdriver.chrome.driver", System.getProperty("webdriver.chrome.driver"));
 			ChromeOptions options = new ChromeOptions().merge(capabilities);
-			return new ChromeDriver(options);
+			webDriver = new ChromeDriver(options);
 		}
 		else if (browser.equalsIgnoreCase("ie")) {
 			InternetExplorerOptions options = new InternetExplorerOptions().merge(capabilities);
-			return new InternetExplorerDriver(options);
+			webDriver = new InternetExplorerDriver(options);
 		}
 		else if (browser.equalsIgnoreCase("safari")) {
 			SafariOptions options = new SafariOptions().merge(capabilities);
-			return new SafariDriver(options);
-		}
-		else if (browser.equalsIgnoreCase("electron")){
-			String S4BLocation = "C:\\Users\\MyPC\\AppData\\Local\\Programs\\RTC_Client_for_Skype_for_Business.S4B2015UCCSV\\RTC Client for Skype for Business - S4B2015UCCSV.exe";
-			ChromeOptions options = new ChromeOptions();
-			options.setBinary(S4BLocation);
-			return new ChromeDriver(options);
+			webDriver = new SafariDriver(options);
 		}
 		else {
-			System.setProperty("webdriver.gecko.driver", System.getProperty("firefox.driver.path"));
+			System.out.println(System.getProperty("webdriver.firefox.driver"));
+			System.setProperty("webdriver.gecko.driver", System.getProperty("webdriver.gecko.driver"));
 			FirefoxOptions options = new FirefoxOptions().merge(capabilities);
-			return new FirefoxDriver(options);
+			webDriver = new FirefoxDriver(options);
 		}
+		return webDriver;
 	}
 }
