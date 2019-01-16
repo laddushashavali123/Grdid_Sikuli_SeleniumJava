@@ -13,3 +13,4 @@ Feature: Login Feature
     And I click on the login button
     Then I should login successfully
 
+  Scenario: Data table
