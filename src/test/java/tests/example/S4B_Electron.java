@@ -15,7 +15,7 @@ import java.net.URL;
 public class S4B_Electron {
 	@Test
 	public void login() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "D:\\zDung\\JavaAuto\\resources\\drivers\\binaries\\windows\\googlechrome\\64bit\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\resources\\drivers\\binaries\\windows\\googlechrome\\64bit\\chromedriver.exe");
 		String S4BLocation = "C:\\Users\\kadung\\AppData\\Local\\Programs\\RTC_Client_for_Skype_for_Business_SV_NVS_Vz_CuCM_O365\\RTC Client for Skype for Business - SV NVS Vz CuCM O365.exe";
 
 

@@ -14,7 +14,7 @@ public class SikuliX extends DriverBase{
         Thread.sleep(3000);
 
         Screen sc = new Screen();
-        String fileLoc = System.getProperty("user.dir") +"\\sikulix_img\\sikulixDemo\\";
+        String fileLoc = System.getProperty("user.dir") +"\\img\\sikulixDemo\\";
 
         try{
             sc.type(fileLoc + "Searchbox.png", "Dung HandSome");

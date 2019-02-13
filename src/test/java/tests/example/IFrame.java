@@ -9,7 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class IFrame extends DriverBase {
     Logger logger = LoggerFactory.getLogger(IFrame.class);
@@ -25,6 +27,18 @@ public class IFrame extends DriverBase {
         List<WebElement> elements = driver.findElements(By.tagName("iframe"));
         System.out.println(elements.size());
 
+       /* List<WebElement> lsWindows=elements.stream()
+                .filter(p->p.getText()!=null)
+                .collect(Collectors.toList());;*/
+
+        List<String> lsWindows= new ArrayList<>();
+        elements.stream().map(WebElement::getText).forEach(lsWindows::add);
+        
+        logger.info("list of webelements-"+lsWindows);
+        List<String> lsWindowIDs=driver.getWindowHandles().stream()
+                .filter(p->p!=null)
+                .collect(Collectors.toList());;
+        logger.info("list of window ids-"+lsWindowIDs);
         // Switch to new frame
         driver.switchTo().frame("a077aa5e");
         // Click on the link on this frame

@@ -11,14 +11,10 @@ public class WebTable extends DriverBase {
     public void checkAValue(){
         WebDriver driver = getDriver();
         driver.get("http://toolsqa.com/automation-practice-table/");
-
         // Dynamic locator
         By Taipei101Height = By.xpath("//*[text()= 'Taipei 101']/following-sibling::td[3]");
         System.out.println("Taipei 101 is " + driver.findElement(Taipei101Height).getText() + " height");
-
-
         System.out.println("Burj Khalifa is " + StructureHeight(driver,"Burj Khalifa") + " height");
-
     }
 
     // Method

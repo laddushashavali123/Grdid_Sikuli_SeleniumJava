@@ -24,7 +24,7 @@
 
     <test name="Test">
         <classes>
-            <class name="cucumber.testrunner.LoginFeatureSerenityRunner" />
+            <class name="cucumber.testrunner.TestRunner" />
         </classes>
     </test>
 </suite>

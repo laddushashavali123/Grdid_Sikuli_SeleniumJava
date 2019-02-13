@@ -4,7 +4,7 @@
 	 thread-count: is number of concurrent thread running -->
 <suite name="Suite" parallel="methods" thread-count="1">
  	<!-- Supported browser: chrome, firefox, ie, safari -->
-	<parameter name="BrowserName" value="firefox"/>
+	<parameter name="BrowserName" value="chrome"/>
 
 	<!-- Run test on Selenium Grid: Y/N -->
 	<parameter name="UseRemote" value="N"/>

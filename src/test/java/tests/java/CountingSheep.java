@@ -24,7 +24,8 @@ public class CountingSheep {
     public static int countSheeps(Boolean[] arrayOfSheeps) {
         int result = 0;
         for (int i=0; i<array1.length; i++){
-            if (arrayOfSheeps[i] != null) if (arrayOfSheeps[i]) result++;
+            if (arrayOfSheeps[i] != null)
+                if (arrayOfSheeps[i]) result++;
 
         }
         return result;

@@ -28,11 +28,13 @@ import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
 class DriverType {
 	
-	static WebDriver getDriverType(String browserName, String useRemote, String GridURL, String platform, String browserVersion,
+	static WebDriver getDriverType(String browserName, String useRemote, String GridURL,
+								   String platform, String browserVersion,
 								   String proxyEnabled, String proxyHost, String proxyPort) {
 		WebDriver driver;
+		System.out.println("Browser name : " +browserName);
 		DesiredCapabilities capabilities = getDesiredCapabilities(browserName);
-
+		System.out.println("Capabilities: " +capabilities);
 		// Add proxy
 		if (proxyEnabled.equalsIgnoreCase("y") || proxyEnabled.equalsIgnoreCase("yes")){
 			String proxyDetails = proxyHost + ":" + proxyPort;
@@ -62,6 +64,7 @@ class DriverType {
 	    	System.out.println("Remote driver is created on thread " + Thread.currentThread().getId());
 		}
 		else {
+
 			driver = getLocalDriver(browserName, capabilities);
 			System.out.println("Local driver is created on thread " + Thread.currentThread().getId());
 		}
